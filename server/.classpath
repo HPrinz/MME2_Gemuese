@@ -1,29 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
-	<classpathentry excluding="**/*.java" kind="src" path="src/main/resources"/>
-	<classpathentry kind="var" path="M2_REPO/asm/asm/3.1/asm-3.1.jar" sourcepath="M2_REPO/asm/asm/3.1/asm-3.1-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/sun/jersey/jersey-core/1.4/jersey-core-1.4.jar" sourcepath="M2_REPO/com/sun/jersey/jersey-core/1.4/jersey-core-1.4-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/Hanna/.m2/repository/com/sun/jersey/jersey-core/1.4/jersey-core-1.4-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/sun/jersey/jersey-server/1.4/jersey-server-1.4.jar" sourcepath="M2_REPO/com/sun/jersey/jersey-server/1.4/jersey-server-1.4-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/Hanna/.m2/repository/com/sun/jersey/jersey-server/1.4/jersey-server-1.4-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1.jar" sourcepath="M2_REPO/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/Hanna/.m2/repository/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/google/code/morphia/0.91/morphia-0.91.jar" sourcepath="M2_REPO/com/google/code/morphia/0.91/morphia-0.91-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/Hanna/.m2/repository/com/google/code/morphia/0.91/morphia-0.91-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/morphia-0.99.1-SNAPSHOT.jar"/>
-	<classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/asm/asm/3.1/asm-3.1.jar" sourcepath="M2_REPO/asm/asm/3.1/asm-3.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/sun/jersey/jersey-core/1.4/jersey-core-1.4.jar" sourcepath="M2_REPO/com/sun/jersey/jersey-core/1.4/jersey-core-1.4-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/Users/togomade/.m2/repository/com/sun/jersey/jersey-core/1.4/jersey-core-1.4-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/sun/jersey/jersey-server/1.4/jersey-server-1.4.jar" sourcepath="M2_REPO/com/sun/jersey/jersey-server/1.4/jersey-server-1.4-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/Users/togomade/.m2/repository/com/sun/jersey/jersey-server/1.4/jersey-server-1.4-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1.jar" sourcepath="M2_REPO/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/Users/togomade/.m2/repository/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>
