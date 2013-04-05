@@ -1,0 +1,29 @@
+package de.bht.mme2.waswaechstwann.server.pojos{
+	
+	import java.util.Date
+	import java.util.List
+	
+	DTOentity Fruit{
+		name : String
+		description : String
+		seasonbegin : Date
+		seasonend : Date
+	}
+	
+	DTOentity Market{
+		name:String
+		address:String
+		latitude : Date
+		longitude : Date
+		openingHous: String
+	}
+	
+	
+	DTOentity Recipe{
+		name : String
+		description : String
+		pictures : List<String>
+		ingridients : List<String>
+		vegetables : List<Fruit>
+	}
+}
