@@ -17,8 +17,7 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 		longitude : Date
 		openingHous: String
 	}
-	
-	
+		
 	DTOentity Recipe{
 		name : String
 		description : String

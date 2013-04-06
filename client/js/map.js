@@ -1,7 +1,7 @@
 function initialize(coords) {
     var latlng = new google.maps.LatLng(coords.latitude, coords.longitude);
     var myOptions = {
-        zoom: 8,
+        zoom: 14,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -11,10 +11,13 @@ function initialize(coords) {
     var marker = new google.maps.Marker({
         position: latlng, 
         map: map, 
-        title: "Hier bist du :)"
-    }); 
+        title: "your position"
+    });
+    
+    
 }
-  
+
+
 navigator.geolocation.getCurrentPosition(function(position) { 
     initialize(position.coords);
 }, function() {
