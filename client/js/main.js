@@ -7,7 +7,7 @@ window.onload = function() {
        getHttpRequest();
        return false;
     }
-}
+};
 
 function getHttpRequest() {
     var xmlhttp = null;
@@ -27,8 +27,15 @@ function getHttpRequest() {
             $('ergebnis').innerHTML = 'Seite wird geladen ...';
         }
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            $('ergebnis').innerHTML = xmlhttp.responseText;
+            var response = JSON.parse(xmlhttp.responseText);
+            var string = "";
+
+            for(var i = 0; i < response.fruits.length; i++) {
+                var temp = JSON.parse(response.fruits[i]);
+                string = string + " " + temp.name
+            }
+            $('ergebnis').innerHTML = string;
         }
-    }
+    };
     xmlhttp.send(null);
 }
