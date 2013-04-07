@@ -1,5 +1,17 @@
+function $(id) {
+    return document.getElementById(id);
+}
+ 
+window.onload = function() {
+    $('link').onclick = function() {
+       getHttpRequest();
+       return false;
+    }
+}
+
 function getHttpRequest() {
     var xmlhttp = null;
+    
     // Mozilla
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
@@ -20,4 +32,3 @@ function getHttpRequest() {
     }
     xmlhttp.send(null);
 }
-  
