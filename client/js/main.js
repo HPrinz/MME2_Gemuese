@@ -4,13 +4,14 @@ function $(id) {
  
 window.onload = function() {
     $('link').onclick = function() {
-       getHttpRequest();
+       makeHttpRequest();
        return false;
     }
 };
 
-function getHttpRequest() {
+function makeHttpRequest() {
     var xmlhttp = null;
+    var fruits = new Array();
     
     // Mozilla
     if (window.XMLHttpRequest) {
@@ -28,14 +29,33 @@ function getHttpRequest() {
         }
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var response = JSON.parse(xmlhttp.responseText);
-            var string = "";
+            // var string = "";
 
             for(var i = 0; i < response.fruits.length; i++) {
                 var temp = JSON.parse(response.fruits[i]);
-                string = string + " " + temp.name
+                fruits[i] = temp;
             }
-            $('ergebnis').innerHTML = string;
+            $('ergebnis').innerHTML = '';
+            proceedFruits(fruits);
         }
     };
     xmlhttp.send(null);
+}
+
+function proceedFruits(e) {
+    for(var i = 0; i < e.length; i++) {
+
+        var img = document.createElement("img");
+
+        if(e[i].name=="Apfel") {
+            img.src="img/vegies/apple.png";
+        }
+
+        if(e[i].name=="Melone") img.src="img/vegies/melone.png";
+        if(e[i].name=="Mais") img.src="img/vegies/mais.png";
+        if(e[i].name=="Karotte") img.src="img/vegies/carrot.png";
+        if(e[i].name=="Tomate") img.src="img/vegies/tomato.png";
+
+        document.getElementById("testDiv").appendChild(img);
+    }
 }
