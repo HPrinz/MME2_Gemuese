@@ -18,11 +18,7 @@ import de.bht.mme2.waswaechstwann.server.dao.VegetableDAO;
 import de.bht.mme2.waswaechstwann.server.pojos.Fruit;
 
 /**
- * Example Services available on:
- * 
- * http://127.0.0.1:9090/gemuese/gemueseREST/avocado PUT
- * http://127.0.0.1:9090/gemuese/gemueseREST/avocado GET
- * http://127.0.0.1:9090/gemuese/gemueseREST/list GET
+ * The REST-Service that takes and answers the Client's requests
  */
 
 @Path("gemueseREST")
@@ -101,7 +97,7 @@ public class GemueseRessource {
    }
 
    /**
-    * TODO
+    * TODO insert all Vegetables automatically
     */
    // @Path("/init")
    // @GET
