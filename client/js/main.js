@@ -1,18 +1,18 @@
 function $(id) {
     return document.getElementById(id);
 }
- 
+
 window.onload = function() {
     $('link').onclick = function() {
-       makeHttpRequest();
-       return false;
-    }
+        makeHttpRequest();
+        return false;
+    };
 };
 
 function makeHttpRequest() {
     var xmlhttp = null;
     var fruits = new Array();
-    
+
     // Mozilla
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
@@ -21,19 +21,20 @@ function makeHttpRequest() {
     else if (window.ActiveXObject) {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-   
+
     xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/gemueseREST/list', true);
     xmlhttp.onreadystatechange = function() {
-        if(xmlhttp.readyState != 4) {
+        if (xmlhttp.readyState != 4) {
             $('ergebnis').innerHTML = 'Seite wird geladen ...';
         }
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var response = JSON.parse(xmlhttp.responseText);
             // var string = "";
 
-            for(var i = 0; i < response.fruits.length; i++) {
+            for ( var i = 0; i < response.fruits.length; i++) {
                 var temp = JSON.parse(response.fruits[i]);
                 fruits[i] = temp;
+                string = string + " " + temp.name;
             }
             $('ergebnis').innerHTML = '';
             proceedFruits(fruits);

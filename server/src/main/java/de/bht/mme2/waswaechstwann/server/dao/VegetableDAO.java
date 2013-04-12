@@ -20,19 +20,28 @@ import com.mongodb.util.JSON;
 import de.bht.mme2.waswaechstwann.server.pojos.Fruit;
 
 /**
+ * This class in responsible for the communication with the MongoDB
+ * 
  * @author Hanna 04.04.2013
  */
 public class VegetableDAO {
 
+   private static final String VEGETABLES_COLLECTION = "vegetables";
+   private static final String GEMUESE_DB = "gemueseDB";
+
    private DBCollection table;
 
+   /**
+    * Constructor who initializes the Database and creates the collections in
+    * case they don't exist yet.
+    */
    public VegetableDAO() {
       try {
          final MongoClient mongo = new MongoClient("localhost", 27017);
          // creates a MongoDB if there is none
-         final DB db = mongo.getDB("gemueseDB");
+         final DB db = mongo.getDB(GEMUESE_DB);
 
-         table = db.getCollection("vegetables");
+         table = db.getCollection(VEGETABLES_COLLECTION);
 
       } catch (final UnknownHostException e) {
          e.printStackTrace();

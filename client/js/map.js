@@ -1,26 +1,27 @@
-function initialize(coords) {
-    var latlng = new google.maps.LatLng(coords.latitude, coords.longitude);
+function initialize(latlng, showUserMarker) {
+
     var myOptions = {
-        zoom: 14,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,      
+        zoom : 14,
+        center : latlng,
+        mapTypeId : google.maps.MapTypeId.ROADMAP
     };
-    
+
     var map = new google.maps.Map(document.getElementById("pos"), myOptions);
-            
-    var marker = new google.maps.Marker({
-        position: latlng, 
-        map: map, 
-        title: "your position"
-    });
-    
-    
+
+    if (showUserMarker) {
+        var marker = new google.maps.Marker({
+            position : latlng,
+            map : map,
+            title : "Deine Position"
+        });
+
+        marker.setMap(map);
+    }
+
 }
 
-
-navigator.geolocation.getCurrentPosition(function(position) { 
-    initialize(position.coords);
+navigator.geolocation.getCurrentPosition(function(position) {
+    initialize(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), true);
 }, function() {
-    document.getElementById('pos').innerHTML = 'Deine Position konnte leider nicht ermittelt werden';
+    initialize(new google.maps.LatLng(52.521180, 13.413585), false);
 });
-  
