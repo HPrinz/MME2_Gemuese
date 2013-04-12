@@ -11,3 +11,7 @@
 #pos {    
     height:600px;
 }
+
+#pos img {
+    max-width:none;
+}

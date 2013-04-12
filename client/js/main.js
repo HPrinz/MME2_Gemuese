@@ -29,7 +29,7 @@ function makeHttpRequest() {
         }
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var response = JSON.parse(xmlhttp.responseText);
-            // var string = "";
+            var string = "";
 
             for ( var i = 0; i < response.fruits.length; i++) {
                 var temp = JSON.parse(response.fruits[i]);
