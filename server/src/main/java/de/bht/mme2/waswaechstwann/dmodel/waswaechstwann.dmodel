@@ -13,8 +13,8 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 	DTOentity Market{
 		name:String
 		address:String
-		latitude : Date
-		longitude : Date
+		latitude : double
+		longitude : double
 		openingHous: String
 	}
 		

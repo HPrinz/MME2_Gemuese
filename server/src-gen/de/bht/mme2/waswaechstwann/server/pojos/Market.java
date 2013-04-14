@@ -1,7 +1,6 @@
 
 package de.bht.mme2.waswaechstwann.server.pojos;
 
-import java.util.Date;
 
 
 /**
@@ -14,14 +13,14 @@ public class Market  {
   	
   	 String name ;
   	 String address ;
-  	 Date latitude ;
-  	 Date longitude ;
+  	 double latitude ;
+  	 double longitude ;
   	 String openingHous ;
 	
     /**
       * Standard Constructor with all needed attributes
       */
-    public Market( String name,  String address,  Date latitude,  Date longitude,  String openingHous ) {
+    public Market( String name,  String address,  double latitude,  double longitude,  String openingHous ) {
     	this.name = name;
     	this.address = address;
     	this.latitude = latitude;
@@ -70,7 +69,7 @@ public class Market  {
 	/**
 	  * @return the latitude
 	  */
-	public Date getLatitude() {			
+	public double getLatitude() {			
 		return this.latitude;
 	}
 	
@@ -78,14 +77,14 @@ public class Market  {
 	  * @param latitude 
 	  *			the latitude to set
 	  */
-	public void setLatitude( Date latitude ) {
+	public void setLatitude( double latitude ) {
 		this.latitude = latitude;
 	}
 	
 	/**
 	  * @return the longitude
 	  */
-	public Date getLongitude() {			
+	public double getLongitude() {			
 		return this.longitude;
 	}
 	
@@ -93,7 +92,7 @@ public class Market  {
 	  * @param longitude 
 	  *			the longitude to set
 	  */
-	public void setLongitude( Date longitude ) {
+	public void setLongitude( double longitude ) {
 		this.longitude = longitude;
 	}
 	
