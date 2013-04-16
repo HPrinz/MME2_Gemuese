@@ -15,3 +15,7 @@
 #pos img {
     max-width:none;
 }
+
+.well sidebar-nav {
+    height:600px;
+}

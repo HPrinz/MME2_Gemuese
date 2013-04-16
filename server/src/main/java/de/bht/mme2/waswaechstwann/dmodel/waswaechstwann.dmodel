@@ -1,3 +1,4 @@
+
 package de.bht.mme2.waswaechstwann.server.pojos{
 	
 	import java.util.Date
@@ -11,11 +12,12 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 	}
 	
 	DTOentity Market{
-		name:String
-		address:String
+		name: String
+		address: String
 		latitude : double
 		longitude : double
 		openingHous: String
+		type: String
 	}
 		
 	DTOentity Recipe{
