@@ -15,18 +15,18 @@ public class Market  {
   	 String address ;
   	 double latitude ;
   	 double longitude ;
-  	 String openingHous ;
+  	 String openingHours ;
   	 String type ;
 	
     /**
       * Standard Constructor with all needed attributes
       */
-    public Market( String name,  String address,  double latitude,  double longitude,  String openingHous,  String type ) {
+    public Market( String name,  String address,  double latitude,  double longitude,  String openingHours,  String type ) {
     	this.name = name;
     	this.address = address;
     	this.latitude = latitude;
     	this.longitude = longitude;
-    	this.openingHous = openingHous;
+    	this.openingHours = openingHours;
     	this.type = type;
     }
     
@@ -99,18 +99,18 @@ public class Market  {
 	}
 	
 	/**
-	  * @return the openingHous
+	  * @return the openingHours
 	  */
-	public String getOpeningHous() {			
-		return this.openingHous;
+	public String getOpeningHours() {			
+		return this.openingHours;
 	}
 	
 	/**
-	  * @param openingHous 
-	  *			the openingHous to set
+	  * @param openingHours 
+	  *			the openingHours to set
 	  */
-	public void setOpeningHous( String openingHous ) {
-		this.openingHous = openingHous;
+	public void setOpeningHours( String openingHours ) {
+		this.openingHours = openingHours;
 	}
 	
 	/**
@@ -132,6 +132,6 @@ public class Market  {
     
     @Override
     public String toString() {
-    	return "Market [ name = " +  name + ", address = " +  address + ", latitude = " +  latitude + ", longitude = " +  longitude + ", openingHous = " +  openingHous + ", type = " +  type+ "]"  ;
+    	return "Market [ name = " +  name + ", address = " +  address + ", latitude = " +  latitude + ", longitude = " +  longitude + ", openingHours = " +  openingHours + ", type = " +  type+ "]"  ;
     }
 }

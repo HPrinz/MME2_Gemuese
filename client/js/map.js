@@ -43,7 +43,7 @@ function showMarket(market) {
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '</div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '</div>'
     });
 
     infoBubble.open(map, this.marker);
