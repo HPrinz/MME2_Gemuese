@@ -16,16 +16,18 @@ public class Market  {
   	 double latitude ;
   	 double longitude ;
   	 String openingHous ;
+  	 String type ;
 	
     /**
       * Standard Constructor with all needed attributes
       */
-    public Market( String name,  String address,  double latitude,  double longitude,  String openingHous ) {
+    public Market( String name,  String address,  double latitude,  double longitude,  String openingHous,  String type ) {
     	this.name = name;
     	this.address = address;
     	this.latitude = latitude;
     	this.longitude = longitude;
     	this.openingHous = openingHous;
+    	this.type = type;
     }
     
     
@@ -111,10 +113,25 @@ public class Market  {
 		this.openingHous = openingHous;
 	}
 	
+	/**
+	  * @return the type
+	  */
+	public String getType() {			
+		return this.type;
+	}
+	
+	/**
+	  * @param type 
+	  *			the type to set
+	  */
+	public void setType( String type ) {
+		this.type = type;
+	}
+	
     
     
     @Override
     public String toString() {
-    	return "Market [ name = " +  name + ", address = " +  address + ", latitude = " +  latitude + ", longitude = " +  longitude + ", openingHous = " +  openingHous+ "]"  ;
+    	return "Market [ name = " +  name + ", address = " +  address + ", latitude = " +  latitude + ", longitude = " +  longitude + ", openingHous = " +  openingHous + ", type = " +  type+ "]"  ;
     }
 }
