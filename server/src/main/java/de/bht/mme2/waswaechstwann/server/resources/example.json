@@ -4,3 +4,12 @@
 "seasonbegin": "2000-04-15",
 "seasonend": "2000-08-15"
 }
+
+{
+"name": "viv BioFrischeMarkt",
+"address": "Boxhagener Straße 103, 10245 Berlin",
+"latitude": "52.5125894",
+"longitude": "13.4598559",
+"openingHours": "Mo - Sa 9.00 bis 21.00 Uhr, So 8.00 - 13.00 Uhr",
+"type": "Supermarkt" 
+}

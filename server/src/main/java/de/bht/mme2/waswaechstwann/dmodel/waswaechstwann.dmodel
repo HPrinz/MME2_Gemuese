@@ -16,7 +16,7 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 		address: String
 		latitude : double
 		longitude : double
-		openingHous: String
+		openingHours: String
 		type: String
 	}
 		
