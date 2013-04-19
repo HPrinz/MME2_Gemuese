@@ -30,13 +30,24 @@ function initialize(latlng, showUserMarker) {
  */
 function showMarket(market) {
     var latlng = new google.maps.LatLng(market.latitude, market.longitude)    
+        
+    if(market.type == "Supermarkt") {
+        var marker = new google.maps.Marker({
+            position : latlng,
+            map : map,
+            title : market.name,
+            icon: "img/marker/supermarket.png"
+        });
+    }
     
-    var marker = new google.maps.Marker({
-        position : latlng,
-        map : map,
-        title : market.name,
-        icon: "img/marker/supermarket.png"
-    });
+    if(market.type == "Wochenmarkt") {
+        var marker = new google.maps.Marker({
+            position : latlng,
+            map : map,
+            title : market.name,
+            icon: "img/marker/farmstand.png",            
+        });
+    }
 
     marker.setMap(map);        
     

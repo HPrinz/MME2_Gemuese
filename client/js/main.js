@@ -11,7 +11,7 @@ window.onload = function() {
 
 function makeHttpRequest() {
     var xmlhttp = null;
-    var fruits = new Array();
+    this.fruits = new Array();
 
     // Mozilla
     if (window.XMLHttpRequest) {
@@ -46,25 +46,46 @@ function makeHttpRequest() {
 function proceedFruits(e) {
     for(var i = 0; i < e.length; i++) {
         
-        this.img = document.createElement("img");
-        this.gem = e[i].name;
+        var img = document.createElement("img");
+        this.beschreibung = "";
+        
+        if(e[i].name=="Apfel") {
+            img.src="img/vegies/apple.png"; 
+            img.id="Apfel";            
+        }    
+        if(e[i].name=="Melone") {
+            img.src="img/vegies/melone.png"; 
+            img.id="Melone";
+        }
+        if(e[i].name=="Mais") {
+            img.src="img/vegies/mais.png"; 
+            img.id="Mais";
+        }
+        if(e[i].name=="Karotte") {
+            img.src="img/vegies/carrot.png"; 
+            img.id="Karotte";
+        }
+        if(e[i].name=="Tomate") {
+            img.src="img/vegies/tomato.png"; 
+            img.id="Tomate";
+        }
         
         img.onclick=function(){
+              writeDescription();       
+        };        
+        
+        document.getElementById("testDiv").appendChild(img); 
+    }
+}
+
+function writeDescription() {
+    eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
+    eventtype=event.type;    
+    
+    for(var i = 0; i < fruits.length; i++) {
+        if(fruits[i].name == eventSrcID) {
             document.getElementById("myDiv").innerHTML = "";
-            document.getElementById("myDiv").appendChild(document.createTextNode(img.src));
-            console.log(img);
-          
-        };
-        
-        if(e[i].name=="Apfel")img.src="img/vegies/apple.png";
-        if(e[i].name=="Melone") img.src="img/vegies/melone.png";
-        if(e[i].name=="Mais") img.src="img/vegies/mais.png";
-        if(e[i].name=="Karotte") img.src="img/vegies/carrot.png";
-        if(e[i].name=="Tomate") img.src="img/vegies/tomato.png";
-        
-        //img.href="#myCarousel";
-        //img.data-slide="next";
-        
-        document.getElementById("testDiv").appendChild(img);
+            document.getElementById("myDiv").innerHTML = fruits[i].description;            
+        }
     }
 }
