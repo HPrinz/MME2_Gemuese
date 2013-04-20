@@ -14,23 +14,21 @@ navigator.geolocation.getCurrentPosition(function(position) {
 function initialize(latlng, showUserMarker) {
     
     var myOptions = {
-        zoom : 14,
+        zoom : 15,
         center : latlng,
         mapTypeId : google.maps.MapTypeId.ROADMAP
     };
 
     this.map = new google.maps.Map(document.getElementById("pos"), myOptions);
+   
+    var marker = new google.maps.Marker({
+        position : latlng,
+        map : map,
+        icon : "img/marker/user.png",
+        title : "Deine Position"
+    });
 
-    if (showUserMarker) {        
-        var marker = new google.maps.Marker({
-            position : latlng,
-            map : map,
-            icon : "img/marker/user.png",
-            title : "Deine Position"
-        });
-
-        marker.setMap(map);
-    }    
+    marker.setMap(map);
     
     this.markersArray = [];
     this.wochenmarktArray = [];
@@ -63,6 +61,25 @@ function showMarket(market) {
             title : market.name,
             icon: "img/marker/farmstand.png",            
         });
+        
+        
+        // =======================================================
+        // Ausgabe auf der linken Navbar Anfang
+        
+        var link = document.createElement("a");        
+        
+        link.onclick=function() {
+              centerMap();       
+        };       
+        
+        link.id = latlng;        
+        var adresse = market.address.split(",",1);
+        link.innerHTML = adresse;
+        document.getElementById("wochenmarkt").appendChild(link);
+        
+        // Ausgabe auf der linken Navbar Ende        
+        // =======================================================
+        
         this.wochenmarktArray.push(marker);
     }
 
@@ -166,4 +183,21 @@ function clearOverlays() {
   for (var i = 0; i < this.markersArray.length; i++ ) {
     this.markersArray[i].setMap(null);
   }
+}
+
+
+/*
+ * Zentriert die Map an der Position des Marktes
+ */
+function centerMap() {
+    eventSrcID = (event.srcElement)?event.srcElement.id:'undefined';
+    eventtype = event.type;
+    
+    var temp01 = eventSrcID.split("(",2);
+    var temp02 = temp01[1].split(")",1);
+    
+    var latitude = temp02[0].split(",",1)
+    var longitude = temp02[0].split(",",2)
+    
+    map.setCenter(new google.maps.LatLng(latitude[0], longitude[1]));    
 }
