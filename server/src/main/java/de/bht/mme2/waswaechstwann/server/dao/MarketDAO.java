@@ -57,7 +57,7 @@ public class MarketDAO {
     */
    public JSONArray findMarket(final String market) {
       final BasicDBObject whereQuery = new BasicDBObject();
-      whereQuery.put("name", market); //$NON-NLS-1$
+      whereQuery.put("type", market); //$NON-NLS-1$
       final DBCursor cursor = table.find(whereQuery);
 
       final JSONArray array = new JSONArray();

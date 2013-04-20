@@ -1,4 +1,14 @@
 /*
+ * Initziert die Benutzerposition
+ */
+navigator.geolocation.getCurrentPosition(function(position) {
+    initialize(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), true);
+}, function() {
+    initialize(new google.maps.LatLng(52.521180, 13.413585), false);
+});
+
+
+/*
  * Auf gehts!
  */
 function initialize(latlng, showUserMarker) {
@@ -15,11 +25,16 @@ function initialize(latlng, showUserMarker) {
         var marker = new google.maps.Marker({
             position : latlng,
             map : map,
+            icon : "img/marker/user.png",
             title : "Deine Position"
         });
 
         marker.setMap(map);
     }    
+    
+    this.markersArray = [];
+    this.wochenmarktArray = [];
+    this.biomarktArray = [];
     
     getAllMarkets();        
 }
@@ -38,6 +53,7 @@ function showMarket(market) {
             title : market.name,
             icon: "img/marker/supermarket.png"
         });
+        this.biomarktArray.push(marker);
     }
     
     if(market.type == "Wochenmarkt") {
@@ -47,6 +63,7 @@ function showMarket(market) {
             title : market.name,
             icon: "img/marker/farmstand.png",            
         });
+        this.wochenmarktArray.push(marker);
     }
 
     marker.setMap(map);        
@@ -64,6 +81,8 @@ function showMarket(market) {
             infoBubble.open(map, marker);
         }
     };
+    
+    this.markersArray.push(marker);
     
     // Listen for user click on map to close any open info bubbles
     google.maps.event.addListener(map, "click", function () { 
@@ -111,10 +130,40 @@ function getAllMarkets() {
 
 
 /*
- * Initziert die Benutzerposition
+ * ChangeListener für die Märkte-Auswahl
  */
-navigator.geolocation.getCurrentPosition(function(position) {
-    initialize(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), true);
-}, function() {
-    initialize(new google.maps.LatLng(52.521180, 13.413585), false);
-});
+function filter() {        
+    var a = document.getElementById("auswahl");
+    var auswahl = a.options[a.selectedIndex].text;
+    
+    if(auswahl == "Bio- und Wochenmarkt") {
+        clearOverlays();
+        for(var i = 0; i < this.markersArray.length; i++) {
+            this.markersArray[i].setMap(this.map);
+        }
+    }
+    
+    if(auswahl == "Biomarkt") {
+        clearOverlays();
+        for(var i = 0; i < this.biomarktArray.length; i++) {
+            this.biomarktArray[i].setMap(this.map);
+        }
+    }
+    
+    if(auswahl == "Wochenmarkt") {
+        clearOverlays();          
+        for(var i = 0; i < this.wochenmarktArray.length; i++) {
+            this.wochenmarktArray[i].setMap(this.map);
+        }
+    }
+}
+
+
+/*
+ * Löscht alle Marker bis auf den User Marker
+ */
+function clearOverlays() {
+  for (var i = 0; i < this.markersArray.length; i++ ) {
+    this.markersArray[i].setMap(null);
+  }
+}
