@@ -46,7 +46,7 @@ function makeHttpRequest() {
 function proceedFruits(e) {
     for(var i = 0; i < e.length; i++) {
         
-        var img = document.createElement("img");
+        this.img = document.createElement("img");
         this.beschreibung = "";
         
         if(e[i].name=="Apfel") {
@@ -84,8 +84,12 @@ function writeDescription() {
     
     for(var i = 0; i < fruits.length; i++) {
         if(fruits[i].name == eventSrcID) {
-            document.getElementById("myDiv").innerHTML = "";
-            document.getElementById("myDiv").innerHTML = fruits[i].description;            
+            var pic = document.createElement("img");
+            pic.src=document.getElementById(eventSrcID).src;
+            document.getElementById("firstDiv").innerHTML = "";
+            document.getElementById("secondDiv").innerHTML = "";
+            document.getElementById("firstDiv").appendChild(pic);
+            document.getElementById("secondDiv").innerHTML = fruits[i].description;            
         }
     }
 }
