@@ -155,7 +155,7 @@ function filter() {
     var a = document.getElementById("auswahl");
     var auswahl = a.options[a.selectedIndex].text;
     
-    if(auswahl == "Bio- und Wochenmarkt") {
+    if(auswahl == "Alles") {
         clearOverlays();
         for(var i = 0; i < this.markersArray.length; i++) {
             this.markersArray[i].setMap(this.map);
