@@ -2,9 +2,11 @@
  * Initziert die Benutzerposition
  */
 navigator.geolocation.getCurrentPosition(function(position) {
-    initialize(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), true);
+    this.userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    initialize(userLatLng, true);
 }, function() {
-    initialize(new google.maps.LatLng(52.521180, 13.413585), false);
+    this.userLatLng = new google.maps.LatLng(52.521180, 13.413585);    
+    initialize(userLatLng, false);
 });
 
 
@@ -191,7 +193,7 @@ function clearOverlays() {
  */
 function centerMap() {
     eventSrcID = (event.srcElement)?event.srcElement.id:'undefined';
-    eventtype = event.type;
+    eventtype = event.type;        
     
     var temp01 = eventSrcID.split("(",2);
     var temp02 = temp01[1].split(")",1);
@@ -200,4 +202,12 @@ function centerMap() {
     var longitude = temp02[0].split(",",2)
     
     map.setCenter(new google.maps.LatLng(latitude[0], longitude[1]));    
+}
+
+
+/*
+ * Zentriert die Karte an der Benutzerposition
+ */
+function centerUser() {
+    map.setCenter(this.userLatLng);
 }
