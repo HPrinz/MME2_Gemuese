@@ -32,7 +32,6 @@
       .carousel-caption {
         background-color: transparent;
         position: static;
-        max-width: 400px;
         padding: 0 20px;
         
       }
@@ -47,8 +46,8 @@
         margin-top: 10px;
       }
       
-      #testDiv {
-        width: 800px;
+      #firstDiv {
+        float: left;
       }
       
       
