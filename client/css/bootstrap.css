@@ -1671,6 +1671,9 @@ select:focus:invalid:focus {
   font-size: 0;
   white-space: nowrap;
   vertical-align: middle;
+  float: right;
+  margin-top: 40px;
+  margin-right: 80px;
 }
 
 .input-append input,
