@@ -8,7 +8,7 @@
           border-radius: 6px;
 }
 
-li a {
+a {
     font-size: 9pt;
     cursor: pointer;
 }

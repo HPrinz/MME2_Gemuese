@@ -56,16 +56,14 @@
                     <ul class="nav nav-list">
                         <li class="nav-header">Klicke auf die Marker für nähere Informationen.</li>
                         <hr>
-                        <li class="nav-header">Märkte in deiner Umgebung</li>
+                        <li class="nav-header">Märkte in der Umgebung</li>
                         
                         <select class="" id="auswahl" onchange="filter()">
                             <option selected="selected">Alles</option>
                             <option>Biomarkt</option>
                             <option>Wochenmarkt</option>                                
                         </select>
-                        
-                        <hr>
-                        <li><button class="btn" onclick="centerUser()">Meine Position</button></li>
+                        <li><a onclick="centerUser()">Meine Position</a></li>                        
                         <hr>                                    
                         <li class="nav-header">Biomärkte</li>
                         <li id="biomarkt"></li>
