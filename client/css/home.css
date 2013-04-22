@@ -32,13 +32,13 @@
       .carousel-caption {
         background-color: transparent;
         position: static;
-        max-width: 400px;
         padding: 0 20px;
         
       }
       .carousel-caption h1,
       .carousel-caption .lead {
         margin: 0;
+        margin-top: 30px;
         line-height: 1.25;
         color: #fff;
         text-shadow: 0 1px 1px rgba(0,0,0,.4);
@@ -47,9 +47,17 @@
         margin-top: 10px;
       }
       
-      #testDiv {
-        width: 800px;
+      #firstDiv {
+        float: left;
       }
+
+      #dp1 {
+        float: right;
+        margin-top: 30px;
+        margin-right: 50px;
+        
+      }
+        
       
       
       /* MARKETING CONTENT

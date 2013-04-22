@@ -8,7 +8,6 @@
       }
       
       
-      
       /* CUSTOMIZE THE NAVBAR
       -------------------------------------------------- */
       
@@ -51,6 +50,10 @@
       /* Offset the responsive button for proper vertical alignment */
       .navbar .btn-navbar {
         margin-top: 10px;
+      }
+
+      #ghost {
+        height: 700px;
       }
       
       /* RESPONSIVE CSS

@@ -3,10 +3,30 @@ function $(id) {
 }
 
 window.onload = function() {
-    $('link').onclick = function() {
+    var s = "-";
+    this.date = new Date();
+    if(date.getMonth()<10){
+        s += "0";
+    }
+    var x =date.getMonth()+1;
+    
+    
+    $('#dp1').attr('value',  date.getDate()+ s + x +"-"+date.getFullYear());
+            $('#dp1').datepicker({
+				format: 'dd-mm-yyyy',
+                todayBtn: 'linked',
+                
+			});
+    $('#dp1').datepicker().on('changeDate', function(ev){
+            date = ev.date;
+            document.getElementById("testDiv").innerHTML = "";
+            makeHttpRequest();
+
+    });
+
         makeHttpRequest();
-        return false;
-    };
+    
+   
 };
 
 function makeHttpRequest() {
@@ -32,9 +52,14 @@ function makeHttpRequest() {
             var string = "";
 
             for ( var i = 0; i < response.fruits.length; i++) {
+                
                 var temp = JSON.parse(response.fruits[i]);
-                fruits[i] = temp;
+                if (getCurrentVegie(temp)==true){
+                fruits.push(temp);
                 string = string + " " + temp.name;
+                }
+                
+                
             }
             
             proceedFruits(fruits);
@@ -46,7 +71,7 @@ function makeHttpRequest() {
 function proceedFruits(e) {
     for(var i = 0; i < e.length; i++) {
         
-        var img = document.createElement("img");
+        this.img = document.createElement("img");
         this.beschreibung = "";
         
         if(e[i].name=="Apfel") {
@@ -70,6 +95,11 @@ function proceedFruits(e) {
             img.id="Tomate";
         }
         
+        if(e[i].name=="Chicoree") {
+            img.src="img/vegies/chicoree.png"; 
+            img.id="Chicoree";
+        }
+        
         img.onclick=function(){
               writeDescription();       
         };        
@@ -84,8 +114,44 @@ function writeDescription() {
     
     for(var i = 0; i < fruits.length; i++) {
         if(fruits[i].name == eventSrcID) {
-            document.getElementById("myDiv").innerHTML = "";
-            document.getElementById("myDiv").innerHTML = fruits[i].description;            
-        }
+            var pic = document.createElement("img");
+            pic.src=document.getElementById(eventSrcID).src;
+            document.getElementById("firstDiv").innerHTML = "";
+            document.getElementById("secondDiv").innerHTML = "";
+            document.getElementById("firstDiv").appendChild(pic);
+            document.getElementById("secondDiv").innerHTML = fruits[i].description;  
+
     }
+ }
+}
+function getCurrentVegie(fruit) {
+            
+            
+            var begin = new Date(Date.parse(fruit.seasonbegin));
+            var end = new Date(Date.parse(fruit.seasonend));
+            begin.setFullYear(date.getFullYear());
+            end.setFullYear(date.getFullYear());
+            
+            if (begin<end){
+     
+                if(date <= end && date >= begin) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } 
+            
+            else {
+               
+               if (date>begin||date<end){
+                   return true;
+               }
+               else return false;            
+            }
+    
+        
+
+        
+        
 }
