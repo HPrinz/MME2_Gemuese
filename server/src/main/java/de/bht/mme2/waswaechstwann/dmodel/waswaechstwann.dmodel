@@ -6,9 +6,11 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 	
 	DTOentity Fruit{
 		name : String
+		vegetable : boolean
 		description : String
 		seasonbegin : Date
 		seasonend : Date
+		season : Season
 	}
 	
 	DTOentity Market{
@@ -26,5 +28,24 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 		pictures : List<String>
 		ingridients : List<String>
 		vegetables : List<Fruit>
+	}
+	
+	DTOentity Season{
+		jan : String
+		feb : String
+		mar : String
+		apr : String
+		may : String
+		jun : String
+		jul : String
+		aug : String
+		sep : String
+		oct : String
+		nov : String
+		dec : String
+	}
+	
+	DTOentity Fruits{
+		fruits : List<Fruit>
 	}
 }

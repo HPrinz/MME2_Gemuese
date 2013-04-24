@@ -16,6 +16,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 import de.bht.mme2.waswaechstwann.server.dao.VegetableDAO;
 import de.bht.mme2.waswaechstwann.server.pojos.Fruit;
+import de.bht.mme2.waswaechstwann.server.pojos.Fruits;
 
 /**
  * The REST-Service that takes and answers the Client's requests
@@ -99,16 +100,17 @@ public class GemueseRessource {
    /**
     * TODO insert all Vegetables automatically
     */
-   // @Path("/init")
-   // @GET
-   // @Produces({ MediaType.APPLICATION_JSON })
-   // public String init() {
-   // String header = "All Vegetables: \n";
-   //
-   // for (final Fruit gem : allVegetables) {
-   // header += "\n" + gem;
-   // }
-   //
-   // return header;
-   // }
+    @Path("/addAll")
+    @POST
+    @Produces({ MediaType.APPLICATION_JSON })
+    public String addAll(Fruits fruits) {
+   
+    String returnValue = "";
+    	
+    for (final Fruit gem : fruits.getFruits()) {
+    	returnValue += create(gem);
+    }
+   
+    return returnValue;
+    }
 }

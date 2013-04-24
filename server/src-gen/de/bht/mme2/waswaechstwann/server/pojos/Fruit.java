@@ -1,6 +1,7 @@
 
 package de.bht.mme2.waswaechstwann.server.pojos;
 
+import de.bht.mme2.waswaechstwann.server.pojos.Season;
 import java.util.Date;
 
 
@@ -13,18 +14,22 @@ public class Fruit  {
   	
   	
   	 String name ;
+  	 boolean vegetable ;
   	 String description ;
   	 Date seasonbegin ;
   	 Date seasonend ;
+  	 Season season ;
 	
     /**
       * Standard Constructor with all needed attributes
       */
-    public Fruit( String name,  String description,  Date seasonbegin,  Date seasonend ) {
+    public Fruit( String name,  boolean vegetable,  String description,  Date seasonbegin,  Date seasonend,  Season season ) {
     	this.name = name;
+    	this.vegetable = vegetable;
     	this.description = description;
     	this.seasonbegin = seasonbegin;
     	this.seasonend = seasonend;
+    	this.season = season;
     }
     
     
@@ -48,6 +53,21 @@ public class Fruit  {
 	  */
 	public void setName( String name ) {
 		this.name = name;
+	}
+	
+	/**
+	  * @return the vegetable
+	  */
+	public boolean getVegetable() {			
+		return this.vegetable;
+	}
+	
+	/**
+	  * @param vegetable 
+	  *			the vegetable to set
+	  */
+	public void setVegetable( boolean vegetable ) {
+		this.vegetable = vegetable;
 	}
 	
 	/**
@@ -95,10 +115,25 @@ public class Fruit  {
 		this.seasonend = seasonend;
 	}
 	
+	/**
+	  * @return the season
+	  */
+	public Season getSeason() {			
+		return this.season;
+	}
+	
+	/**
+	  * @param season 
+	  *			the season to set
+	  */
+	public void setSeason( Season season ) {
+		this.season = season;
+	}
+	
     
     
     @Override
     public String toString() {
-    	return "Fruit [ name = " +  name + ", description = " +  description + ", seasonbegin = " +  seasonbegin + ", seasonend = " +  seasonend+ "]"  ;
+    	return "Fruit [ name = " +  name + ", vegetable = " +  vegetable + ", description = " +  description + ", seasonbegin = " +  seasonbegin + ", seasonend = " +  seasonend + ", season = " +  season+ "]"  ;
     }
 }
