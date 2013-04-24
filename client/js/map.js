@@ -53,6 +53,24 @@ function showMarket(market) {
             title : market.name,
             icon: "img/marker/supermarket.png"
         });
+        
+        // =======================================================
+        // Ausgabe auf der linken Navbar Anfang
+        
+        var link = document.createElement("a");        
+        
+        link.onclick=function() {
+              centerMap();       
+        };       
+        
+        link.id = latlng;        
+        var adresse = market.address.split(",",1);
+        link.innerHTML = adresse;
+        document.getElementById("biomarkt").appendChild(link);
+        
+        // Ausgabe auf der linken Navbar Ende        
+        // =======================================================
+        
         this.biomarktArray.push(marker);
     }
     
@@ -90,7 +108,7 @@ function showMarket(market) {
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '</div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a onclick="">' + "Routenplanung" + '</a>' + '</div>'
     });
 
     infoBubble.open(map, this.marker);
@@ -156,13 +174,23 @@ function filter() {
     var auswahl = a.options[a.selectedIndex].text;
     
     if(auswahl == "Alles") {
+        document.getElementById("wochenmarkt").style.visibility="visible";
+        document.getElementById("wochenmarkt").style.height="auto";
+        
+        document.getElementById("biomarkt").style.visibility="visible";
+        document.getElementById("biomarkt").style.height="auto";
         clearOverlays();
         for(var i = 0; i < this.markersArray.length; i++) {
             this.markersArray[i].setMap(this.map);
         }
     }
     
-    if(auswahl == "Biomarkt") {
+    if(auswahl == "Biomarkt") { 
+        document.getElementById("biomarkt").style.visibility="visible";
+        document.getElementById("biomarkt").style.height="auto";
+        
+        document.getElementById("wochenmarkt").style.visibility="hidden";
+        document.getElementById("wochenmarkt").style.height="0px";
         clearOverlays();
         for(var i = 0; i < this.biomarktArray.length; i++) {
             this.biomarktArray[i].setMap(this.map);
@@ -170,6 +198,11 @@ function filter() {
     }
     
     if(auswahl == "Wochenmarkt") {
+        document.getElementById("wochenmarkt").style.visibility="visible";
+        document.getElementById("wochenmarkt").style.height="auto";
+        
+        document.getElementById("biomarkt").style.visibility="hidden";
+        document.getElementById("biomarkt").style.height="0px";
         clearOverlays();          
         for(var i = 0; i < this.wochenmarktArray.length; i++) {
             this.wochenmarktArray[i].setMap(this.map);
