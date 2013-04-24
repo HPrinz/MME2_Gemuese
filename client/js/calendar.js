@@ -204,8 +204,6 @@ function reColorTiles(state, view) {
 			// set new bucket designation for this cell
 			var cls = 'q' + (val > 0 ? bucket(val) : 0) + '-' + buckets;
             
-            console.log("cls: " + cls);
-            
 			d3.select(sel).classed(cls, true);
 		}
 	}

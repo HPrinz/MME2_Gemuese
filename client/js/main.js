@@ -78,24 +78,15 @@ function proceedFruits(e) {
             img.src="img/vegies/apple.png"; 
             img.id="Apfel";            
         }    
-        if(e[i].name=="Melone") {
-            img.src="img/vegies/melone.png"; 
-            img.id="Melone";
-        }
-        if(e[i].name=="Mais") {
-            img.src="img/vegies/mais.png"; 
-            img.id="Mais";
-        }
-        if(e[i].name=="Karotte") {
+        else if(e[i].name=="Karotte") {
             img.src="img/vegies/carrot.png"; 
             img.id="Karotte";
         }
-        if(e[i].name=="Tomate") {
+        else if(e[i].name=="Tomate") {
             img.src="img/vegies/tomato.png"; 
             img.id="Tomate";
         }
-        
-        if(e[i].name=="Chicoree") {
+        else if(e[i].name=="Chicoree") {
             img.src="img/vegies/chicoree.png"; 
             img.id="Chicoree";
         }
