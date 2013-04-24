@@ -8,13 +8,17 @@
           border-radius: 6px;
 }
 
-a {
+.well a {
     font-size: 9pt;
     cursor: pointer;
 }
 
+.infoBubbleContent a {
+    font-size: 9pt;
+}
+
 #pos {    
-    height:600px;
+    height:680px;
 }
 
 #pos img {
