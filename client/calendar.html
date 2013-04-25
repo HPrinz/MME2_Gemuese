@@ -7,13 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
+    <link rel="stylesheet" media="all" href="css/calendar.css?v=1.0"/>
+    <link href="css/main.css" rel="stylesheet">  
+      
+    <script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/d3.v3.min.js"></script>
+	<script src="js/calendar.js?v=1.01"></script>
+      
+
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -21,6 +23,8 @@
       <script src="js/html5shiv.js"></script>
     <![endif]-->
 
+
+ 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
@@ -28,10 +32,10 @@
                     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="img/favicon.ico">
   </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
+  <body> 
+    <div class="container">  
+    <img src="img/logo.png">
+    <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -39,42 +43,55 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">was-wächst-wann</a>
+          <a class="brand" href="#"></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="index.html">Home</a></li>
               <li class="active"><a href="#">Kalender</a></li>
-              <li><a href="map.html">Karte</a></li>
+              <li><a href="map.html"> Karte</a></li>
               <li><a href="contact.html">Kontakt</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>
+    </div>        
 
     <div class="container">
 
-      <h1>Früchte-Kalender</h1>
-      <p>Ich bin die calendar.html</p>
-
-    </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap-transition.js"></script>
-    <script src="js/bootstrap-alert.js"></script>
-    <script src="js/bootstrap-modal.js"></script>
-    <script src="js/bootstrap-dropdown.js"></script>
-    <script src="js/bootstrap-scrollspy.js"></script>
-    <script src="js/bootstrap-tab.js"></script>
-    <script src="js/bootstrap-tooltip.js"></script>
-    <script src="js/bootstrap-popover.js"></script>
-    <script src="js/bootstrap-button.js"></script>
-    <script src="js/bootstrap-collapse.js"></script>
-    <script src="js/bootstrap-carousel.js"></script>
-    <script src="js/bootstrap-typeahead.js"></script>
-
-  </body>
+			<div id="legend" class="rbow2">
+				<ul>
+					<li class="q1-4"></li>
+					<li class="q2-4"></li>
+					<li class="q3-4"></li>
+					<li class="q4-4"></li>
+				</ul>
+				<p class="more">Keine Saison</p>
+				<p class="less">Saison</p>
+			</div>
+			
+			<div id="vis"></div>
+			<div id="states_nav">
+			
+				<div class="controls">
+					<fieldset id="type">
+						<input type="radio" id="type_all" name="type" value="all" checked="checked"/><label for="type_all" class="sel"><span class="all">Alle Früchte</span></label>
+						<input type="radio" id="type_pc" name="type" value="pc"/><label for="type_pc"><span class="pc">Obst</span></label>
+						<input type="radio" id="type_mob" name="type" value="mob"/><label for="type_mob"><span class="mob">Gemüse</span></label>
+					</fieldset>
+				</div>
+				<div id="map"></div>
+			</div>
+			<ul id="ie8_percents">
+				<li class="pc"><span>82%</span> Gemüse</li>
+				<li class="mob"><span>18%</span> Obst</li>
+			</ul>
+			</div>
+      
+      
+		
+	</body>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/d3.v3.min.js"></script>
+	<script src="js/calendar.js?v=1.01"></script>
+	
 </html>

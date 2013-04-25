@@ -81,6 +81,7 @@ function proceedFruits(e) {
             img.src="img/vegies/apple.png"; 
             img.id="Apfel";            
         }    
+
         if(e[i].name=="Melone") {
             img.src="img/vegies/melone.png"; 
             img.id="Melone";
@@ -91,6 +92,9 @@ function proceedFruits(e) {
         }
         if(e[i].name=="Karotte") {
             text = document.createTextNode("Karotte");
+        }
+        
+        if(e[i].name=="Karotte") {
             img.src="img/vegies/carrot.png"; 
             img.id="Karotte";
         }
@@ -98,7 +102,6 @@ function proceedFruits(e) {
             img.src="img/vegies/tomato.png"; 
             img.id="Tomate";
         }
-        
         if(e[i].name=="Chicoree") {
             img.src="img/vegies/chicoree.png"; 
             img.id="Chicoree";
