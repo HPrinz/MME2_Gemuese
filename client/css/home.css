@@ -43,18 +43,36 @@
         color: #fff;
         text-shadow: 0 1px 1px rgba(0,0,0,.4);
       }
+
       .carousel-caption .btn {
         margin-top: 10px;
       }
       
       #firstDiv {
         float: left;
+        width: 300px;
+      }
+        
+      #secondDiv {
+        margin-left: 30px;
       }
 
       #dp1 {
-        float: right;
-        margin-top: 30px;
-        margin-right: 50px;
+        position: absolute;
+        right: 60px;
+        top: 30px;
+      
+      }
+      #testDiv {
+        margin-right: auto;
+        margin-left: auto;
+        
+      }
+
+      #newDiv {
+        width: 170px;
+        float: left;
+        text-align: center;
         
       }
         
@@ -112,10 +130,17 @@
       -------------------------------------------------- */
       
       @media (max-width: 979px) {
+
+        #dp1 {
+            position: relative;
+            top: 0px;
+            right: 0px;
+        }
         
         .carousel .item {
           height: 400px;
         }
+
         .carousel img {
           width: auto;
           height: 100px;
@@ -125,6 +150,7 @@
           height: auto;
           padding: 0;
         }
+
         .featurette-image.pull-left,
         .featurette-image.pull-right {
           display: block;
@@ -136,6 +162,12 @@
       
       
       @media (max-width: 767px) {
+
+        #dp1 {
+            position: relative;
+            top: 0px;
+            right: 0px;
+        }
       
         .carousel {
           margin-left: -20px;
@@ -144,9 +176,27 @@
         .carousel .container {
       
         }
-        .carousel .item {
-          height: 300px;
+        
+        #testDiv {
+            position: relative;
+            bottom: 10px;
+            margin-left: -50px;
+            margin-right: -40px;
+            alignment: center;
         }
+
+        #newDiv {
+            width: 100px;
+            float: left;
+            text-align: center;
+        }
+        
+        .carousel .item {
+          margin-top: -100px;
+          height: auto;
+          margin-bottom: 20px;
+        }
+
         .carousel img {
           height: 100px;
         }

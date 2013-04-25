@@ -71,8 +71,11 @@ function makeHttpRequest() {
 function proceedFruits(e) {
     for(var i = 0; i < e.length; i++) {
         
+        var newDiv = document.createElement("div");
         this.img = document.createElement("img");
         this.beschreibung = "";
+        this.text = document.createElement("h1");
+        
         
         if(e[i].name=="Apfel") {
             img.src="img/vegies/apple.png"; 
@@ -87,6 +90,7 @@ function proceedFruits(e) {
             img.id="Mais";
         }
         if(e[i].name=="Karotte") {
+            text = document.createTextNode("Karotte");
             img.src="img/vegies/carrot.png"; 
             img.id="Karotte";
         }
@@ -100,11 +104,38 @@ function proceedFruits(e) {
             img.id="Chicoree";
         }
         
+        if(e[i].name=="Champignon") {
+            text = document.createTextNode("Champignon");
+            img.src="img/vegies/champignon.png"; 
+            img.id="Champignon";
+        }
+        
+        if(e[i].name=="Kartoffel") {
+            img.src="img/vegies/potato.png"; 
+            img.id="Kartoffel";
+        }
+        
+        if(e[i].name=="Zucchini") {
+            img.src="img/vegies/zucchini.png"; 
+            img.id="Zucchini";
+        }
+        
+        if(e[i].name=="Zwiebel") {
+             img.src="img/vegies/onion.png"; 
+            img.id="Zwiebel";
+        }
+        
         img.onclick=function(){
               writeDescription();       
-        };        
+        }; 
         
-        document.getElementById("testDiv").appendChild(img); 
+        newDiv.id="newDiv";
+        //newDiv.appendChild(text);
+        newDiv.appendChild(img);
+        
+        
+        
+        document.getElementById("testDiv").appendChild(newDiv); 
     }
 }
 
@@ -116,8 +147,12 @@ function writeDescription() {
         if(fruits[i].name == eventSrcID) {
             var pic = document.createElement("img");
             pic.src=document.getElementById(eventSrcID).src;
+            
+            document.getElementById("gemuese").innerHTML = "";
             document.getElementById("firstDiv").innerHTML = "";
             document.getElementById("secondDiv").innerHTML = "";
+            
+            document.getElementById("gemuese").appendChild(document.createTextNode(fruits[i].name));
             document.getElementById("firstDiv").appendChild(pic);
             document.getElementById("secondDiv").innerHTML = fruits[i].description;  
 
