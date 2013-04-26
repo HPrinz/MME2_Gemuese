@@ -81,56 +81,86 @@ function proceedFruits(e) {
             img.src="img/vegies/apple.png"; 
             img.id="Apfel";            
         }    
-
-        if(e[i].name=="Melone") {
-            img.src="img/vegies/melone.png"; 
-            img.id="Melone";
+        if(e[i].name=="Aubergine") {
+            img.src="img/vegies/eggplant.png"; 
+            img.id="Aubergine";
         }
-        if(e[i].name=="Mais") {
-            img.src="img/vegies/mais.png"; 
-            img.id="Mais";
+        if(e[i].name=="Bohnen") {
+            img.src="img/vegies/sugar_snap.png"; 
+            img.id="Bohnen";
         }
-        if(e[i].name=="Karotte") {
-            text = document.createTextNode("Karotte");
-        }
-        
-        if(e[i].name=="Karotte") {
-            img.src="img/vegies/carrot.png"; 
-            img.id="Karotte";
-        }
-        if(e[i].name=="Tomate") {
-            img.src="img/vegies/tomato.png"; 
-            img.id="Tomate";
+        if(e[i].name=="Broccoli") {
+            img.src="img/vegies/broccoli.png"; 
+            img.id="Broccoli";
         }
         if(e[i].name=="Chicoree") {
             img.src="img/vegies/chicoree.png"; 
             img.id="Chicoree";
         }
-        
-        if(e[i].name=="Champignon") {
-            text = document.createTextNode("Champignon");
-            img.src="img/vegies/champignon.png"; 
-            img.id="Champignon";
+        if(e[i].name=="Erdbeere") {
+            img.src="img/vegies/strawberry.png"; 
+            img.id="Erdbeere";
         }
-        
-        if(e[i].name=="Kartoffel") {
+        if(e[i].name=="Heidelbeere") {
+            img.src="img/vegies/blueberries.png"; 
+            img.id="Heidelbeere";
+        }
+        if(e[i].name=="Karotte") {
+            img.src="img/vegies/carrot.png"; 
+            img.id="Karotte";
+        }
+        if(e[i].name=="Kartoffeln") {
             img.src="img/vegies/potato.png"; 
             img.id="Kartoffel";
         }
-        
+        if(e[i].name=="Kohlrabi") {
+            img.src="img/vegies/kohlrabi.png"; 
+            img.id="Kohlrabi";
+        }
+        if(e[i].name=="Mais") {
+            img.src="img/vegies/mais.png"; 
+            img.id="Mais";
+        }
+        if(e[i].name=="Melone") {
+            img.src="img/vegies/melone.png"; 
+            img.id="Melone";
+        }
+        if(e[i].name=="Paprika") {
+            img.src="img/vegies/bell_pepper.png"; 
+            img.id="Paprika";
+        }
+        if(e[i].name=="Pilze") {
+            img.src="img/vegies/mushroom.png"; 
+            img.id="Pilze";
+        }
+        if(e[i].name=="Radieschen") {
+            img.src="img/vegies/radish.png"; 
+            img.id="Radieschen";
+        }
+        if(e[i].name=="Salat") {
+            img.src="img/vegies/lettuce.png"; 
+            img.id="Salat";
+        }
+        if(e[i].name=="Sellerie") {
+            img.src="img/vegies/celery.png"; 
+            img.id="Sellerie";
+        }
+        if(e[i].name=="Tomate") {
+            img.src="img/vegies/tomato.png"; 
+            img.id="Tomate";
+        }
         if(e[i].name=="Zucchini") {
             img.src="img/vegies/zucchini.png"; 
             img.id="Zucchini";
         }
-        
-        if(e[i].name=="Zwiebel") {
+        if(e[i].name=="Zwiebeln") {
              img.src="img/vegies/onion.png"; 
-            img.id="Zwiebel";
+            img.id="Zwiebeln";
         }
-        
         img.onclick=function(){
               writeDescription();       
         }; 
+      
         
         newDiv.id="newDiv";
         //newDiv.appendChild(text);
