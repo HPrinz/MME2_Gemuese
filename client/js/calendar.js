@@ -1,14 +1,7 @@
-// Fix map for IE
-if (!('map' in Array.prototype)) { 
-  Array.prototype.map = function (mapper, that /*opt*/) { 
-    var other = new Array(this.length); 
-    for (var i = 0, n = this.length; i < n; i++) 
-      if (i in this) 
-        other[i] = mapper.call(that, this[i], i, this); 
-    return other; 
-  }; 
-};
 
+var fruitsArray = makeHttpRequest();
+
+// four colors
 var buckets = 4,
 	colorScheme = 'rbow2',
 	days = [
@@ -94,6 +87,33 @@ d3.json('tru247.json', function(json) {
 		d3.select('#wtf .subtitle').html(type  + ' traffic daily');
 	});
 });
+
+/* ************************** */
+
+function makeHttpRequest() {
+    var xmlhttp = new XMLHttpRequest();
+    this.fruits = new Array();
+
+    xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/gemueseREST/list', true);
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState != 4) {
+            
+        }
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var response = JSON.parse(xmlhttp.responseText);
+            var string = "";
+
+            for ( var i = 0; i < response.fruits.length; i++) {
+                
+                var temp = JSON.parse(response.fruits[i]);
+                fruits.push(temp);
+            }
+        }
+    };
+    xmlhttp.send(null);
+    
+    return fruits;
+}
 
 /* ************************** */
 
