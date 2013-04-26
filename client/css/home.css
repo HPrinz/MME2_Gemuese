@@ -38,7 +38,6 @@
       .carousel-caption h1,
       .carousel-caption .lead {
         margin: 0;
-        margin-top: 30px;
         line-height: 1.25;
         color: #fff;
         text-shadow: 0 1px 1px rgba(0,0,0,.4);
@@ -66,14 +65,32 @@
       #testDiv {
         margin-right: auto;
         margin-left: auto;
+        margin-top:-10px;
+        height: 315px;
+        overflow: hidden;
         
       }
 
       #newDiv {
-        width: 170px;
+        width: 150px;
+        padding: 5px;
         float: left;
         text-align: center;
         
+      }
+
+      .up {
+        width: 48px;
+        margin-left: auto;
+        margin-right: auto;
+                
+      }
+
+      .down {
+        width: 48px;
+        margin-left: auto;
+        margin-right: auto;
+    
       }
         
       

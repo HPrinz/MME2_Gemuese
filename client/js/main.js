@@ -111,7 +111,7 @@ function proceedFruits(e) {
         }
         if(e[i].name=="Kartoffeln") {
             img.src="img/vegies/potato.png"; 
-            img.id="Kartoffel";
+            img.id="Kartoffeln";
         }
         if(e[i].name=="Kohlrabi") {
             img.src="img/vegies/kohlrabi.png"; 
