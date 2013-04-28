@@ -183,11 +183,11 @@ function writeDescription() {
             
             document.getElementById("gemuese").innerHTML = "";
             document.getElementById("firstDiv").innerHTML = "";
-            document.getElementById("secondDiv").innerHTML = "";
+            document.getElementById("beschreibung").innerHTML = "";
             
             document.getElementById("gemuese").appendChild(document.createTextNode(fruits[i].name));
             document.getElementById("firstDiv").appendChild(pic);
-            document.getElementById("secondDiv").innerHTML = fruits[i].description;  
+            document.getElementById("beschreibung").innerHTML = fruits[i].description;  
 
     }
  }

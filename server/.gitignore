@@ -5,3 +5,4 @@ deploy/
 .settings/
 classes/
 src-gen/
+run.sh

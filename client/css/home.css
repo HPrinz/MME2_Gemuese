@@ -22,7 +22,7 @@
       }
       
       .carousel .item {
-        background: transparent url(../img/slider.jpg) repeat 0% 0%;
+        background: rgb(160, 220, 110);
         height: 400px;
       }
       .carousel img {
@@ -49,11 +49,11 @@
       
       #firstDiv {
         float: left;
-        width: 300px;
       }
         
       #secondDiv {
-        margin-left: 30px;
+        margin-left: 270px;
+        width: 670px;
       }
 
       #dp1 {
@@ -92,8 +92,26 @@
         margin-right: auto;
     
       }
-        
-      
+       
+      .sideMenu {
+        position: absolute;
+        width: 100px;
+        height: 100%;
+        right: 0;
+        top: 50px;
+       }
+
+      #gemuese{
+        margin-left:60px;
+        margin-top:20px;
+        margin-bottom:20px;
+       }
+
+      #arrow{
+        cursor: pointer;
+       }  
+       
+
       
       /* MARKETING CONTENT
       -------------------------------------------------- */
@@ -102,12 +120,20 @@
       .marketing .span4 {
         text-align: center;
       }
+
       .marketing h2 {
         font-weight: normal;
       }
       .marketing .span4 p {
         margin-left: 10px;
         margin-right: 10px;
+        
+      }
+      
+      .marketing {
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 22px;
       }
       
       
