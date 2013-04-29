@@ -20,9 +20,15 @@ window.onload = function() {
     $('#dp1').datepicker().on('changeDate', function(ev){
             date = ev.date;
             document.getElementById("testDiv").innerHTML = "";
+            document.getElementById("second").innerHTML = "";
             makeHttpRequest();
-
-    });
+        
+            var linkEl = $( '#upLink' );
+            if ( linkEl.attr ( 'onclick' ) === undefined ) {
+                document.location = linkEl.attr ( 'href' );                
+                linkEl.click ();                    
+            }                
+        });
 
         makeHttpRequest();
     
