@@ -163,12 +163,19 @@ function proceedFruits(e) {
       
         
         newDiv.id="newDiv";
-        //newDiv.appendChild(text);
         newDiv.appendChild(img);
         
+        if(i<12){
+            document.getElementById("down").style.visibility='hidden';
+            
+            document.getElementById("testDiv").appendChild(newDiv);
+        }
+        else {
+            document.getElementById("down").style.visibility='visible';
+            document.getElementById("second").appendChild(newDiv);
+        }
         
-        
-        document.getElementById("testDiv").appendChild(newDiv); 
+         
     }
 }
 
