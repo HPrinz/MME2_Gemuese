@@ -12,6 +12,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
+    <link href="css/slide.css" rel="stylesheet">
     <link href="css/datepicker.css" rel="stylesheet">
       
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -57,36 +58,62 @@
     <div id="myCarousel" class="carousel slide" data-pause="remove">
       <div class="carousel-inner">
         <div class="item active"><img src="" class="jetstrap-highlighted">
-          
-          
         <div class="container jetstrap-selected">                      
             <div class="carousel-caption">
-               <div class="lead" href="#myCarousel" data-slide="next" id="testDiv"></div>
-            </div>
-          </div></div>
+                            
+                    <div id="myhero">
+                    <div class="mysite">
+                      <div class="myslides">
+                        <div class="slide selected" href="#myCarousel" data-slide="next" id="testDiv"></div>
+                        <div id="second" href="#myCarousel" data-slide="next" class="slide after">second</div> 
+                      </div>
+                      <nav>
+                        <ul>
+                            <li class="selected"><a href="#testDiv" id="upLink"><img id="up" src="img/up.png"></a></li>
+                            <li><a href="#second"><img id="down" src="img/down.png"></a></li>
+                        </ul>
+                      </nav>
+                    </div>
+                 </div>
+                
+               
+             </div>
+            
+        </div>
+     </div>
+        
         <div class="item">
+        <div class="left carousel-control" href="#myCarousel" data-slide="prev" id="arrow">‹</div>
           <div class="container">
             <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <div class="lead" id="firstDiv"></div>
-              <div class="lead" id="secondDiv"></div>
-              <a class="btn btn-large btn-primary" href="#">Learn more</a>
-            </div>
+            <h1 id="gemuese"></h1>
+            
+            <div id="firstDiv"></div>        
+    <div id="panel">           
+    <div id="hero">
+        <div class="site">
+          <div class="slides">
+            <div id="beschreibung" class="slide selected"></div>
+            <div id="geschmack" class="slide after">Geschmack</div>
+            <div id="rezepte" class="slide after">Rezepte</div>
           </div>
+          <nav>
+            <ul>
+                <li class="selected"><a href="#beschreibung">Beschreibung</a></li>
+                <li><a href="#geschmack">Geschmack</a></li>
+                <li><a href="#rezepte">Rezepte</a></li>
+            </ul>
+          </nav>
         </div>
-        <div class="item">
-          <img src="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
-            </div>
+     </div>
+     </div>
           </div>
+             
+        
         </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next" id="slide">›</a>
-    </div>
+        </div>
+       </div>
+     </div>
     <div class="container marketing">
     
       <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
@@ -103,6 +130,9 @@
     <script src="js/main.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/smoothpack.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/app2.js"></script>
     
       
   </body>

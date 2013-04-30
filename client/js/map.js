@@ -16,18 +16,18 @@ navigator.geolocation.getCurrentPosition(function(position) {
 function initialize(latlng, showUserMarker) {
     
     var myOptions = {
-        zoom : 15,
-        center : latlng,
-        mapTypeId : google.maps.MapTypeId.ROADMAP
+        zoom: 15,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
     this.map = new google.maps.Map(document.getElementById("pos"), myOptions);
    
     var marker = new google.maps.Marker({
-        position : latlng,
-        map : map,
-        icon : "img/marker/user.png",
-        title : "Deine Position"
+        position: latlng,
+        map: map,
+        icon: "img/marker/user.png",
+        title: "Deine Position"
     });
 
     marker.setMap(map);
@@ -48,9 +48,9 @@ function showMarket(market) {
         
     if(market.type == "Supermarkt") {
         var marker = new google.maps.Marker({
-            position : latlng,
-            map : map,
-            title : market.name,
+            position: latlng,
+            map: map,
+            title: market.name,
             icon: "img/marker/supermarket.png"
         });
         
@@ -76,9 +76,9 @@ function showMarket(market) {
     
     if(market.type == "Wochenmarkt") {
         var marker = new google.maps.Marker({
-            position : latlng,
-            map : map,
-            title : market.name,
+            position: latlng,
+            map: map,
+            title: market.name,
             icon: "img/marker/farmstand.png",            
         });
         
