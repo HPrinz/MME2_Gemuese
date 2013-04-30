@@ -23,11 +23,8 @@ window.onload = function() {
             document.getElementById("second").innerHTML = "";
             makeHttpRequest();
         
-            var linkEl = $( '#upLink' );
-            if ( linkEl.attr ( 'onclick' ) === undefined ) {
-                document.location = linkEl.attr ( 'href' );                
-                linkEl.click ();                    
-            }                
+            $( '#upLink' ).click ();                    
+                          
         });
 
         makeHttpRequest();
