@@ -10,25 +10,25 @@ window.onload = function() {
     }
     var x =date.getMonth()+1;
     
-    
-    $('#dp1').attr('value',  date.getDate()+ s + x +"-"+date.getFullYear());
-            $('#dp1').datepicker({
-				format: 'dd-mm-yyyy',
-                todayBtn: 'linked',
-                
-			});
-    $('#dp1').datepicker().on('changeDate', function(ev){
-            date = ev.date;
-            document.getElementById("testDiv").innerHTML = "";
-            document.getElementById("second").innerHTML = "";
-            makeHttpRequest();
+    $('#mydatepicker').attr('value',  date.getDate()+ s + x +"-"+date.getFullYear());
+    $('#mydatepicker').datepicker({
+        format: 'dd-mm-yyyy',
+        todayBtn: 'linked',
+    });
+    $('#mydatepicker').datepicker().on('changeDate', function(ev){
+      
+        date = ev.date;
         
-            $( '#upLink' ).click ();                    
-                          
-        });
-
+        document.getElementById("gemueseFirstDiv").innerHTML = "";
+        document.getElementById("gemueseSecondDiv").innerHTML = "";
+        
+        $( '#upLink' ).click (); 
+        
         makeHttpRequest();
-    
+                              
+    });
+
+    makeHttpRequest();  
    
 };
 
@@ -74,7 +74,7 @@ function makeHttpRequest() {
 function proceedFruits(e) {
     for(var i = 0; i < e.length; i++) {
         
-        var newDiv = document.createElement("div");
+        var singleGemueseDiv = document.createElement("div");
         this.img = document.createElement("img");
         this.beschreibung = "";
         this.text = document.createElement("h1");
@@ -165,17 +165,16 @@ function proceedFruits(e) {
         }; 
       
         
-        newDiv.id="newDiv";
-        newDiv.appendChild(img);
+        singleGemueseDiv.id="singleGemueseDiv";
+        singleGemueseDiv.appendChild(img);
         
         if(i<12){
             document.getElementById("down").style.visibility='hidden';
-            
-            document.getElementById("testDiv").appendChild(newDiv);
+            document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
         }
         else {
             document.getElementById("down").style.visibility='visible';
-            document.getElementById("second").appendChild(newDiv);
+            document.getElementById("gemueseSecondDiv").appendChild(singleGemueseDiv);
         }
         
          
@@ -191,12 +190,12 @@ function writeDescription() {
             var pic = document.createElement("img");
             pic.src=document.getElementById(eventSrcID).src;
             
-            document.getElementById("gemuese").innerHTML = "";
-            document.getElementById("firstDiv").innerHTML = "";
+            document.getElementById("gemueseName").innerHTML = "";
+            document.getElementById("gemuesePic").innerHTML = "";
             document.getElementById("beschreibung").innerHTML = "";
             
-            document.getElementById("gemuese").appendChild(document.createTextNode(fruits[i].name));
-            document.getElementById("firstDiv").appendChild(pic);
+            document.getElementById("gemueseName").appendChild(document.createTextNode(fruits[i].name));
+            document.getElementById("gemuesePic").appendChild(pic);
             document.getElementById("beschreibung").innerHTML = fruits[i].description;  
 
     }
