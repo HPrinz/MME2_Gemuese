@@ -47,22 +47,18 @@
         margin-top: 10px;
       }
       
-      #firstDiv {
+      #gemuesePic {
         float: left;
       }
         
-      #secondDiv {
-        margin-left: 270px;
-        width: 670px;
-      }
 
-      #dp1 {
+      #mydatepicker {
         position: absolute;
         right: 60px;
         top: 30px;
       
       }
-      #testDiv {
+      #gemueseFirstDiv {
         margin-right: auto;
         margin-left: auto;
         margin-top:-10px;
@@ -71,7 +67,7 @@
         
       }
 
-      #newDiv {
+      #singleGemueseDiv {
         width: 150px;
         padding: 5px;
         float: left;
@@ -102,7 +98,7 @@
         top: 50px;
        }
 
-      #gemuese{
+      #gemueseName{
         margin-left:60px;
         margin-top:20px;
         margin-bottom:20px;

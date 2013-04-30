@@ -22,7 +22,7 @@
       </script>
     <![endif]-->
     <!-- Le fav and touch icons -->
-     <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -31,11 +31,11 @@
     </style>
   </head>
   <body>
-      <div class="container">
+      
+     <div class="container">
         <img src="img/logo.png">
-            
-              <input type="text" class="span2" id="dp1" >
-            
+        <input type="text" class="span2" id="mydatepicker" >
+         
         <div class="navbar">
           <div class="navbar-inner">
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -52,77 +52,76 @@
                 <li><a href="contact.html">Kontakt</a></li>
               </ul>
             </div>
-          <div class="container"></div></div>
+          </div>
         </div>
       </div>
+      
     <div id="myCarousel" class="carousel slide" data-pause="remove">
       <div class="carousel-inner">
+          
         <div class="item active"><img src="" class="jetstrap-highlighted">
-        <div class="container jetstrap-selected">                      
+          <div class="container jetstrap-selected">                      
             <div class="carousel-caption">
-                            
-                    <div id="myhero">
-                    <div class="mysite">
-                      <div class="myslides">
-                        <div class="slide selected" href="#myCarousel" data-slide="next" id="testDiv"></div>
-                        <div id="second" href="#myCarousel" data-slide="next" class="slide after">second</div> 
-                      </div>
-                      <nav>
-                        <ul>
-                            <li class="selected"><a href="#testDiv" id="upLink"><img id="up" src="img/up.png"></a></li>
-                            <li><a href="#second"><img id="down" src="img/down.png"></a></li>
-                        </ul>
-                      </nav>
-                    </div>
-                 </div>
                 
-               
-             </div>
-            
+              <div id="myhero">
+                <div class="mysite">
+                  <div class="myslides">
+                    <div id="gemueseFirstDiv" class="slide selected" href="#myCarousel" data-slide="next"></div>
+                    <div id="gemueseSecondDiv" href="#myCarousel" data-slide="next" class="slide after">second</div> 
+                  </div>
+                    <nav>
+                      <ul>
+                        <li class="selected"><a href="#gemueseFirstDiv" id="upLink"><img id="up" src="img/up.png"></a></li>
+                        <li><a href="#gemueseSecondDiv"><img id="down" src="img/down.png"></a></li>
+                      </ul>
+                    </nav>
+                </div>
+              </div>
+                
+            </div>
+          </div>
         </div>
-     </div>
         
         <div class="item">
-        <div class="left carousel-control" href="#myCarousel" data-slide="prev" id="arrow">‹</div>
-          <div class="container">
-            <div class="carousel-caption">
-            <h1 id="gemuese"></h1>
-            
-            <div id="firstDiv"></div>        
-    <div id="panel">           
-    <div id="hero">
-        <div class="site">
-          <div class="slides">
-            <div id="beschreibung" class="slide selected"></div>
-            <div id="geschmack" class="slide after">Geschmack</div>
-            <div id="rezepte" class="slide after">Rezepte</div>
-          </div>
-          <nav>
-            <ul>
-                <li class="selected"><a href="#beschreibung">Beschreibung</a></li>
-                <li><a href="#geschmack">Geschmack</a></li>
-                <li><a href="#rezepte">Rezepte</a></li>
-            </ul>
-          </nav>
+          <div class="left carousel-control" href="#myCarousel" data-slide="prev" id="arrow">‹</div>
+            <div class="container">
+              <div class="carousel-caption">
+                <h1 id="gemueseName"></h1>
+                <div id="gemuesePic"></div>        
+                   <div id="panel">           
+                     <div id="hero">
+                       <div class="site">
+                         <div class="slides">
+                           <div id="beschreibung" class="slide selected"></div>
+                           <div id="geschmack" class="slide after">Geschmack</div>
+                           <div id="rezepte" class="slide after">Rezepte</div>
+                         </div>
+                           <nav>
+                             <ul>
+                               <li class="selected"><a href="#beschreibung">Beschreibung</a></li>
+                               <li><a href="#geschmack">Geschmack</a></li>
+                               <li><a href="#rezepte">Rezepte</a></li>
+                             </ul>
+                           </nav>
+                       </div>
+                     </div>
+                   </div>
+              </div>
+            </div>
         </div>
-     </div>
-     </div>
-          </div>
-             
-        
-        </div>
-        </div>
-       </div>
-     </div>
+          
+      </div>
+    </div>
+      
     <div class="container marketing">
-    
       <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
-    <div class="featurette">
-      </div><footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>© 2013 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-      </footer>    
+      <div class="featurette">
+        <footer>
+          <p class="pull-right"><a href="#">Back to top</a></p>
+          <p>© 2013 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+        </footer>    
+      </div>
     </div>
       
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -133,7 +132,6 @@
     <script src="js/smoothpack.js"></script>
     <script src="js/app.js"></script>
     <script src="js/app2.js"></script>
-    
-      
+        
   </body>
 </html>
