@@ -121,7 +121,7 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 
 #tiles .tile {
 	width: 62px;
-	height: 47px;
+	height: 27px;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
 	-webkit-transition: 0.7s;
@@ -131,7 +131,7 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	position: absolute;
 	-webkit-backface-visibility: hidden;
 	width: 60px;
-	height: 45px;
+	height: 25px;
 	background: #eee;
 	border: 1px solid white;
 	-moz-border-radius: 4px;
@@ -214,6 +214,7 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	width: 400px;
 	float: left;
 	margin-left: 20px;
+	margin-top: 210px;
 }
 
 #states_nav p {
@@ -230,120 +231,9 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	margin-top: -11px !important;
 }
 
-#poweredby.old_browsers {
-	display: none;
-	position: absolute;
-	top: 463px;
-	right: 24px;
-}
 
 #wtf .title {
 	background: #fdf;
-}
-
-#pc2mob {
-	float: left;
-}
-
-#pc2mob path {
-	stroke: white;
-	stroke-width: 2px;
-}
-
-#pc2mob.all path.pc {
-	fill: #ddd;
-}
-
-#pc2mob.all path.mob {
-	fill: #ccc;
-}
-
-#pc2mob.pc path.pc {
-	fill: #444;
-}
-
-#pc2mob.pc path.mob {
-	fill: #ddd;
-}
-
-#pc2mob.mob path.pc {
-	fill: #ddd;
-}
-
-#pc2mob.mob path.mob {
-	fill: #444;
-}
-
-#pc2mob ul, #ie8_percents {
-	list-style-type: none;
-	margin-top: 20px 0 0 45px;
-	width: 150px;
-}
-
-#pc2mob li, #ie8_percents li {
-	float: left;
-	width: 75px;
-	text-align: center;
-}
-
-#pc2mob li span, #ie8_percents li span {
-	display: block;
-	font-size: 24px;
-	line-height: 24px;
-}
-
-#pc2mob.all li.pc, #ie8_percents li.pc {
-	color: #ccc;
-}
-
-#pc2mob.all li.mob, #ie8_percents li.mob {
-	color: #aaa;
-}
-
-#pc2mob.pc li.pc {
-	color: #444;
-}
-
-#pc2mob.pc li.mob {
-	color: #999;
-}
-
-#pc2mob.mob li.pc {
-	color: #999;
-}
-
-#pc2mob.mob li.mob {
-	color: #444;
-}
-
-#pc2mob svg {
-	margin: 0 70px 0 0;
-}
-
-#hourly_values {
-	float: left;
-	width: 200px;
-}
-
-#hourly_values svg {
-	width: 300px;
-	height: 170px
-}
-
-#hourly_values svg rect {
-	fill: #ddd;
-}
-
-#hourly_values svg rect.sel {
-	fill: #444;
-}
-
-#hourly_values svg text {
-	fill: #444;
-}
-
-#hourly_values svg text.hidden {
-	display: none;
 }
 
 
@@ -471,13 +361,6 @@ html.ie8 #ie8_percents, #ie8_percents.ff3 {
 
 .rbow2 .q1-4 {
 	background: #669933;
-	/*
-    336600
-	border-left-color: #5b40b3;
-	border-top-color: #5b40b3;
-	border-right-color: #3e2b7a;
-	border-bottom-color: #3e2b7a;
-	*/
 }
 
 .rbow2 .q2-4 {
