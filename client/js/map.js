@@ -29,6 +29,8 @@ function initialize(latlng, showUserMarker) {
         icon: "img/marker/user.png",
         title: "Deine Position"
     });
+    
+    this.userMarker = marker;
 
     marker.setMap(map);
     
@@ -44,7 +46,7 @@ function initialize(latlng, showUserMarker) {
  * Zeichnet einen Markt auf die Karte
  */
 function showMarket(market) {
-    var latlng = new google.maps.LatLng(market.latitude, market.longitude)    
+    var latlng = new google.maps.LatLng(market.latitude, market.longitude);    
         
     if(market.type == "Supermarkt") {
         var marker = new google.maps.Marker({
@@ -108,14 +110,14 @@ function showMarket(market) {
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a onclick="">' + "Routenplanung" + '</a>' + '</div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Routenplanung" + '</a>' + '</div>'
     });
 
     infoBubble.open(map, this.marker);
 
     var infoBubbleHandler = function() {
         if (!infoBubble.isOpen()) {
-            infoBubble.open(map, marker);
+            infoBubble.open(map, marker);            
         }
     };
     
@@ -127,6 +129,15 @@ function showMarket(market) {
     });
 
     google.maps.event.addListener(marker, 'click', infoBubbleHandler);
+}
+
+
+/*
+ * Berechnet die Entfernung zu einem Punkt auf der Karte und zeigt den Weg dorthin an
+ */
+function routfinder(coords) {
+    console.log("Markt-Position: " + coords);
+    console.log("User-Position: " + userMarker.position);
 }
 
 
