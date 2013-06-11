@@ -62,7 +62,7 @@
         margin-right: auto;
         margin-left: auto;
         margin-top:-10px;
-        height: 315px;
+        height: 320px;
         overflow: hidden;
         
       }
@@ -73,6 +73,10 @@
         float: left;
         text-align: center;
         
+      }
+       #singleGemueseDiv:hover {
+        width: 160px;  
+        padding: 0px;
       }
 
       .up {
@@ -206,6 +210,14 @@
       
       
       @media (max-width: 767px) {
+        
+        #up {
+            height: 45px;
+        }
+
+        #down {
+            height: 45px;
+        }
 
         #dp1 {
             position: relative;
@@ -241,6 +253,10 @@
         }
 
         #singleGemueseDiv {
+            width: 100px;
+            padding: 3px;
+        }
+        #singleGemueseDiv:hover {
             width: 100px;
             padding: 3px;
         }

@@ -5,6 +5,8 @@
       body {
         padding-bottom: 40px;
         color: #5a5a5a;
+        background-image:url("../img/stripes.jpg");
+        background-size: 10px;
       }
       
       
