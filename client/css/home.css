@@ -176,6 +176,10 @@
             top: 0px;
             right: 0px;
         }
+    
+        .carousel {
+          margin-top: 0px;
+        }
         
         .carousel .item {
           height: 400px;
@@ -208,13 +212,18 @@
             top: 0px;
             right: 0px;
         }
-      
+
         .carousel {
+          margin-top: 0px;
           margin-left: -20px;
           margin-right: -20px;
         }
         .carousel .container {
       
+        }
+
+        #mydatepicker {
+            position: inherit;
         }
         
         #testDiv {
@@ -230,6 +239,12 @@
             float: left;
             text-align: center;
         }
+
+        #singleGemueseDiv {
+            width: 100px;
+            padding: 3px;
+        }
+
         
         .carousel .item {
           margin-top: -100px;
@@ -241,9 +256,8 @@
           height: 100px;
         }
         .carousel-caption {
-          width: 65%;
-          padding: 0 70px;
-          margin-top: 40px;
+          padding: 0 10px;
+          margin-top: 0px;
         }
         .carousel-caption h1 {
           font-size: 30px;
@@ -264,5 +278,6 @@
           font-size: 18px;
           line-height: 1.5;
         }
+
       
       }
