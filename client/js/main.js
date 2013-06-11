@@ -210,6 +210,12 @@ function proceedFruits(e) {
         singleGemueseDiv.id="singleGemueseDiv";
         singleGemueseDiv.appendChild(img);
         
+        
+        window.onresize = function(event) {
+            var mydiv = (document.getElementById("gemueseFirstDiv").offsetWidth);
+            console.log(mydiv);
+        }
+        
         if(i<12){
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
@@ -218,7 +224,7 @@ function proceedFruits(e) {
             document.getElementById("down").style.visibility='visible';
             document.getElementById("gemueseSecondDiv").appendChild(singleGemueseDiv);
         }
-        
+    
          
     }
 }
