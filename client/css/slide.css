@@ -1,5 +1,5 @@
 #panel {
-  margin-top:-88px;
+  margin-top: -93px;
 }
 
 #hero {
@@ -55,9 +55,9 @@
 
 #hero .slides .slide {
   position: absolute;
-  margin-top: 30px;
+  margin-top: 100px;
   -webkit-transition: top 0.25s ease-in-out;
-  margin-left: 50px;
+  margin-left: 25px;
   color: white;
   font-size: 18px;
   line-height: 22px;
@@ -546,4 +546,44 @@
   cursor: default;
 }
 
+@media (max-width: 1199px) {
+    
+   #hero .slides {          
+      width: 430px;
+    }
+}
+@media (max-width: 979px) {
+    #hero nav {
+        width:140px;
+    }
+    
+    #hero nav ul li a {
+        padding: 10px 0 10px 15px;
+    }
 
+}
+@media (max-width: 767px) {
+
+    #hero nav {
+        width: 332px;
+        height: 50px;
+        margin-top: -25px;
+    }
+    
+    #hero nav ul {
+        margin-top: 0px;
+    }
+
+    #hero nav ul li:nth-child(2) {
+        background-position: 18px -120px;
+        margin-left: 122px;
+    }
+
+    #hero nav ul li:nth-child(3) {
+        background-position: 18px -200px;
+        margin-left: 106px;
+    }
+    #hero nav ul li {
+        height: 0px;
+        display: inline-block;
+    }

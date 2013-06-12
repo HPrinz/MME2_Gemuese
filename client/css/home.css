@@ -32,7 +32,7 @@
       .carousel-caption {
         background-color: transparent;
         position: static;
-        padding: 0 20px;
+        padding: 5px 20px;
         
       }
       .carousel-caption h1,
@@ -63,6 +63,7 @@
         margin-left: auto;
         margin-top:-10px;
         height: 320px;
+        width:auto;
         overflow: hidden;
         
       }
@@ -103,7 +104,7 @@
        }
 
       #gemueseName{
-        margin-left:60px;
+        margin-left:280px;
         margin-top:20px;
         margin-bottom:20px;
        }
@@ -175,6 +176,38 @@
       
       @media (max-width: 979px) {
 
+        #up {
+            width: 45px;
+            height: 45px;
+        }
+
+        #down {
+            width: 45px;
+            height: 45px;
+        }
+
+        #gemueseFirstDiv {
+        margin-left: 0px !important;
+        
+      }
+
+        #singleGemueseDiv {
+            width: 130px;
+            padding:3px;
+            float: left;
+            text-align: center;
+        
+        }
+
+        #singleGemueseDiv:hover {
+            width: 130px;
+            padding:3px;
+        }
+        
+        #gemueseName{
+            margin-left:163px;
+        }
+
         #dp1 {
             position: relative;
             top: 0px;
@@ -185,13 +218,17 @@
           margin-top: 0px;
         }
         
-        .carousel .item {
-          height: 400px;
+        .carousel-caption {
+          padding:0px;
+          padding-top:5px;
         }
 
         .carousel img {
-          width: auto;
-          height: 100px;
+          width: 170px;
+        }
+        #gemuesePic {
+          margin-left: -30px;
+          
         }
       
         .featurette {
@@ -211,13 +248,6 @@
       
       @media (max-width: 767px) {
         
-        #up {
-            height: 45px;
-        }
-
-        #down {
-            height: 45px;
-        }
 
         #dp1 {
             position: relative;
@@ -251,6 +281,10 @@
             float: left;
             text-align: center;
         }
+    
+        #gemueseName {
+            margin-top: 50px;
+        }
 
         #singleGemueseDiv {
             width: 100px;
@@ -263,13 +297,12 @@
 
         
         .carousel .item {
-          margin-top: -100px;
           height: auto;
           margin-bottom: 20px;
         }
 
         .carousel img {
-          height: 100px;
+         
         }
         .carousel-caption {
           padding: 0 10px;
