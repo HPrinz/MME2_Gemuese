@@ -49,8 +49,8 @@
       </div>
     </div>        
       
-    <div class="container-fluid">
-        <div class="row-fluid">
+    <div class="container">
+        <div class="row">
             <div class="span3">
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list">
@@ -59,22 +59,36 @@
                         <li class="nav-header">Märkte in der Umgebung</li>
                         
                         <select class="" id="auswahl" onchange="filter()">
-                            <option selected="selected">Alles</option>
+                            <option selected="selected">Alle</option>
                             <option>Biomarkt</option>
                             <option>Wochenmarkt</option>                                
                         </select>
                         <li><a onclick="centerUser()">Meine Position</a></li>                        
-                        <hr>                                    
-                        <li class="nav-header">Biomärkte</li>
-                        <li id="biomarkt"></li>
+                        <hr>
+                        </ul>
+                        <ul class="nav nav-list" id="bioNav">
+                            <li class="nav-header">Biomärkte</li>
+                            <li id="biomarkt"></li>
                         
-                        <li class="nav-header">Wochenmärkte</li>
-                        <li id="wochenmarkt"></li>                                             
+                        
+                            <li class="nav-header">Wochenmärkte</li>
+                            <li id="wochenmarkt"></li>
+                        
                     </ul>
                 </div><!--/.well -->
             </div><!--/span-->
         <div class="span9">          
-       	  
+            <!--
+            <div id="panel">
+                <b>Mode of Travel: </b>
+                <select id="mode" onchange="calcRoute();">
+                    <option value="DRIVING">Driving</option>
+                    <option value="WALKING">Walking</option>
+                    <option value="BICYCLING">Bicycling</option>
+                    <option value="TRANSIT">Transit</option>
+                </select>
+            </div>
+            -->
         <div id="pos">
             Deine Position wird ermittelt...
         </div>

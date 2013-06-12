@@ -10,18 +10,64 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 
+window.onload = function() {
+    var windowHeight = window.outerHeight;
+    
+    var karte = document.getElementById('pos');
+    var k_height = windowHeight - 290;
+    karte.style.height = k_height + 'px';
+    
+    var maerkte = document.getElementById('bioNav');
+    var m_height = windowHeight - 565;
+    maerkte.style.height = m_height + 'px';
+    maerkte.style.overflow = 'auto';
+}
+
+
+window.onresize = function(event) {
+    // console.log(document.getElementById("bioNav").offsetHeight);
+    // console.log(window.outerHeight);
+    var windowHeight = window.outerHeight;
+    
+    var karte = document.getElementById('pos');
+    var k_height = windowHeight - 290;
+    karte.style.height = k_height + 'px';
+    
+    var maerkte = document.getElementById('bioNav');
+    var m_height = windowHeight - 565;
+    maerkte.style.height = m_height + 'px';
+    maerkte.style.overflow = 'auto';
+};
+
+
 /*
  * Auf gehts!
  */
-function initialize(latlng, showUserMarker) {
+function initialize(latlng, showUserMarker) {    
+    
+    this.directionsService = new google.maps.DirectionsService();
+    
+    // navigation
+    this.directionsDisplay = new google.maps.DirectionsRenderer();
     
     var myOptions = {
         zoom: 15,
         center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP 
     };
 
     this.map = new google.maps.Map(document.getElementById("pos"), myOptions);
+    
+    // verstecke alle points of intrests
+    var noPoi = [{
+        featureType: "poi",
+        stylers: [{ visibility: "off" }]   
+    }];
+
+    this.map.setOptions({styles: noPoi});
+    
+    // navigation
+    this.directionsDisplay.setMap(map);
    
     var marker = new google.maps.Marker({
         position: latlng,
@@ -136,8 +182,23 @@ function showMarket(market) {
  * Berechnet die Entfernung zu einem Punkt auf der Karte und zeigt den Weg dorthin an
  */
 function routfinder(coords) {
-    console.log("Markt-Position: " + coords);
-    console.log("User-Position: " + userMarker.position);
+    // console.log("Markt-Position: " + coords);
+    // console.log("User-Position: " + userMarker.position);
+    
+    // var selectedMode = document.getElementById('mode').value;
+    
+    var request = {
+      origin: userMarker.position,
+      destination: coords,      
+        
+      // travelMode: google.maps.TravelMode[selectedMode]
+      travelMode: google.maps.TravelMode["DRIVING"]
+  };
+  this.directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      this.directionsDisplay.setDirections(response);
+    }
+  });
 }
 
 
