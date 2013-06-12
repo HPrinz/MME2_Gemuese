@@ -5,6 +5,13 @@ function $(id) {
 window.onload = function() {
     pickDate();
     makeHttpRequest();  
+    
+    window.onresize = function(event) {
+        document.getElementById("gemueseFirstDiv").innerHTML="";
+        document.getElementById("gemueseSecondDiv").innerHTML = "";
+        proceedFruits(currentFruits);
+        }
+
    
 };
 
@@ -115,7 +122,7 @@ function getCurrentFruit(fruit) {
 function proceedFruits(e) {
     for(var i = 0; i < e.length; i++) {
         
-        var singleGemueseDiv = document.createElement("div");
+        this.singleGemueseDiv = document.createElement("div");
         this.img = document.createElement("img");
         this.beschreibung = "";
         this.text = document.createElement("h1");
@@ -209,22 +216,27 @@ function proceedFruits(e) {
         
         singleGemueseDiv.id="singleGemueseDiv";
         singleGemueseDiv.appendChild(img);
+
+        if(i<1){
+            document.getElementById("down").style.visibility='hidden';
+            document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
+        }  
         
+        var breiteGemuese = parseInt(document.getElementById("singleGemueseDiv").offsetWidth);
+        var breite = parseInt(document.getElementById("gemueseFirstDiv").offsetWidth);
+        var hoehe = parseInt(document.getElementById("gemueseFirstDiv").offsetHeight);
+        var anzahlBreite = parseInt(breite/breiteGemuese );
+        var anzahlHoehe = parseInt(hoehe/breiteGemuese );   
+        var gesamtZahl = anzahlBreite * anzahlHoehe;
         
-        window.onresize = function(event) {
-            var mydiv = (document.getElementById("gemueseFirstDiv").offsetWidth);
-            console.log(mydiv);
-        }
-        
-        if(i<12){
+        if (i<gesamtZahl){
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
         }
-        else {
-            document.getElementById("down").style.visibility='visible';
-            document.getElementById("gemueseSecondDiv").appendChild(singleGemueseDiv);
-        }
-    
+            else {
+                document.getElementById("down").style.visibility='visible';
+                document.getElementById("gemueseSecondDiv").appendChild(singleGemueseDiv);
+            }
          
     }
 }
@@ -249,4 +261,5 @@ function writeDescription() {
 
     }
  }
+
 }

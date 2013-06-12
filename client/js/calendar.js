@@ -28,28 +28,12 @@ function initVariables(f) {
 
 	var fruitsArray = f;
 
-	console.log("fruitsArray = " + fruitsArray);
+//	console.log("fruitsArray = " + fruitsArray);
 
 	// four colors
 	var buckets = 4;
 
 	var colorScheme = 'rbow2';
-
-	var fruits = [ {
-		abbr : 'Apfel'
-	}, {
-		abbr : 'Erdbeere'
-	}, {
-		abbr : 'Kartoffel'
-	}, {
-		abbr : 'Pilze'
-	}, {
-		abbr : 'Salat'
-	}, {
-		abbr : 'Rote Bete'
-	}, {
-		abbr : 'Gurke'
-	} ];
 
 	var types = {
 		obst : 'Alle',
@@ -59,9 +43,9 @@ function initVariables(f) {
 
 	months = [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep',
 			'Okt', 'Nov', 'Dez' ];
-	
-	monthsEng = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep',
-				'oct', 'nov', 'dec' ];
+
+	monthsEng = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
+			'sep', 'oct', 'nov', 'dec' ];
 
 	// for the colors TODO what is vis?
 	d3.select('#vis').classed(colorScheme, true);
@@ -97,37 +81,16 @@ function initVariables(f) {
 
 /* ************************** */
 
-function selectedType() {
-
-	// return d3.select('input[name="type"]:checked').property('value'); // IE8
-	// doesn't like this
-	return $('input[name="type"]:checked').val();
-}
-
-/* ************************** */
-
-function getCalcs() {
-
-	var min = 0, max = 3;
-
-	return {
-		'min' : min,
-		'max' : max
-	};
-};
-
-/* ************************** */
-
 function reColorTiles(state, fruitsArray, buckets) {
 
-	var calcs = getCalcs(), range = [];
-
+	var range = [];
+	
 	for ( var i = 1; i <= buckets; i++) {
 		range.push(i);
 	}
 
-//	console.log("range: " + range);
-//	console.log("calcs: " + calcs.min + "/" + calcs.max);
+	// console.log("range: " + range);
+	// console.log("calcs: " + calcs.min + "/" + calcs.max);
 
 	var bucket = d3.scale.quantize().domain([ 0, 4 ]).range(range);
 	var side = d3.select('#tiles').attr('class');
@@ -138,30 +101,30 @@ function reColorTiles(state, fruitsArray, buckets) {
 		side = 'front';
 	}
 
-	console.log("length: " + fruitsArray[0].season.length);
-	
+//	console.log("length: " + fruitsArray[0].season.length);
+
 	for ( var d = 0; d < fruitsArray.length; d++) {
 		for ( var h = 0; h <= monthsEng.length; h++) {
-			
+
 			var sel = '#d' + d + 'h' + h + ' .tile .' + side;
 
-			var mon = monthsEng[h]
-			
+			var mon = monthsEng[h];
+
 			var val = fruitsArray[d].season[mon];
-			
+
 			if (val === "none") {
 				val = 3;
 			} else if (val === "storage") {
 				val = 2;
 			} else if (val === "greenhouse") {
 				val = 1;
-			} else if (val === "fresh"){
+			} else if (val === "fresh") {
 				val = 0;
 			}
 
-//			console.log("sel: " + sel);
-//			console.log("val: " + val);
-			
+			// console.log("sel: " + sel);
+			// console.log("val: " + val);
+
 			// erase all previous bucket designations on this cell
 			for ( var i = 1; i <= buckets; i++) {
 				var cls = 'q' + i + '-' + buckets;
@@ -170,8 +133,9 @@ function reColorTiles(state, fruitsArray, buckets) {
 
 			// set new bucket designation for this cell
 			var cls = 'q' + (val > 0 ? bucket(val) : 1) + '-' + buckets;
-			
-//			console.log("cls = " + (val > 0 ?bucket(val) : 0) + "-" + buckets);
+
+			// console.log("cls = " + (val > 0 ?bucket(val) : 0) + "-" +
+			// buckets);
 
 			d3.select(sel).classed(cls, true);
 		}
@@ -207,7 +171,7 @@ function flipTiles(fruitsArray) {
 		for ( var d = 0; d < fruitsArray.length; d++) {
 			var side = d3.select('#tiles').attr('class');
 			setTimeout(flipper(h, d, side), (h * 20) + (d * 20)
-					+ (Math.random() * 100));
+					+ (Math.random() * 10));
 		}
 	}
 	d3.select('#tiles').attr('class', newSide);
@@ -234,15 +198,29 @@ function createTiles(type, fruitsArray) {
 			html += '<tr class="d' + d + '">';
 			html += '<th>' + fruitsArray[d].name + '</th>';
 			for ( var h = 0; h < months.length; h++) {
-				html += '<td id="d'
-						+ d
-						+ 'h'
-						+ h
-						+ '" class="d'
-						+ d
-						+ ' h'
-						+ h
-						+ '"><div class="tile"><div class="face front"></div><div class="face back"></div></div></td>';
+
+				var mm = new Date().getMonth() + 1;
+				if (h === mm) {
+					html += '<td class="tdcurr" id="d'
+							+ d
+							+ 'h'
+							+ h
+							+ '" class="d'
+							+ d
+							+ ' h'
+							+ h
+							+ '"><div class="tile tilecurr"><div class="face facecurr front"></div><div class="face facecurr back"></div></div></td>';
+				} else {
+					html += '<td id="d'
+							+ d
+							+ 'h'
+							+ h
+							+ '" class="d'
+							+ d
+							+ ' h'
+							+ h
+							+ '"><div class="tile"><div class="face front"></div><div class="face back"></div></div></td>';
+				}
 			}
 
 			html += '</tr>';
