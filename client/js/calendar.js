@@ -28,7 +28,7 @@ function initVariables(f) {
 
 	var fruitsArray = f;
 
-	console.log("fruitsArray = " + fruitsArray);
+//	console.log("fruitsArray = " + fruitsArray);
 
 	// four colors
 	var buckets = 4;
@@ -101,7 +101,7 @@ function reColorTiles(state, fruitsArray, buckets) {
 		side = 'front';
 	}
 
-	console.log("length: " + fruitsArray[0].season.length);
+//	console.log("length: " + fruitsArray[0].season.length);
 
 	for ( var d = 0; d < fruitsArray.length; d++) {
 		for ( var h = 0; h <= monthsEng.length; h++) {
