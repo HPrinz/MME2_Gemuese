@@ -1,0 +1,9 @@
+{
+	"recipe":{
+		"name" : "Rezept",
+		"description" : "Mach das",
+		"pictures" : [{"image.png"}, {"image2.png"}],
+		"ingridients" : [{"image"}, {"image2"}],
+		"vegetables" : [{"apfel"}, {"erdbeere"}]
+	}
+}
