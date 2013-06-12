@@ -20,8 +20,8 @@ window.onload = function() {
     var maerkte = document.getElementById('bioNav');
     var m_height = windowHeight - 565;
     maerkte.style.height = m_height + 'px';
-    maerkte.style.overflow = 'auto';
-}
+    //maerkte.style.overflow = 'auto';    
+};
 
 
 window.onresize = function(event) {
@@ -36,8 +36,21 @@ window.onresize = function(event) {
     var maerkte = document.getElementById('bioNav');
     var m_height = windowHeight - 565;
     maerkte.style.height = m_height + 'px';
-    maerkte.style.overflow = 'auto';
+    //maerkte.style.overflow = 'auto';
 };
+
+
+$( '#bioNav' ).
+    bind( 'mousewheel DOMMouseScroll', function ( e ) {
+        // console.log("scroll");
+        var delta = e.wheelDelta || -e.detail;
+        console.log("delta: " + delta);
+        console.log("e.wheelDelta: " + e.wheelDelta);
+        console.log("-e.detail: " + -e.detail);        
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+        console.log("scrollTop: " + this.scrollTop);
+        e.preventDefault();
+    });
 
 
 /*
