@@ -10,6 +10,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 
+// Inituierung der MAp und Navigröße
 window.onload = function() {
     var windowHeight = window.outerHeight;
     
@@ -19,14 +20,12 @@ window.onload = function() {
     
     var maerkte = document.getElementById('bioNav');
     var m_height = windowHeight - 565;
-    maerkte.style.height = m_height + 'px';
-    //maerkte.style.overflow = 'auto';    
+    maerkte.style.height = m_height + 'px'; 
 };
 
 
-window.onresize = function(event) {
-    // console.log(document.getElementById("bioNav").offsetHeight);
-    // console.log(window.outerHeight);
+// Resizehandler
+window.onresize = function(event) {   
     var windowHeight = window.outerHeight;
     
     var karte = document.getElementById('pos');
@@ -36,19 +35,15 @@ window.onresize = function(event) {
     var maerkte = document.getElementById('bioNav');
     var m_height = windowHeight - 565;
     maerkte.style.height = m_height + 'px';
-    //maerkte.style.overflow = 'auto';
 };
 
 
+// background scroll prevent für die Märkte Liste
 $( '#bioNav' ).
     bind( 'mousewheel DOMMouseScroll', function ( e ) {
         // console.log("scroll");
-        var delta = e.wheelDelta || -e.detail;
-        console.log("delta: " + delta);
-        console.log("e.wheelDelta: " + e.wheelDelta);
-        console.log("-e.detail: " + -e.detail);        
-        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-        console.log("scrollTop: " + this.scrollTop);
+        var delta = e.wheelDelta || -e.detail;             
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
         e.preventDefault();
     });
 
@@ -169,7 +164,7 @@ function showMarket(market) {
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Routenplanung" + '</a>' + '</div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Route" + '</a>' + '</div>'
     });
 
     infoBubble.open(map, this.marker);
@@ -195,23 +190,28 @@ function showMarket(market) {
  * Berechnet die Entfernung zu einem Punkt auf der Karte und zeigt den Weg dorthin an
  */
 function routfinder(coords) {
-    // console.log("Markt-Position: " + coords);
-    // console.log("User-Position: " + userMarker.position);
+    this.marketCoords = coords;
+    $('#route_modal').modal('show');
+}
+
+
+function showRoute() {
     
-    // var selectedMode = document.getElementById('mode').value;
+    var selectedMode = document.getElementById('mode').value;
     
     var request = {
-      origin: userMarker.position,
-      destination: coords,      
+        origin: userMarker.position,
+        destination: this.marketCoords,      
         
-      // travelMode: google.maps.TravelMode[selectedMode]
-      travelMode: google.maps.TravelMode["DRIVING"]
-  };
-  this.directionsService.route(request, function(response, status) {
+        // travelMode: google.maps.TravelMode[selectedMode]
+        travelMode: google.maps.TravelMode[selectedMode]
+    };
+    
+    this.directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-      this.directionsDisplay.setDirections(response);
+        this.directionsDisplay.setDirections(response);
     }
-  });
+    });
 }
 
 
