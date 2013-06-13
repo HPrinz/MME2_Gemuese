@@ -10,6 +10,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 
+// Initzierung der MAp und Navigröße
 window.onload = function() {
     var windowHeight = window.outerHeight;
     
@@ -19,14 +20,12 @@ window.onload = function() {
     
     var maerkte = document.getElementById('bioNav');
     var m_height = windowHeight - 565;
-    maerkte.style.height = m_height + 'px';
-    //maerkte.style.overflow = 'auto';    
+    maerkte.style.height = m_height + 'px'; 
 };
 
 
-window.onresize = function(event) {
-    // console.log(document.getElementById("bioNav").offsetHeight);
-    // console.log(window.outerHeight);
+// Resizehandler
+window.onresize = function(event) {   
     var windowHeight = window.outerHeight;
     
     var karte = document.getElementById('pos');
@@ -36,19 +35,15 @@ window.onresize = function(event) {
     var maerkte = document.getElementById('bioNav');
     var m_height = windowHeight - 565;
     maerkte.style.height = m_height + 'px';
-    //maerkte.style.overflow = 'auto';
 };
 
 
+// background scroll prevent für die Märkte Liste
 $( '#bioNav' ).
     bind( 'mousewheel DOMMouseScroll', function ( e ) {
         // console.log("scroll");
-        var delta = e.wheelDelta || -e.detail;
-        console.log("delta: " + delta);
-        console.log("e.wheelDelta: " + e.wheelDelta);
-        console.log("-e.detail: " + -e.detail);        
-        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-        console.log("scrollTop: " + this.scrollTop);
+        var delta = e.wheelDelta || -e.detail;             
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
         e.preventDefault();
     });
 
@@ -66,6 +61,10 @@ function initialize(latlng, showUserMarker) {
     var myOptions = {
         zoom: 15,
         center: latlng,
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        },
         mapTypeId: google.maps.MapTypeId.ROADMAP 
     };
 
@@ -182,9 +181,10 @@ function showMarket(market) {
     
     this.markersArray.push(marker);
     
-    // Listen for user click on map to close any open info bubbles
+    // Listen for user click on map to close any open info bubbles and remove navigation
     google.maps.event.addListener(map, "click", function () { 
         infoBubble.close();
+        clearNavigation();        
     });
 
     google.maps.event.addListener(marker, 'click', infoBubbleHandler);
@@ -192,26 +192,55 @@ function showMarket(market) {
 
 
 /*
- * Berechnet die Entfernung zu einem Punkt auf der Karte und zeigt den Weg dorthin an
+ * Initziert die Navigation
  */
 function routfinder(coords) {
-    // console.log("Markt-Position: " + coords);
-    // console.log("User-Position: " + userMarker.position);
+    this.marketCoords = coords;
+    $('#route_modal').modal('show');
+}
+
+
+/*
+ * Berechnet die Entfernung zu einem Punkt auf der Karte
+ */
+function showRoute() {
     
-    // var selectedMode = document.getElementById('mode').value;
+    var selectedMode = document.getElementById('mode').value;
     
     var request = {
-      origin: userMarker.position,
-      destination: coords,      
-        
-      // travelMode: google.maps.TravelMode[selectedMode]
-      travelMode: google.maps.TravelMode["DRIVING"]
-  };
-  this.directionsService.route(request, function(response, status) {
+        origin: userMarker.position,
+        destination: this.marketCoords,                      
+        travelMode: google.maps.TravelMode[selectedMode]
+    };
+    
+    this.directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-      this.directionsDisplay.setDirections(response);
+        this.directionsDisplay.setDirections(response);
+        showNavigation(response);
     }
-  });
+    });        
+}
+
+
+/*
+ * Gibt die Navigationsdetails im Popup aus
+ */
+function showNavigation(directionResult) {
+    var myRoute = directionResult.routes[0].legs[0];
+    
+    for (var i = 0; i < myRoute.steps.length; i++) {                
+        var instruction = document.createElement("p");
+        instruction.innerHTML = myRoute.steps[i].instructions;
+        document.getElementById('nav_content').appendChild(instruction);    
+    }    
+}
+
+
+/*
+ * Löscht die Navigationsroute von der Karte
+ */
+function clearNavigation() {
+    this.directionsDisplay.setDirections({routes: []});
 }
 
 
