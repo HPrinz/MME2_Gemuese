@@ -10,7 +10,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 
-// Inituierung der MAp und Navigröße
+// Initzierung der MAp und Navigröße
 window.onload = function() {
     var windowHeight = window.outerHeight;
     
@@ -61,6 +61,10 @@ function initialize(latlng, showUserMarker) {
     var myOptions = {
         zoom: 15,
         center: latlng,
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        },
         mapTypeId: google.maps.MapTypeId.ROADMAP 
     };
 
@@ -164,7 +168,7 @@ function showMarket(market) {
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Route" + '</a>' + '</div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Routenplanung" + '</a>' + '</div>'
     });
 
     infoBubble.open(map, this.marker);
@@ -177,9 +181,10 @@ function showMarket(market) {
     
     this.markersArray.push(marker);
     
-    // Listen for user click on map to close any open info bubbles
+    // Listen for user click on map to close any open info bubbles and remove navigation
     google.maps.event.addListener(map, "click", function () { 
         infoBubble.close();
+        clearNavigation();        
     });
 
     google.maps.event.addListener(marker, 'click', infoBubbleHandler);
@@ -187,7 +192,7 @@ function showMarket(market) {
 
 
 /*
- * Berechnet die Entfernung zu einem Punkt auf der Karte und zeigt den Weg dorthin an
+ * Initziert die Navigation
  */
 function routfinder(coords) {
     this.marketCoords = coords;
@@ -195,23 +200,47 @@ function routfinder(coords) {
 }
 
 
+/*
+ * Berechnet die Entfernung zu einem Punkt auf der Karte
+ */
 function showRoute() {
     
     var selectedMode = document.getElementById('mode').value;
     
     var request = {
         origin: userMarker.position,
-        destination: this.marketCoords,      
-        
-        // travelMode: google.maps.TravelMode[selectedMode]
+        destination: this.marketCoords,                      
         travelMode: google.maps.TravelMode[selectedMode]
     };
     
     this.directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
         this.directionsDisplay.setDirections(response);
+        showNavigation(response);
     }
-    });
+    });        
+}
+
+
+/*
+ * Gibt die Navigationsdetails im Popup aus
+ */
+function showNavigation(directionResult) {
+    var myRoute = directionResult.routes[0].legs[0];
+    
+    for (var i = 0; i < myRoute.steps.length; i++) {                
+        var instruction = document.createElement("p");
+        instruction.innerHTML = myRoute.steps[i].instructions;
+        document.getElementById('nav_content').appendChild(instruction);    
+    }    
+}
+
+
+/*
+ * Löscht die Navigationsroute von der Karte
+ */
+function clearNavigation() {
+    this.directionsDisplay.setDirections({routes: []});
 }
 
 
