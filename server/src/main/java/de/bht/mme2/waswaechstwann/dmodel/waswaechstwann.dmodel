@@ -27,7 +27,7 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 		description : String
 		pictures : List<String>
 		ingridients : List<String>
-		vegetables : List<Fruit>
+		vegetables : List<String>
 	}
 	
 	DTOentity Season{
