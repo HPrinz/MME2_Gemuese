@@ -196,7 +196,7 @@ function showMarket(market) {
  */
 function routfinder(coords) {
     this.marketCoords = coords;
-    $('#route_modal').modal('show');
+    $('#route_modal').modal('show');     
 }
 
 
@@ -204,6 +204,8 @@ function routfinder(coords) {
  * Berechnet die Entfernung zu einem Punkt auf der Karte
  */
 function showRoute() {
+    var navContent = document.getElementById('nav_content');
+    navContent.innerHTML = "";    
     
     var selectedMode = document.getElementById('mode').value;
     
@@ -216,7 +218,7 @@ function showRoute() {
     this.directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
         this.directionsDisplay.setDirections(response);
-        showNavigation(response);
+        showNavigation(response);        
     }
     });        
 }
@@ -231,8 +233,9 @@ function showNavigation(directionResult) {
     for (var i = 0; i < myRoute.steps.length; i++) {                
         var instruction = document.createElement("p");
         instruction.innerHTML = myRoute.steps[i].instructions;
-        document.getElementById('nav_content').appendChild(instruction);    
-    }    
+        document.getElementById('nav_content').appendChild(document.createElement("hr"));
+        document.getElementById('nav_content').appendChild(instruction);              
+    }        
 }
 
 
@@ -348,7 +351,7 @@ function centerMap() {
     var latitude = temp02[0].split(",",1)
     var longitude = temp02[0].split(",",2)
     
-    map.setCenter(new google.maps.LatLng(latitude[0], longitude[1]));    
+    map.setCenter(new google.maps.LatLng(latitude[0], longitude[1]));
 }
 
 
