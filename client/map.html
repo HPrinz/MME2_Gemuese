@@ -12,6 +12,9 @@
     <link href="css/mapstyle.css" rel="stylesheet"> 
     <link href="css/main.css" rel="stylesheet">  
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.js"></script>
+    <!--<script src="js/jquery-1.9.1.min.js"></script>-->
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -66,36 +69,69 @@
                         <li><a onclick="centerUser()">Meine Position</a></li>                        
                         <hr>
                         </ul>
-                        <ul class="nav nav-list" id="bioNav">
+                        <div id="bioNav">
+                        <ul class="nav nav-list">
                             <li class="nav-header">Biomärkte</li>
                             <li id="biomarkt"></li>
                         
                         
                             <li class="nav-header">Wochenmärkte</li>
-                            <li id="wochenmarkt"></li>
-                        
-                    </ul>
+                            <li id="wochenmarkt"></li>                        
+                        </ul>
+                        </div>    
                 </div><!--/.well -->
             </div><!--/span-->
         <div class="span9">          
-            <!--
-            <div id="panel">
-                <b>Mode of Travel: </b>
-                <select id="mode" onchange="calcRoute();">
-                    <option value="DRIVING">Driving</option>
-                    <option value="WALKING">Walking</option>
-                    <option value="BICYCLING">Bicycling</option>
-                    <option value="TRANSIT">Transit</option>
-                </select>
+            
+            <!-- Navigations Popup -->  
+            <div class="modal fade" id="route_modal">
+                <div id="panel">
+                    <div class="modal-header">
+                        <h3>Navigation</h3>
+                    </div>
+                    <div class="modal-body">
+                        <select id="mode" onchange="calcRoute();">
+                            <option value="DRIVING">Auto</option>
+                            <option value="WALKING">Fußgänger</option>
+                            <option value="BICYCLING">Fahrrad</option>
+                            <option value="TRANSIT">Öffentliche Verkehrsmittel</option>
+                        </select>
+                        <ul class="nav nav-list">
+                            <li id="nav_content"></li>
+                        </ul>
+                    </div>                    
+                    <div class="modal-footer">
+                        <a href="#" class="btn" data-dismiss="modal">Abbrechen</a>                        
+                        <a href="javascript:showRoute()" class="btn btn-primary">Start</a>
+                    </div>
+                </div>
             </div>
-            -->
+            
         <div id="pos">
             Deine Position wird ermittelt...
         </div>
           
         </div><!--/span-->
     </div><!--/row-->
-    
+            
+    <!--  
+    <div class="modal fade" id="nav_modal">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">&times;</a>
+            <h3>Navigation</h3>
+        </div>
+        <div class="modal-body">
+            <div class="nav_content"></div>
+        </div>
+        <!--
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <a href="#" class="btn btn-primary">Save Changes</a>
+        </div>
+        
+    </div>            
+    -->
+        
     <hr>
     
     <footer>

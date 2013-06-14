@@ -42,5 +42,6 @@
 }
 
 #bioNav {
-
+    overflow-x:hidden; 
+    overflow-y:scroll;
 }

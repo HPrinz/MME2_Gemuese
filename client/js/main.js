@@ -216,19 +216,30 @@ function proceedFruits(e) {
         
         singleGemueseDiv.id="singleGemueseDiv";
         singleGemueseDiv.appendChild(img);
-
-        if(i<1){
-            document.getElementById("down").style.visibility='hidden';
-            document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
-        }  
         
-        var breiteGemuese = parseInt(document.getElementById("singleGemueseDiv").offsetWidth);
-        var breite = parseInt(document.getElementById("gemueseFirstDiv").offsetWidth);
-        var hoehe = parseInt(document.getElementById("gemueseFirstDiv").offsetHeight);
-        var anzahlBreite = parseInt(breite/breiteGemuese );
-        var anzahlHoehe = parseInt(hoehe/breiteGemuese );   
-        var gesamtZahl = anzahlBreite * anzahlHoehe;
+        var breite = window.outerWidth;
+        console.log(breite);
+        var gesamtZahl = 9;
         
+        if (breite>1200){
+            gesamtZahl=12;
+        }
+        else if (breite>796){
+            gesamtZahl=10;
+        }
+        else if (breite>789){
+            gesamtZahl=21;
+        }
+        else if (breite>683){
+            gesamtZahl=18;
+        }
+        else if (breite>576){
+            gesamtZahl=15;
+        }   
+        else if (breite>470){
+            gesamtZahl=9;
+        }
+            
         if (i<gesamtZahl){
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);

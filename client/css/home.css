@@ -80,19 +80,26 @@
         padding: 0px;
       }
 
-      .up {
+      #up {
         width: 48px;
         margin-left: auto;
         margin-right: auto;
-                
+        opacity: 0.6;       
       }
 
-      .down {
+      #down {
         width: 48px;
         margin-left: auto;
         margin-right: auto;
-        
-    
+        opacity: 0.6;     
+      }
+
+      #up:hover {
+        opacity: 1;       
+      }
+
+      #down:hover {
+        opacity: 1;     
       }
        
       .sideMenu {
@@ -330,3 +337,29 @@
 
       
       }
+
+     @media (max-width: 365px) {
+
+        #singleGemueseDiv {
+            width: 85px;
+            padding: 3px;
+        }
+        #singleGemueseDiv:hover {
+            width: 85px;
+            padding: 3px;
+        }
+
+     }
+
+     @media (max-width: 319px) {
+
+        #singleGemueseDiv {
+            width: 75px;
+            padding: 3px;
+        }
+        #singleGemueseDiv:hover {
+            width: 75px;
+            padding: 3px;
+        }
+
+     }
