@@ -10,7 +10,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 
-// Initzierung der MAp und Navigröße
+// Initzierung der Map und Navigröße
 window.onload = function() {
     var windowHeight = window.outerHeight;
     
@@ -39,8 +39,8 @@ window.onresize = function(event) {
 
 
 // background scroll prevent für die Märkte Liste
-$( '#bioNav' ).
-    bind( 'mousewheel DOMMouseScroll', function ( e ) {
+$('#bioNav').
+    bind('mousewheel DOMMouseScroll', function (e) {
         // console.log("scroll");
         var delta = e.wheelDelta || -e.detail;             
         this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
@@ -203,9 +203,11 @@ function routfinder(coords) {
 /*
  * Berechnet die Entfernung zu einem Punkt auf der Karte
  */
-function showRoute() {
+function showRoute() {    
+    // löscht die alte ausgabe
     var navContent = document.getElementById('nav_content');
     navContent.innerHTML = "";    
+        
     
     var selectedMode = document.getElementById('mode').value;
     
@@ -244,6 +246,9 @@ function showNavigation(directionResult) {
  */
 function clearNavigation() {
     this.directionsDisplay.setDirections({routes: []});
+    // löscht die alte ausgabe
+    var navContent = document.getElementById('nav_content');
+    navContent.innerHTML = "";  
 }
 
 
@@ -290,7 +295,7 @@ function filter() {
     var a = document.getElementById("auswahl");
     var auswahl = a.options[a.selectedIndex].text;
     
-    if(auswahl == "Alles") {
+    if(auswahl == "Alle") {
         document.getElementById("wochenmarkt").style.visibility="visible";
         document.getElementById("wochenmarkt").style.height="auto";
         
