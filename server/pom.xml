@@ -17,14 +17,6 @@
 			<layout>default</layout>
 		</repository>
 
-		<!-- Das hier hat Probleme verursacht. Ohne geht es... Problem? -->
-		<!-- <repository> -->
-		<!-- <id>maven-repository.dev.java.net</id> -->
-		<!-- <name>Java.net Maven 1 Repository (legacy)</name> -->
-		<!-- <url>http://download.java.net/maven/1</url> -->
-		<!-- <layout>legacy</layout> -->
-		<!-- </repository> -->
-
 	</repositories>
 
 	<dependencies>
@@ -107,7 +99,6 @@
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
-					<jetty-config>jetty.xml</jetty-config>
 				</configuration>
 			</plugin>
 

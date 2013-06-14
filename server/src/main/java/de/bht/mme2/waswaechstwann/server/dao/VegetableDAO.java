@@ -66,8 +66,7 @@ public class VegetableDAO {
     * @return a JSONArray containing all fruits found
     */
    public JSONArray findFruit(final String fruit) {
-      final BasicDBObject whereQuery = new BasicDBObject();
-      whereQuery.put("name", fruit);
+      final BasicDBObject whereQuery = new BasicDBObject("name", fruit);
       final DBCursor cursor = table.find(whereQuery);
 
       final JSONArray array = new JSONArray();

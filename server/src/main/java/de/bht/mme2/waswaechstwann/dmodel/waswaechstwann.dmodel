@@ -12,7 +12,7 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 		seasonend : Date
 		season : Season
 	}
-	
+
 	DTOentity Market{
 		name: String
 		address: String
@@ -27,7 +27,11 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 		description : String
 		pictures : List<String>
 		ingridients : List<String>
-		vegetables : List<Fruit>
+		vegetables : List<String>
+	}
+	
+	DTOentity Recipes{
+		recipes :List<Recipe>
 	}
 	
 	DTOentity Season{

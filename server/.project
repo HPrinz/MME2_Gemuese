@@ -72,6 +72,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>client/imprint.html</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/imprint.html</locationURI>
+		</link>
+		<link>
 			<name>client/index.html</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/client/index.html</locationURI>

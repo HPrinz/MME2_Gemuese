@@ -1,7 +1,6 @@
 
 package de.bht.mme2.waswaechstwann.server.pojos;
 
-import de.bht.mme2.waswaechstwann.server.pojos.Fruit;
 import java.util.List;
 
 
@@ -17,12 +16,12 @@ public class Recipe  {
   	 String description ;
   	 List<String> pictures ;
   	 List<String> ingridients ;
-  	 List<Fruit> vegetables ;
+  	 List<String> vegetables ;
 	
     /**
       * Standard Constructor with all needed attributes
       */
-    public Recipe( String name,  String description,  List<String> pictures,  List<String> ingridients,  List<Fruit> vegetables ) {
+    public Recipe( String name,  String description,  List<String> pictures,  List<String> ingridients,  List<String> vegetables ) {
     	this.name = name;
     	this.description = description;
     	this.pictures = pictures;
@@ -101,7 +100,7 @@ public class Recipe  {
 	/**
 	  * @return the vegetables
 	  */
-	public List<Fruit> getVegetables() {			
+	public List<String> getVegetables() {			
 		return this.vegetables;
 	}
 	
@@ -109,7 +108,7 @@ public class Recipe  {
 	  * @param vegetables 
 	  *			the vegetables to set
 	  */
-	public void setVegetables( List<Fruit> vegetables ) {
+	public void setVegetables( List<String> vegetables ) {
 		this.vegetables = vegetables;
 	}
 	

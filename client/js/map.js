@@ -268,7 +268,7 @@ function getAllMarkets() {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/marketREST/list', true);
+    xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/rest/marketREST/list', true);
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState != 4) {
             // $('ergebnis').innerHTML = 'Marker werde geladen ...';

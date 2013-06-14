@@ -2,7 +2,7 @@ function makeHttpRequest() {
 	var xmlhttp = new XMLHttpRequest();
 	var f = [];
 
-	xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/gemueseREST/list', true);
+	xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/rest/gemueseREST/list', true);
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState != 4) {
 
