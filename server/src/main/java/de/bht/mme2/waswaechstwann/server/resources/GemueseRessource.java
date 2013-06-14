@@ -79,11 +79,11 @@ public class GemueseRessource {
       try {
          return new JSONObject().put("fruits", array);
       } catch (final JSONException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
+         throw new WebApplicationException(Response.Status.NOT_FOUND);
       }
 
-      throw new WebApplicationException(Response.Status.NOT_FOUND);
+      
    }
 
    /**
@@ -98,7 +98,7 @@ public class GemueseRessource {
    }
 
    /**
-    * TODO insert all Vegetables automatically
+    * insert all Vegetables automatically
     */
     @Path("/addAll")
     @POST
