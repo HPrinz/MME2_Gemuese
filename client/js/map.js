@@ -143,7 +143,7 @@ function showAuswahlPopover() {
 }
 
 function hideAuswahlPopover() {
-    $('#auswahl').popover('hide');
+    $('#auswahl').popover('destroy');
 }
 
 function showMarketPopover() {
@@ -151,7 +151,7 @@ function showMarketPopover() {
 }
 
 function hideMarketPopover() {
-    $('#bioNav').popover('hide');
+    $('#bioNav').popover('destroy');
 }
 
 // Tutorial Animation
