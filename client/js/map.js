@@ -63,6 +63,7 @@ $('#nav-popup').
  */
 function initialize(latlng, showUserMarker) {    
     
+    // navigation
     this.directionsService = new google.maps.DirectionsService();
     
     // navigation
@@ -77,7 +78,7 @@ function initialize(latlng, showUserMarker) {
         },
         mapTypeId: google.maps.MapTypeId.ROADMAP 
     };
-
+        
     this.map = new google.maps.Map(document.getElementById("pos"), myOptions);
     
     // verstecke alle points of intrests
@@ -425,11 +426,11 @@ function centerMap() {
     
     var temp01 = eventSrcID.split("(",2);
     var temp02 = temp01[1].split(")",1);
-    
+        
     var latitude = temp02[0].split(",",1)
     var longitude = temp02[0].split(",",2)
     
-    var coords = new google.maps.LatLng(latitude[0], longitude[1])
+    var coords = new google.maps.LatLng(latitude[0], longitude[1])    
     
     map.setCenter(coords);
     
