@@ -118,12 +118,14 @@ function initialize(latlng, showUserMarker) {
     
     this.markersArray = [];
     this.wochenmarktArray = [];
-    this.biomarktArray = [];
+    this.biomarktArray = [];    
+    this.markerBubbleArray = [];
     
     this.userMarker = marker;        
     
     getAllMarkets();       
     
+    // Cookie-Action
     if(firstTime()) {
         startTutorial();
     }
@@ -159,9 +161,9 @@ function startTutorial() {
     var openUserBubbleTimeout = setTimeout(showUserBubble, 1000);
     var closeUserBubbleTimeout = setTimeout(hideUserBubble, 5000);    
     var openAuswahlPopoverTimeout = setTimeout(showAuswahlPopover, 5500);
-    var closeAuswahlPopoverTimeout = setTimeout(hideAuswahlPopover, 9000);
-    var openMarketPopoverTimeout = setTimeout(showMarketPopover, 9500);
-    var closeMarketPopoverTimeout = setTimeout(hideMarketPopover, 13000);
+    var closeAuswahlPopoverTimeout = setTimeout(hideAuswahlPopover, 9500);
+    var openMarketPopoverTimeout = setTimeout(showMarketPopover, 10000);
+    var closeMarketPopoverTimeout = setTimeout(hideMarketPopover, 14000);
 }
 
 
@@ -244,7 +246,13 @@ function showMarket(market) {
         }
     };
     
-    this.markersArray.push(marker);
+    this.markersArray.push(marker);        
+      
+    var markerAndBubble = [];
+    markerAndBubble.push(marker);
+    markerAndBubble.push(infoBubble);
+    
+    this.markerBubbleArray.push(markerAndBubble);
     
     // Listen for user click on map to close any open info bubbles and remove navigation
     google.maps.event.addListener(map, "click", function () { 
@@ -409,7 +417,7 @@ function clearOverlays() {
 
 
 /*
- * Zentriert die Map an der Position des Marktes
+ * Zentriert die Map an der Position des Marktes und öffent eine InfoBubble
  */
 function centerMap() {
     eventSrcID = (event.srcElement)?event.srcElement.id:'undefined';
@@ -421,7 +429,19 @@ function centerMap() {
     var latitude = temp02[0].split(",",1)
     var longitude = temp02[0].split(",",2)
     
-    map.setCenter(new google.maps.LatLng(latitude[0], longitude[1]));
+    var coords = new google.maps.LatLng(latitude[0], longitude[1])
+    
+    map.setCenter(coords);
+    
+    for(var i = 0; i < this.markersArray.length; i++) {                                        
+        var marker = this.markerBubbleArray[i][0];
+        var latlng = this.markerBubbleArray[i][0].position;
+        var bubble = this.markerBubbleArray[i][1];
+        
+        if(latlng.lat() == coords.lat()) {
+            bubble.open(this.map, marker);            
+        }            
+    }
 }
 
 
