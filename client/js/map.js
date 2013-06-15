@@ -19,7 +19,7 @@ window.onload = function() {
     karte.style.height = k_height + 'px';
     
     var maerkte = document.getElementById('bioNav');
-    var m_height = windowHeight - 565;
+    var m_height = windowHeight - 471;
     maerkte.style.height = m_height + 'px'; 
 };
 
@@ -33,13 +33,23 @@ window.onresize = function(event) {
     karte.style.height = k_height + 'px';
     
     var maerkte = document.getElementById('bioNav');
-    var m_height = windowHeight - 565;
+    var m_height = windowHeight - 471;
     maerkte.style.height = m_height + 'px';
 };
 
 
 // background scroll prevent für die Märkte Liste
 $('#bioNav').
+    bind('mousewheel DOMMouseScroll', function (e) {
+        // console.log("scroll");
+        var delta = e.wheelDelta || -e.detail;             
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
+        e.preventDefault();
+    });
+
+
+// background scroll prevent für das Navigations-Popup
+$('#nav-popup').
     bind('mousewheel DOMMouseScroll', function (e) {
         // console.log("scroll");
         var delta = e.wheelDelta || -e.detail;             
@@ -81,6 +91,7 @@ function initialize(latlng, showUserMarker) {
     // navigation
     this.directionsDisplay.setMap(map);
    
+    // user-marker
     var marker = new google.maps.Marker({
         position: latlng,
         map: map,
@@ -88,15 +99,67 @@ function initialize(latlng, showUserMarker) {
         title: "Deine Position"
     });
     
-    this.userMarker = marker;
+    // user-marker InfoBubble
+    this.userInfoBubble = new InfoBubble({
+        map: map,        
+        hideCloseButton: true,
+        content: '<div class="userInfoBubbleContent">' + '<p class="infoBubbleHeadline">' + 'Hier bist Du!' + '</p>' + '<p class="infoBubbleAddress">' + 'Klicke auf die Marker für nähere Informationen.' + '</p>' + '</div>'
+    });    
 
-    marker.setMap(map);
+    var infoBubbleHandler = function() {
+        if (!userInfoBubble.isOpen()) {
+            userInfoBubble.open(map, marker);            
+        }
+    };                
+    
+    google.maps.event.addListener(marker, 'click', infoBubbleHandler);    
+    
+    marker.setMap(map);            
     
     this.markersArray = [];
     this.wochenmarktArray = [];
     this.biomarktArray = [];
     
-    getAllMarkets();        
+    this.userMarker = marker;        
+    
+    getAllMarkets();       
+    
+    startTutorial();       
+}
+
+
+function showUserBubble() {    
+    this.userInfoBubble.open(this.map, this.userMarker);
+}
+
+function hideUserBubble() {
+    this.userInfoBubble.close();
+}
+
+function showAuswahlPopover() {
+    $('#auswahl').popover('show');
+}
+
+function hideAuswahlPopover() {
+    $('#auswahl').popover('hide');
+}
+
+function showMarketPopover() {
+    $('#bioNav').popover('show');
+}
+
+function hideMarketPopover() {
+    $('#bioNav').popover('hide');
+}
+
+// Tutorial Animation
+function startTutorial() {
+    var openUserBubbleTimeout = setTimeout(showUserBubble, 1000);
+    var closeUserBubbleTimeout = setTimeout(hideUserBubble, 5000);    
+    var openAuswahlPopoverTimeout = setTimeout(showAuswahlPopover, 5500);
+    var closeAuswahlPopoverTimeout = setTimeout(hideAuswahlPopover, 9000);
+    var openMarketPopoverTimeout = setTimeout(showMarketPopover, 9500);
+    var closeMarketPopoverTimeout = setTimeout(hideMarketPopover, 13000);
 }
 
 
@@ -115,7 +178,7 @@ function showMarket(market) {
         });
         
         // =======================================================
-        // Ausgabe auf der linken Navbar Anfang
+        // Ausgabe auf der linken Navbar Anfang (BIOMÄRKTE)
         
         var link = document.createElement("a");        
         
@@ -144,7 +207,7 @@ function showMarket(market) {
         
         
         // =======================================================
-        // Ausgabe auf der linken Navbar Anfang
+        // Ausgabe auf der linken Navbar Anfang (WOCHENMÄRKTE)
         
         var link = document.createElement("a");        
         
@@ -183,8 +246,9 @@ function showMarket(market) {
     
     // Listen for user click on map to close any open info bubbles and remove navigation
     google.maps.event.addListener(map, "click", function () { 
-        infoBubble.close();
-        clearNavigation();        
+        infoBubble.close();              
+        clearNavigation(); 
+        hideUserBubble();        
     });
 
     google.maps.event.addListener(marker, 'click', infoBubbleHandler);
@@ -201,14 +265,13 @@ function routfinder(coords) {
 
 
 /*
- * Berechnet die Entfernung zu einem Punkt auf der Karte
+ * Zeichnet die Route zu einem Punkt auf der Karte
  */
 function showRoute() {    
     // löscht die alte ausgabe
     var navContent = document.getElementById('nav_content');
     navContent.innerHTML = "";    
         
-    
     var selectedMode = document.getElementById('mode').value;
     
     var request = {
@@ -365,4 +428,59 @@ function centerMap() {
  */
 function centerUser() {
     map.setCenter(this.userLatLng);
+}
+
+
+// ============= COOKIE ZONE ============= //
+
+// Create and Store a Cookie
+function setCookie(c_name,value,exdays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+    document.cookie = c_name + "=" + c_value;
+}
+
+// Get a Cookie Value
+function getCookie(c_name) {
+    var c_value = document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    
+    if (c_start == -1) {
+        c_start = c_value.indexOf(c_name + "=");
+    }
+    
+    if (c_start == -1) {
+        c_value = null;
+    } else {
+        
+        c_start = c_value.indexOf("=", c_start) + 1;
+        
+        var c_end = c_value.indexOf(";", c_start);
+        
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        
+        c_value = unescape(c_value.substring(c_start,c_end));
+    }
+
+    return c_value;
+}
+
+// Check a Cookie Value
+function checkCookie() {
+    
+    var username=getCookie("username");
+  
+    if (username!=null && username!="") {
+        alert("Welcome again " + username);
+    } else {
+        
+        username=prompt("Please enter your name:","");
+        
+        if (username!=null && username!="") {
+            setCookie("username",username,365);
+        }
+    }
 }
