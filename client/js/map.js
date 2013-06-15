@@ -124,7 +124,9 @@ function initialize(latlng, showUserMarker) {
     
     getAllMarkets();       
     
-    startTutorial();       
+    if(firstTime()) {
+        startTutorial();
+    }
 }
 
 
@@ -431,9 +433,9 @@ function centerUser() {
 }
 
 
-// ============= COOKIE ZONE ============= //
+// ============= COOKIE ZONE - NOM NOM NOM ============= //
 
-// Create and Store a Cookie
+// Erzeuge und Speichere einen Cookie
 function setCookie(c_name,value,exdays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
@@ -441,7 +443,7 @@ function setCookie(c_name,value,exdays) {
     document.cookie = c_name + "=" + c_value;
 }
 
-// Get a Cookie Value
+// Holt den Wert aus einem Cookie
 function getCookie(c_name) {
     var c_value = document.cookie;
     var c_start = c_value.indexOf(" " + c_name + "=");
@@ -452,8 +454,8 @@ function getCookie(c_name) {
     
     if (c_start == -1) {
         c_value = null;
-    } else {
         
+    } else {
         c_start = c_value.indexOf("=", c_start) + 1;
         
         var c_end = c_value.indexOf(";", c_start);
@@ -462,25 +464,24 @@ function getCookie(c_name) {
             c_end = c_value.length;
         }
         
-        c_value = unescape(c_value.substring(c_start,c_end));
+        c_value = unescape(c_value.substring(c_start, c_end));
     }
 
     return c_value;
 }
 
-// Check a Cookie Value
-function checkCookie() {
-    
-    var username=getCookie("username");
+// Kontrolliert ob es bereits einen gesetzten Cookie gibt
+function firstTime() {    
+    var cookie = getCookie("wasHereBevore");
   
-    if (username!=null && username!="") {
-        alert("Welcome again " + username);
-    } else {
+    if (cookie != null && cookie != "") {        
         
-        username=prompt("Please enter your name:","");
+        return false;
         
-        if (username!=null && username!="") {
-            setCookie("username",username,365);
-        }
+    } else {        
+        value="true";
+        setCookie("wasHereBevore", value, 365);
+
+        return true;
     }
 }
