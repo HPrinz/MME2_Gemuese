@@ -56,6 +56,10 @@
         </div>
       </div>
       
+      
+             
+      
+      
     <div id="myCarousel" class="carousel slide" data-pause="remove">
       <div class="carousel-inner">
           
@@ -94,7 +98,10 @@
                          <div class="slides">
                            <div id="beschreibung" class="slide selected"></div>
                            <div id="geschmack" class="slide after">Geschmack</div>
-                           <div id="rezepte" class="slide after">Rezepte</div>
+                           <div id="rezepte" class="slide after">
+                             <div id="recipeName"></div>
+                             <div id="recipePic"></div>
+                           </div>
                          </div>
                            <nav>
                              <ul>
@@ -110,8 +117,22 @@
             </div>
         </div>
           
+            
+          
       </div>
     </div>
+      <a href="#route_modal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+      
+      <!-- Navigations Popup -->  
+            <div class="modal fade" id="route_modal">
+                <div id="panel">
+                    <div class="modal-header">
+                        <h3>Navigation</h3>
+                    </div>
+                    <div class="modal-body" id="nav-popup">
+                    </div>
+                </div>
+            </div>
       
     <div class="container marketing">
       <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>

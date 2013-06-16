@@ -218,7 +218,6 @@ function proceedFruits(e) {
         singleGemueseDiv.appendChild(img);
         
         var breite = window.outerWidth;
-        console.log(breite);
         var gesamtZahl = 9;
         
         if (breite>1200){
@@ -269,8 +268,69 @@ function writeDescription() {
             document.getElementById("gemueseName").appendChild(document.createTextNode(currentFruits[i].name));
             document.getElementById("gemuesePic").appendChild(pic);
             document.getElementById("beschreibung").innerHTML = currentFruits[i].description;  
-
+            
+            makeRecipeRequest(currentFruits[i].name);
+            
     }
  }
+    
+}
 
+function makeRecipeRequest(veg) {
+    var xmlhttp = null;
+    this.recipes = new Array();
+
+    // Mozilla
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    // IE
+    else if (window.ActiveXObject) {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/rest/recipeREST/findByFruit/' + veg.toLowerCase(), true);
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState != 4) {
+            
+        }
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var response = JSON.parse(xmlhttp.responseText);
+            
+            var string = "";
+
+            for ( var i = 0; i < response.recipes.length; i++) {
+                
+                var temp = JSON.parse(response.recipes[i]);
+                recipes.push(temp);
+            }  
+            
+                document.getElementById("recipeName").innerHTML = "";
+                document.getElementById("recipePic").innerHTML = "";
+        
+            if(recipes.length>0){
+                
+                var image = document.createElement("image");
+                image.src=recipes[0].pictures[0]; 
+                
+        
+                
+                console.log(recipes[0].pictures[0]);
+                
+                document.getElementById("recipeName").innerHTML = recipes[0].name;
+                document.getElementById("recipePic").appendChild(image);
+                
+                image.onclick=function(){
+                   test();
+                };
+                
+            }
+        }
+    };
+    xmlhttp.send(null);
+    
+}
+
+function test(){
+     $('#route_modal').modal('show');
 }
