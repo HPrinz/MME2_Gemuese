@@ -70,7 +70,7 @@
               <div id="myhero">
                 <div class="mysite">
                   <div class="myslides">
-                    <div id="gemueseFirstDiv" class="slide selected" href="#myCarousel" data-slide="next"></div>
+                    <div id="gemueseFirstDiv" class="slide selected" href="#myCarousel"></div>
                     <div id="gemueseSecondDiv" href="#myCarousel" data-slide="next" class="slide after"></div> 
                   </div>
                     <nav>
@@ -116,23 +116,23 @@
               </div>
             </div>
         </div>
-          
-            
-          
+             
       </div>
     </div>
-      <a href="#route_modal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-      
+            
       <!-- Navigations Popup -->  
-            <div class="modal fade" id="route_modal">
-                <div id="panel">
-                    <div class="modal-header">
-                        <h3>Navigation</h3>
-                    </div>
-                    <div class="modal-body" id="nav-popup">
-                    </div>
-                </div>
+          <div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 id="myModalLabel"></h3>
             </div>
+            <div class="modal-body" id="recipe">
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary"><a href="javascript:window.print()">Save changes</a></button>
+            </div>
+          </div>
       
     <div class="container marketing">
       <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>

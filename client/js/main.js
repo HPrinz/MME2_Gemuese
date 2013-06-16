@@ -122,7 +122,7 @@ function getCurrentFruit(fruit) {
 function proceedFruits(e) {
     for(var i = 0; i < e.length; i++) {
         
-        this.singleGemueseDiv = document.createElement("div");
+        this.singleGemueseDiv = document.createElement('a');
         this.img = document.createElement("img");
         this.beschreibung = "";
         this.text = document.createElement("h1");
@@ -214,9 +214,12 @@ function proceedFruits(e) {
         }; 
       
         
+        singleGemueseDiv.href = "#myCarousel";                
+        singleGemueseDiv.setAttribute('data-slide', 'next');
+        
         singleGemueseDiv.id="singleGemueseDiv";
         singleGemueseDiv.appendChild(img);
-        
+
         var breite = window.outerWidth;
         var gesamtZahl = 9;
         
@@ -311,17 +314,60 @@ function makeRecipeRequest(veg) {
             if(recipes.length>0){
                 
                 var link = document.createElement('a');
-                link.href = "#route_modal";                
+                link.href = "#modal";                
                 link.setAttribute('data-toggle', 'modal');
                                                 
-                var image = document.createElement("image");
+                var image = document.createElement('img');
                 image.src=recipes[0].pictures[0];                 
                 
                 console.log(recipes[0].pictures[0]);
                 
                 document.getElementById("recipeName").innerHTML = recipes[0].name;
                 link.appendChild(image);
-                document.getElementById("recipePic").appendChild(link);                                                                                                                                
+                document.getElementById("recipePic").appendChild(link);   
+                
+                link.onclick=function(){
+                    var br = document.createElement("br");
+                    
+                   document.getElementById("myModalLabel").innerHTML = recipes[0].name;
+                
+                   var recImage = document.createElement('img');
+                   recImage.src=recipes[0].pictures[0];  
+                    
+                   document.getElementById("recipe").appendChild(recImage);
+                   
+                   var element = document.createElement('h3');
+                   element.appendChild(document.createTextNode("Zutaten"));
+                   document.getElementById("recipe").appendChild(element);
+                   document.getElementById("recipe").appendChild(br);
+                    
+                   var blub = new Array;
+                   
+                
+                   for (var i=0; i<recipes[0].ingridients.length; i++){
+                    
+                   var br = document.createElement("br");
+                   document.getElementById("recipe").appendChild(document.createTextNode(recipes[0].ingridients[i]));
+                   document.getElementById("recipe").appendChild(br);
+
+                   } 
+
+
+                   var zubereitung = document.createElement('h3');
+                   zubereitung.appendChild(document.createTextNode("Zubereitung"));
+                   document.getElementById("recipe").appendChild(zubereitung); 
+                   document.getElementById("recipe").appendChild(br);
+                    
+                   blub = recipes[0].description.split("~");
+                   for (var j=0; j<blub.length; j++){
+                    
+                   var br = document.createElement("br");
+                   document.getElementById("recipe").appendChild(document.createTextNode(blub[j]));
+                   document.getElementById("recipe").appendChild(br);
+
+                   }   
+                    
+                }
             }
         }
     };
