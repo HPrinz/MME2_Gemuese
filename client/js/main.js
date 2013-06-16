@@ -310,27 +310,21 @@ function makeRecipeRequest(veg) {
         
             if(recipes.length>0){
                 
+                var link = document.createElement('a');
+                link.href = "#route_modal";                
+                link.setAttribute('data-toggle', 'modal');
+                                                
                 var image = document.createElement("image");
-                image.src=recipes[0].pictures[0]; 
-                
-        
+                image.src=recipes[0].pictures[0];                 
                 
                 console.log(recipes[0].pictures[0]);
                 
                 document.getElementById("recipeName").innerHTML = recipes[0].name;
-                document.getElementById("recipePic").appendChild(image);
-                
-                image.onclick=function(){
-                   test();
-                };
-                
+                link.appendChild(image);
+                document.getElementById("recipePic").appendChild(link);                                                                                                                                
             }
         }
     };
     xmlhttp.send(null);
     
-}
-
-function test(){
-     $('#route_modal').modal('show');
 }
