@@ -58,24 +58,24 @@ function makeHttpRequest() {
     }
 
     xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/rest/gemueseREST/list', true);
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState != 4) {
-            
-        }
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var response = JSON.parse(xmlhttp.responseText);
-            var string = "";
-
-            for ( var i = 0; i < response.fruits.length; i++) {
+        xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState != 4) {
+                    
+                }
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var response = JSON.parse(xmlhttp.responseText);
+                var string = "";
+    
+                for ( var i = 0; i < response.fruits.length; i++) {
+                    
+                    var temp = JSON.parse(response.fruits[i]);
+                    fruits.push(temp);
+                    string = string + " " + temp.name;
+                }  
                 
-                var temp = JSON.parse(response.fruits[i]);
-                fruits.push(temp);
-                string = string + " " + temp.name;
-            }  
-            
-            getCurrentFruitList();
-        }
-    };
+                getCurrentFruitList();
+            }
+        };
     xmlhttp.send(null);
 }
 
@@ -279,14 +279,15 @@ function writeDescription() {
     
 }
 
+
 function makeRecipeRequest(veg) {
     var xmlhttp = null;
     this.recipes = new Array();
-
     // Mozilla
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
+    
     // IE
     else if (window.ActiveXObject) {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -294,45 +295,67 @@ function makeRecipeRequest(veg) {
 
     xmlhttp.open("GET", 'http://127.0.0.1:9090/gemuese/rest/recipeREST/findByFruit/' + veg.toLowerCase(), true);
     xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState != 4) {
-            
-        }
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var response = JSON.parse(xmlhttp.responseText);
-            
-            var string = "";
-
-            for ( var i = 0; i < response.recipes.length; i++) {
-                
-                var temp = JSON.parse(response.recipes[i]);
-                recipes.push(temp);
-            }  
-            
-                document.getElementById("recipeName").innerHTML = "";
-                document.getElementById("recipePic").innerHTML = "";
         
-            if(recipes.length>0){
+    if (xmlhttp.readyState != 4) {
+            
+    }
+        
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var response = JSON.parse(xmlhttp.responseText);
+            
+        var string = "";
+
+        for ( var i = 0; i < response.recipes.length; i++) {
                 
+            var temp = JSON.parse(response.recipes[i]);
+            recipes.push(temp);
+        }  
+            document.getElementById("recipeUebersicht").innerHTML = "";
+            
+        
+        if (recipes.length>0) {
+            
+            for(var a = 0; a < recipes.length; a++) {
+                var recDiv = document.createElement('div');
+                recDiv.innerHTML="";
+                recDiv.id="recDiv";
                 var link = document.createElement('a');
-                link.href = "#modal";                
+                link.href = "#modal";  
                 link.setAttribute('data-toggle', 'modal');
                                                 
                 var image = document.createElement('img');
-                image.src=recipes[0].pictures[0];                 
+                image.className="smallPic img-polaroid";
+                image.id="" + a;
+                image.src=recipes[a].pictures[0];                 
                 
-                console.log(recipes[0].pictures[0]);
-                
-                document.getElementById("recipeName").innerHTML = recipes[0].name;
+                recDiv.appendChild(document.createTextNode(recipes[a].name));
                 link.appendChild(image);
-                document.getElementById("recipePic").appendChild(link);   
+                recDiv.appendChild(link);  
+                document.getElementById("recipeUebersicht").appendChild(recDiv);
                 
                 link.onclick=function(){
-                    var br = document.createElement("br");
+                   eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
+                   //console.log(event.srcElement)
+                   setModuleText(eventSrcID);
+                }
+            }     
+        }
+    }    
+    };
+
+    xmlhttp.send(null);   
+}
+
+function setModuleText(id){
+     var br = document.createElement("br");
                     
-                   document.getElementById("myModalLabel").innerHTML = recipes[0].name;
+                   document.getElementById("myModalLabel").innerHTML = recipes[id].name;
                 
                    var recImage = document.createElement('img');
-                   recImage.src=recipes[0].pictures[0];  
+                   recImage.id="recImage";
+                   recImage.src=recipes[id].pictures[0]; 
+                    
+                   document.getElementById("recipe").innerHTML="";
                     
                    document.getElementById("recipe").appendChild(recImage);
                    
@@ -344,10 +367,10 @@ function makeRecipeRequest(veg) {
                    var blub = new Array;
                    
                 
-                   for (var i=0; i<recipes[0].ingridients.length; i++){
+                   for (var i=0; i<recipes[id].ingridients.length; i++){
                     
                    var br = document.createElement("br");
-                   document.getElementById("recipe").appendChild(document.createTextNode(recipes[0].ingridients[i]));
+                   document.getElementById("recipe").appendChild(document.createTextNode(recipes[id].ingridients[i]));
                    document.getElementById("recipe").appendChild(br);
 
                    } 
@@ -358,19 +381,12 @@ function makeRecipeRequest(veg) {
                    document.getElementById("recipe").appendChild(zubereitung); 
                    document.getElementById("recipe").appendChild(br);
                     
-                   blub = recipes[0].description.split("~");
+                   blub = recipes[id].description.split("~");
                    for (var j=0; j<blub.length; j++){
                     
                    var br = document.createElement("br");
                    document.getElementById("recipe").appendChild(document.createTextNode(blub[j]));
                    document.getElementById("recipe").appendChild(br);
 
-                   }   
-                    
-                }
-            }
-        }
-    };
-    xmlhttp.send(null);
-    
+                   }        
 }
