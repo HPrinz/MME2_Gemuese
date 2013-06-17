@@ -272,7 +272,7 @@ function showMarket(market) {
 function routfinder(coords) {
     this.marketCoords = coords;
     $('#route_modal').modal('show');
-    showRoute();
+    showRoute();    
 }
 
 
@@ -282,8 +282,7 @@ function routfinder(coords) {
 function showRoute() {    
     // löscht die alte ausgabe
     var navContent = document.getElementById('nav_content');    
-    navContent.innerHTML = "";    
-        
+    navContent.innerHTML = "";        
     var selectedMode = document.getElementById('mode').value;
     
     var request = {
