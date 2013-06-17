@@ -271,7 +271,8 @@ function showMarket(market) {
  */
 function routfinder(coords) {
     this.marketCoords = coords;
-    $('#route_modal').modal('show');     
+    $('#route_modal').modal('show');
+    showRoute();
 }
 
 
@@ -280,7 +281,7 @@ function routfinder(coords) {
  */
 function showRoute() {    
     // löscht die alte ausgabe
-    var navContent = document.getElementById('nav_content');
+    var navContent = document.getElementById('nav_content');    
     navContent.innerHTML = "";    
         
     var selectedMode = document.getElementById('mode').value;
