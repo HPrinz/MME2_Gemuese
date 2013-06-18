@@ -30,6 +30,7 @@ fieldset#type {
 th.fruitname{
 	text-align: right;
 	font-size: 13px;
+	color = black !important;
 }
 
 #tiles tr:first-child th {

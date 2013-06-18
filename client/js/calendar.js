@@ -180,10 +180,10 @@ function createTiles(type, fruitsArray) {
 		if ((fruitsArray[d].vegetable == false && type == "obst")
 				|| (fruitsArray[d].vegetable == true && type == "gemuese") || type == "all") {
 			html += '<tr class="d' + d + '">';
-			html += '<th class="fruitname">' + fruitsArray[d].name + '</th>';
+			html += '<th class="fruitname"><a href="index.html">' + fruitsArray[d].name + '</a></th>';
 			for ( var h = 0; h < months.length; h++) {
 
-				var mm = new Date().getMonth() + 1;
+				var mm = new Date().getMonth();
 				if (h === mm) {
 					html += '<td class="tdcurr" id="d'
 							+ d
