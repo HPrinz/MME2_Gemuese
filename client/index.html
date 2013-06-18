@@ -99,8 +99,7 @@
                            <div id="beschreibung" class="slide selected"></div>
                            <div id="geschmack" class="slide after">Geschmack</div>
                            <div id="rezepte" class="slide after">
-                             <div id="recipeName"></div>
-                             <div id="recipePic"></div>
+                             <div id="recipeUebersicht"></div>
                            </div>
                          </div>
                            <nav>
@@ -130,7 +129,7 @@
             </div>
             <div class="modal-footer">
               <button class="btn" data-dismiss="modal">Close</button>
-              <button class="btn btn-primary"><a href="javascript:window.print()">Save changes</a></button>
+              <a href="print.html" class="btn btn-info" target="Printview" onclick="popUp('about:blank','Printview','pri');">Druckansicht</a>
             </div>
           </div>
       
@@ -151,6 +150,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/app.js"></script>
     <script src="js/app2.js"></script>
+    <script src="js/popup.js"></script>
     <script src="js/main.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
