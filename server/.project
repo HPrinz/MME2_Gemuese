@@ -187,9 +187,19 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>client/img/recipePics</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>client/img/slider.jpg</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/client/img/slider.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/stripes.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/stripes.jpg</locationURI>
 		</link>
 		<link>
 			<name>client/img/up.png</name>
@@ -290,6 +300,101 @@
 			<name>client/img/marker/user.png</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/client/img/marker/user.png</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/1.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/1.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/2.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/2.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/3.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/3.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/4.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/4.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/5.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/5.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/6.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/6.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/apfelhackfleischfuellung.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/apfelhackfleischfuellung.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/apfelkarottensalat.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/apfelkarottensalat.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/apfelkartoffelgratin.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/apfelkartoffelgratin.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/apfelquarkpuffer.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/apfelquarkpuffer.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/apfelwalnusscrumble.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/apfelwalnusscrumble.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/englischerApfelkuchen.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/englischerApfelkuchen.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/erdbeerenbasilikummousse.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/erdbeerenbasilikummousse.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/erdbeergruetze.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/erdbeergruetze.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/erdbeerlasagne.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/erdbeerlasagne.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/erdbeermichel.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/erdbeermichel.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/erdbeerquarkstrudel.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/erdbeerquarkstrudel.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/erdbeerschokotorte.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/erdbeerschokotorte.jpg</locationURI>
+		</link>
+		<link>
+			<name>client/img/recipePics/pastalachserdbeersauce.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/client/img/recipePics/pastalachserdbeersauce.jpg</locationURI>
 		</link>
 		<link>
 			<name>client/img/vegies/acorn_squash.png</name>

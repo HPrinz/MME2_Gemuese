@@ -1,89 +1,16 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-weight: inherit;
-	font-style: inherit;
-	font-size: 100%;
-	font-family: inherit;
-	vertical-align: baseline;
-}
 
 /* tables still need 'cellspacing="0"' in the markup */
 table {
 	border-collapse: separate;
 	border-spacing: 0;
-}
-
-
-body {
 	font: 13px/16px "ff-dagny-web-pro-1","ff-dagny-web-pro-2",sans-serif;
 	color: #333;
 	position: relative;
 }
 
-#container {
-	width: 960px;
-	margin: 0 auto;
-	padding: 30px 0 10px 0;
-	position: relative;
-}
-
-#controls fieldset {
-	width: 250px;
-}
-
-#controls span {
-	float: left;
-	width: 120px;
-	clear: left;
-}
-
-#controls button {
-	float: left;
-}
-
-fieldset#state label, fieldset#state input {
-	display: none;
-}
-
-fieldset#state.ff3 {
-	width: 500px;
-}
-
-fieldset#state.ff3 label {
-	display: block !important;
-}
-
 fieldset#type {
 	margin-right: 49px;
 	float: left;
-}
-
-#state_all_label {
-	display: inline !important;
-}
-
-#scale {
-	float: right;
-}
-
-#scale ul {
-	list-style-type: none;
-}
-
-#scale li {
-	float: left;
-	width: 15px;
-	height: 15px;
 }
 
 #vis {
@@ -121,6 +48,8 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 
 #tiles tdcurr {
 	background: #000000;
+	border-color: #000000;
+	border-radius: 2px;
 	-webkit-perspective: 1000;
 }
 
@@ -134,10 +63,7 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 
 #tiles .tilecurr {
 	width: 82px;
-	height: 30px;
-	position: relative;
-	-webkit-transform-style: preserve-3d;
-	-webkit-transition: 0.7s;
+	height: 27px;
 }
 
 .face {
@@ -151,13 +77,8 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 }
 
 .facecurr {
-	position: absolute;
-	-webkit-backface-visibility: hidden;
-	width: 78px;
-	height: 28px;
-	background: #eee;
-	border: 1px solid white;
-	border-radius: 4px;
+	width: 80px;
+	height: 25px;
 }
 
 #tiles td.sel .face {
@@ -239,35 +160,6 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	margin-top: 250px;
 }
 
-#states_nav p {
-	margin-left: 4px;
-}
-
-#wtf {
-	float: left;
-	width: 515px;
-}
-
-#poweredby {
-	float: right !important;
-	margin-top: -11px !important;
-}
-
-
-#wtf .title {
-	background: #fdf;
-}
-
-
-#header h1, #header p#subtitle {
-	margin-left: 18px;
-}
-
-#footer {
-	clear: both;
-	margin: 25px !important;
-}
-
 .controls {
 	margin: 0 0 20px 7px;
 	font-size: 12px;
@@ -319,7 +211,6 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	color: #888;
 	font-size: 12px;
 	margin: 0;
-	
 }
 
 .controls button:hover {
@@ -334,50 +225,6 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	border: 1px solid #333;
 	cursor: default;
 }
-
-h2 {
-	margin-top: -2px;
-	font-size: 28px;
-	line-height: 28px;
-	margin-bottom: 30px;
-	width: 250px;
-	margin-left: -50px;
-	z-index: -1337;
-	text-align: center;
-}
-
-p.subtitle {
-	font-size: 13px;
-	line-height: 19px;
-	padding-top: 2px;
-	color: #999;
-}
-
-
-
-html.ie8 #vis, html.ie9 #vis {
-	height: 285px !important;
-}
-
-html.ie8 #tiles td.sel .face {
-	border-color: white !important;
-}
-
-#ie8_percents {
-	display: none;
-}
-
-#ie8_percents.ff3 {
-	display: block;
-}
-
-html.ie8 #ie8_percents, #ie8_percents.ff3 {
-	display: block !important;
-	position: absolute;
-	left: 20px;
-	top: 510px;
-}
-
 
 /* 11 buckets purple to red */
 
