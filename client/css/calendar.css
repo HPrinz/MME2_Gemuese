@@ -152,7 +152,7 @@ to {
 	height: 25px;
 	font-size: 12px;
 	text-align: center;
-	color: black;
+	color: rgba(0, 0, 0, 0);
 }
 
 #legend .lihover {
@@ -164,6 +164,7 @@ to {
 {
 to {
 	width: 150px;
+	color: rgba(0, 0, 0, 1);
 }
 }
 
