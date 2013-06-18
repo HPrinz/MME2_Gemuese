@@ -1,9 +1,8 @@
-
 /* tables still need 'cellspacing="0"' in the markup */
 table {
 	border-collapse: separate;
 	border-spacing: 0;
-	font: 13px/16px "ff-dagny-web-pro-1","ff-dagny-web-pro-2",sans-serif;
+	font: 13px/16px "ff-dagny-web-pro-1", "ff-dagny-web-pro-2", sans-serif;
 	color: #333;
 	position: relative;
 }
@@ -32,7 +31,7 @@ fieldset#type {
 
 th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.h17, th.h18, th.h19 {
 	color: #444 !important;
-}  
+}
 
 #tiles tr th {
 	padding-top: 12px;
@@ -109,11 +108,10 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	border: 1px solid white;
 }
 
-
 #legend {
 	clear: left;
 	margin-left: 60px;
-	width: 165px;
+	width: 205px;
 	color: #777;
 	margin-top: 10px;
 	background: #f3f3f3;
@@ -128,6 +126,19 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 	margin-right: 24px;
 }
 
+.leghover {
+	-webkit-animation: big 1s;
+	-webkit-animation-direction: alternate;
+	-webkit-animation-iteration-count:2;
+}
+
+@-webkit-keyframes big
+{
+to {
+	width: 325px;
+}
+}
+
 #legend ul {
 	list-style-type: none;
 	overflow: hidden;
@@ -137,9 +148,25 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 #legend li {
 	float: left;
 	margin-right: 1px;
-	width: 40px;
+	width: 50px;
 	height: 25px;
+	font-size: 12px;
+	text-align: center;
+	color: black;
 }
+
+#legend .lihover {
+	-webkit-animation: small 1s;
+	-webkit-animation-direction: alternate;
+	-webkit-animation-iteration-count:2;
+}
+@-webkit-keyframes small
+{
+to {
+	width: 150px;
+}
+}
+
 
 #legend p {
 	margin-top: 3px;
@@ -228,20 +255,19 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 
 /* 11 buckets purple to red */
 
-.rbow2 .q1-4 {
+.rbow2 .fresh {
 	background: #669933;
 }
 
-.rbow2 .q2-4 {
+.rbow2 .greenhouse {
 	background: #99cc33;
 }
 
-.rbow2 .q3-4 {
+.rbow2 .storage {
 	background: #cccc66;
 }
 
-.rbow2 .q4-4 {
+.rbow2 .none {
 	background: #BDBDBD;
 }
-
 

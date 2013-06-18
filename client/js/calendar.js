@@ -28,7 +28,7 @@ function initVariables(f) {
 
 	var fruitsArray = f;
 
-//	console.log("fruitsArray = " + fruitsArray);
+	// console.log("fruitsArray = " + fruitsArray);
 
 	// four colors
 	var buckets = 4;
@@ -41,17 +41,15 @@ function initVariables(f) {
 		mob : 'Obst'
 	};
 
-	months = [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep',
-			'Okt', 'Nov', 'Dez' ];
+	months = [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ];
 
-	monthsEng = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
-			'sep', 'oct', 'nov', 'dec' ];
+	monthsEng = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ];
 
 	// for the colors TODO what is vis?
 	d3.select('#vis').classed(colorScheme, true);
 
 	createTiles("all", fruitsArray);
-	reColorTiles('obst', fruitsArray, buckets);
+	reColorTiles('obst', fruitsArray);
 
 	/* ************************** */
 
@@ -73,26 +71,52 @@ function initVariables(f) {
 	// tiles mouseover events
 	$('#tiles td').hover(function() {
 		$(this).addClass('sel');
+		$("#legend").addClass("leghover");
+		
+		var classlist = $("#" + $(this).attr('id') + " .tile .back").attr("class").split(/\s+/);
+		$.each(classlist, function(index, item) {
+			if (item == "fresh") {
+				$("#leg_fresh").addClass("lihover");
+				$("#leg_fresh").text("Frisch");
+			} else if (item == "greenhouse") {
+				$("#leg_greenhouse").addClass("lihover");
+				$("#leg_greenhouse").text("Gewächshaus");
+			} else if (item == "storage") {
+				$("#leg_storage").addClass("lihover");
+				$("#leg_storage").text("Lager");
+			} else if (item == "none") {
+				$("#leg_none").addClass("lihover");
+				$("#leg_none").text("Keine Saison");
+			}
+		});
+		
 
 	}, function() {
 		$(this).removeClass('sel');
+		$("#legend").removeClass("leghover");
+		var classlist = $("#" + $(this).attr('id') + " .tile .back").attr("class").split(/\s+/);
+		$.each(classlist, function(index, item) {
+			if (item == "fresh") {
+				$("#leg_fresh").removeClass("lihover");
+				$("#leg_fresh").text("");
+			} else if (item == "greenhouse") {
+				$("#leg_greenhouse").removeClass("lihover");
+				$("#leg_greenhouse").text("");
+			} else if (item == "storage") {
+				$("#leg_storage").removeClass("lihover");
+				$("#leg_storage").text("");
+			} else if (item == "none") {
+				$("#leg_none").removeClass("lihover");
+				$("#leg_none").text("");
+			}
+		});
 	});
 }
 
 /* ************************** */
 
-function reColorTiles(state, fruitsArray, buckets) {
+function reColorTiles(state, fruitsArray) {
 
-	var range = [];
-	
-	for ( var i = 1; i <= buckets; i++) {
-		range.push(i);
-	}
-
-	// console.log("range: " + range);
-	// console.log("calcs: " + calcs.min + "/" + calcs.max);
-
-	var bucket = d3.scale.quantize().domain([ 0, 4 ]).range(range);
 	var side = d3.select('#tiles').attr('class');
 
 	if (side === 'front') {
@@ -100,8 +124,6 @@ function reColorTiles(state, fruitsArray, buckets) {
 	} else {
 		side = 'front';
 	}
-
-//	console.log("length: " + fruitsArray[0].season.length);
 
 	for ( var d = 0; d < fruitsArray.length; d++) {
 		for ( var h = 0; h <= monthsEng.length; h++) {
@@ -112,32 +134,7 @@ function reColorTiles(state, fruitsArray, buckets) {
 
 			var val = fruitsArray[d].season[mon];
 
-			if (val === "none") {
-				val = 3;
-			} else if (val === "storage") {
-				val = 2;
-			} else if (val === "greenhouse") {
-				val = 1;
-			} else if (val === "fresh") {
-				val = 0;
-			}
-
-			// console.log("sel: " + sel);
-			// console.log("val: " + val);
-
-			// erase all previous bucket designations on this cell
-			for ( var i = 1; i <= buckets; i++) {
-				var cls = 'q' + i + '-' + buckets;
-				d3.select(sel).classed(cls, false);
-			}
-
-			// set new bucket designation for this cell
-			var cls = 'q' + (val > 0 ? bucket(val) : 1) + '-' + buckets;
-
-			// console.log("cls = " + (val > 0 ?bucket(val) : 0) + "-" +
-			// buckets);
-
-			d3.select(sel).classed(cls, true);
+			$(sel).addClass(val);
 		}
 	}
 	flipTiles(fruitsArray);
@@ -170,8 +167,7 @@ function flipTiles(fruitsArray) {
 	for ( var h = 0; h < months.length; h++) {
 		for ( var d = 0; d < fruitsArray.length; d++) {
 			var side = d3.select('#tiles').attr('class');
-			setTimeout(flipper(h, d, side), (h * 20) + (d * 20)
-					+ (Math.random() * 10));
+			setTimeout(flipper(h, d, side), (h * 20) + (d * 20) + (Math.random() * 10));
 		}
 	}
 	d3.select('#tiles').attr('class', newSide);
@@ -193,8 +189,7 @@ function createTiles(type, fruitsArray) {
 
 	for ( var d = 0; d < fruitsArray.length; d++) {
 		if ((fruitsArray[d].vegetable == false && type == "obst")
-				|| (fruitsArray[d].vegetable == true && type == "gemuese")
-				|| type == "all") {
+				|| (fruitsArray[d].vegetable == true && type == "gemuese") || type == "all") {
 			html += '<tr class="d' + d + '">';
 			html += '<th>' + fruitsArray[d].name + '</th>';
 			for ( var h = 0; h < months.length; h++) {
