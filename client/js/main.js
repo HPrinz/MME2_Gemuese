@@ -11,7 +11,6 @@ window.onload = function() {
         document.getElementById("gemueseSecondDiv").innerHTML = "";
         proceedFruits(currentFruits);
         }
-
    
 };
 
@@ -337,6 +336,7 @@ function makeRecipeRequest(veg) {
                    eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
                    //console.log(event.srcElement)
                    setModuleText(eventSrcID);
+                   
                 }
             }     
         }
@@ -350,7 +350,8 @@ function setModuleText(id){
      var br = document.createElement("br");
                     
                    document.getElementById("myModalLabel").innerHTML = recipes[id].name;
-                
+                   
+                   localStorage.setItem('recipename', document.getElementById("myModalLabel").innerHTML);
                    var recImage = document.createElement('img');
                    recImage.id="recImage";
                    recImage.src=recipes[id].pictures[0]; 
@@ -387,6 +388,11 @@ function setModuleText(id){
                    var br = document.createElement("br");
                    document.getElementById("recipe").appendChild(document.createTextNode(blub[j]));
                    document.getElementById("recipe").appendChild(br);
+                       
+                  
 
-                   }        
+                   } 
+    
+                   localStorage.setItem('recipe', document.getElementById("recipe").innerHTML);
+    
 }
