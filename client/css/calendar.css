@@ -15,7 +15,6 @@ fieldset#type {
 #vis {
 	clear: all;
 	margin-bottom: 20px;
-	height: 370px;
 	height: 350px;
 }
 
@@ -25,16 +24,12 @@ fieldset#type {
 }
 
 #tiles th {
-	vertical-align: top;
 	padding: 3px;
 }
 
-th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.h17, th.h18, th.h19 {
-	color: #444 !important;
-}
-
-#tiles tr th {
-	padding-top: 12px;
+th.fruitname{
+	text-align: right;
+	font-size: 13px;
 }
 
 #tiles tr:first-child th {
@@ -53,31 +48,31 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 }
 
 #tiles .tile {
-	width: 62px;
-	height: 27px;
+	width: 70px;
+	height: 29px;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
 	-webkit-transition: 0.7s;
 }
 
 #tiles .tilecurr {
-	width: 82px;
-	height: 27px;
+	width: 92px;
+	height: 29px;
 }
 
 .face {
 	position: absolute;
 	-webkit-backface-visibility: hidden;
-	width: 60px;
-	height: 25px;
+	width: 68px;
+	height: 27px;
 	background: #eee;
 	border: 1px solid white;
 	border-radius: 4px;
 }
 
 .facecurr {
-	width: 80px;
-	height: 25px;
+	width: 90px;
+	height: 27px;
 }
 
 #tiles td.sel .face {
@@ -109,65 +104,43 @@ th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.
 }
 
 #legend {
-	clear: left;
-	margin-left: 60px;
-	width: 205px;
-	color: #777;
-	margin-top: 10px;
-	background: #f3f3f3;
-	border: 1px solid #f0f0f0;
-	overflow: hidden;
-	padding: 5px 7px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	margin-right: 200px;
 	font-size: 11px;
-	line-height: 11px;
-	margin-bottom: 10px;
-	margin-right: 24px;
-}
-
-.leghover {
-	-webkit-animation: big 1s;
-	-webkit-animation-direction: alternate;
-	-webkit-animation-iteration-count:2;
-}
-
-@-webkit-keyframes big
-{
-to {
-	width: 325px;
-}
+	text-align: right;
+	float: right;
 }
 
 #legend ul {
 	list-style-type: none;
 	overflow: hidden;
 	clear: both;
+	margin-top: 0px;
 }
 
 #legend li {
-	float: left;
+	float: right;
 	margin-right: 1px;
-	width: 50px;
-	height: 25px;
-	font-size: 12px;
+	width: 70px;
+	height: 27px;
+	font-size: 13px;
 	text-align: center;
 	color: rgba(0, 0, 0, 0);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: bold;
 }
 
 #legend .lihover {
 	-webkit-animation: small 1s;
 	-webkit-animation-direction: alternate;
-	-webkit-animation-iteration-count:2;
+	-webkit-animation-iteration-count: 2;
 }
 @-webkit-keyframes small
 {
 to {
-	width: 150px;
+	width: 200px;
 	color: rgba(0, 0, 0, 1);
 }
 }
-
 
 #legend p {
 	margin-top: 3px;
@@ -181,17 +154,11 @@ to {
 	float: left;
 }
 
-#states_nav {
-	width: 400px;
-	float: left;
-	margin-left: 20px;
-	margin-top: 250px;
-}
-
 .controls {
-	margin: 0 0 20px 7px;
+	margin: 13px 20px 0px 85px;
 	font-size: 12px;
 	line-height: 12px;
+	float: left;
 }
 
 .controls input {

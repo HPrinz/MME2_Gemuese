@@ -54,45 +54,35 @@
 				</div>
 			</div>
 
-				<div id="legend" class="rbow2">
-					<ul>
-						<li id="leg_none" class="none"></li>
-						<li id="leg_storage" class="storage"></li>
-						<li id="leg_greenhouse" class="greenhouse"></li>
-						<li id="leg_fresh" class="fresh"></li>
+			<div class="controls">
+				<fieldset id="type">
+					<input type="radio" id="type_all" name="type" value="all" checked="checked"/>
+					<label for="type_all" class="sel"><span class="all">Alle Früchte</span></label>
+					<input type="radio" id="type_pc" name="type" value="obst"/>
+					<label for="type_pc"><span class="pc">Obst</span></label>
+					<input type="radio" id="type_mob" name="type" value="gemuese"/>
+					<label for="type_mob"><span class="mob">Gemüse</span></label>
+				</fieldset>
+			</div>
+			<div id="legend" class="rbow2">
+				Legende:
+				<ul>
+					<li id="leg_fresh" class="fresh"></li>
+					<li id="leg_greenhouse" class="greenhouse"></li>
+					<li id="leg_storage" class="storage"></li>
+					<li id="leg_none" class="none"></li>
+				</ul>
+			</div>
+		<!-- <div id="states_nav">
 
-					</ul>
-					<p class="more">
-						Saison
-					</p>
-					<p class="less">
-						Keine Saison
-					</p>
-				</div>
+		</div> -->
 
-				<div id="vis"></div>
-				<div id="states_nav">
+		<div id="vis"></div>
 
-					<div class="controls">
-						<fieldset id="type">
-							<input type="radio" id="type_all" name="type" value="all" checked="checked"/>
-							<label for="type_all" class="sel"><span class="all">Alle Früchte</span></label>
-							<input type="radio" id="type_pc" name="type" value="obst"/>
-							<label for="type_pc"><span class="pc">Obst</span></label>
-							<input type="radio" id="type_mob" name="type" value="gemuese"/>
-							<label for="type_mob"><span class="mob">Gemüse</span></label>
-						</fieldset>
-					</div>
-					<div id="map">
-						</map>
-					</div>
-				</div>
+		</div>
 
 	</body>
-	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="js/d3.v3.min.js"></script>
 	<script src="js/calendar.js?v=1.01"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 
 </html>

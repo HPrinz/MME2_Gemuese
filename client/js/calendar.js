@@ -28,24 +28,15 @@ function initVariables(f) {
 
 	var fruitsArray = f;
 
-	// console.log("fruitsArray = " + fruitsArray);
-
 	// four colors
 	var buckets = 4;
 
 	var colorScheme = 'rbow2';
 
-	var types = {
-		obst : 'Alle',
-		gemuese : 'Gemüse',
-		mob : 'Obst'
-	};
-
 	months = [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ];
 
 	monthsEng = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ];
 
-	// for the colors TODO what is vis?
 	d3.select('#vis').classed(colorScheme, true);
 
 	createTiles("all", fruitsArray);
@@ -71,7 +62,6 @@ function initVariables(f) {
 	// tiles mouseover events
 	$('#tiles td').hover(function() {
 		$(this).addClass('sel');
-		$("#legend").addClass("leghover");
 		
 		var classlist = $("#" + $(this).attr('id') + " .tile .back").attr("class").split(/\s+/);
 		$.each(classlist, function(index, item) {
@@ -93,7 +83,6 @@ function initVariables(f) {
 
 	}, function() {
 		$(this).removeClass('sel');
-		$("#legend").removeClass("leghover");
 		var classlist = $("#" + $(this).attr('id') + " .tile .back").attr("class").split(/\s+/);
 		$.each(classlist, function(index, item) {
 			if (item == "fresh") {
@@ -191,7 +180,7 @@ function createTiles(type, fruitsArray) {
 		if ((fruitsArray[d].vegetable == false && type == "obst")
 				|| (fruitsArray[d].vegetable == true && type == "gemuese") || type == "all") {
 			html += '<tr class="d' + d + '">';
-			html += '<th>' + fruitsArray[d].name + '</th>';
+			html += '<th class="fruitname">' + fruitsArray[d].name + '</th>';
 			for ( var h = 0; h < months.length; h++) {
 
 				var mm = new Date().getMonth() + 1;
