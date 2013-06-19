@@ -350,8 +350,7 @@ function setModuleText(id){
      var br = document.createElement("br");
                     
                    document.getElementById("myModalLabel").innerHTML = recipes[id].name;
-                   
-                   localStorage.setItem('recipename', document.getElementById("myModalLabel").innerHTML);
+                                      
                    var recImage = document.createElement('img');
                    recImage.id="recImage";
                    recImage.src=recipes[id].pictures[0]; 
@@ -393,6 +392,11 @@ function setModuleText(id){
 
                    } 
     
-                   localStorage.setItem('recipe', document.getElementById("recipe").innerHTML);
+                   
     
+}
+
+function printRecipe() {
+    localStorage.setItem('print-header', document.getElementById("myModalLabel").innerHTML);
+    localStorage.setItem('print-body', document.getElementById("recipe").innerHTML);
 }

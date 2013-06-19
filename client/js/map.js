@@ -451,9 +451,7 @@ function clearOverlays() {
  */
 function centerMap() {
     eventSrcID = (event.srcElement)?event.srcElement.id:'undefined';
-    eventtype = event.type;        
-
-    console.log(eventSrcID);    
+    eventtype = event.type;         
     
     var temp01 = eventSrcID.split("(",2);    
     var temp02 = temp01[1].split(")",1);
@@ -512,6 +510,15 @@ function getAirDistance(marketPosition) {
     var formattedDistance = temp.replace(".", ",");
 
     return formattedDistance;
+}
+
+
+/*
+ * Bereitet die print.html vor und öffnet das Druckerfenster
+ */
+function printNavi() {
+    localStorage.setItem('print-header', 'Navigation');
+    localStorage.setItem('print-body', document.getElementById("nav_content").innerHTML);
 }
 
 
