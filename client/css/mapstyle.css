@@ -61,3 +61,9 @@
 #auswahl {
     margin-top: 8px;
 }
+
+#distance {
+    float: right;
+    font-size: 9pt;
+    margin-top: 1px;    
+}

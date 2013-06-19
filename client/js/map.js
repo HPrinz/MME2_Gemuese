@@ -132,7 +132,7 @@ function initialize(latlng, showUserMarker) {
     }
 }
 
-
+// Tutorial-Stuff
 function showUserBubble() {    
     this.userInfoBubble.open(this.map, this.userMarker);
 }
@@ -179,25 +179,11 @@ function showMarket(market) {
             position: latlng,
             map: map,
             title: market.name,
-            icon: "img/marker/supermarket.png"
+            icon: "img/marker/supermarket.png",
+            distance: getAirDistance(latlng),
+            type: "Supermarkt",
+            address: market.address.split(",",1)
         });
-        
-        // =======================================================
-        // Ausgabe auf der linken Navbar Anfang (BIOMÄRKTE)
-        
-        var link = document.createElement("a");        
-        
-        link.onclick=function() {
-              centerMap();       
-        };       
-        
-        link.id = latlng;        
-        var adresse = market.address.split(",",1);
-        link.innerHTML = adresse;
-        document.getElementById("biomarkt").appendChild(link);
-        
-        // Ausgabe auf der linken Navbar Ende        
-        // =======================================================
         
         this.biomarktArray.push(marker);
     }
@@ -207,27 +193,12 @@ function showMarket(market) {
             position: latlng,
             map: map,
             title: market.name,
-            icon: "img/marker/farmstand.png",            
+            icon: "img/marker/farmstand.png",
+            distance: getAirDistance(latlng),
+            type: "Wochenmarkt",
+            address: market.address.split(",",1)
         });
-        
-        
-        // =======================================================
-        // Ausgabe auf der linken Navbar Anfang (WOCHENMÄRKTE)
-        
-        var link = document.createElement("a");        
-        
-        link.onclick=function() {
-              centerMap();       
-        };       
-        
-        link.id = latlng;        
-        var adresse = market.address.split(",",1);
-        link.innerHTML = adresse;
-        document.getElementById("wochenmarkt").appendChild(link);
-        
-        // Ausgabe auf der linken Navbar Ende        
-        // =======================================================
-        
+                
         this.wochenmarktArray.push(marker);
     }
 
@@ -236,7 +207,7 @@ function showMarket(market) {
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Routenplanung" + '</a>' + '</div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Route" + '</a>' + '<p id="distance">' + marker.distance + ' km (Luftlinie)' + '</p></div>'
     });
 
     infoBubble.open(map, this.marker);
@@ -248,7 +219,7 @@ function showMarket(market) {
     };
     
     this.markersArray.push(marker);        
-      
+    
     var markerAndBubble = [];
     markerAndBubble.push(marker);
     markerAndBubble.push(infoBubble);
@@ -263,6 +234,62 @@ function showMarket(market) {
     });
 
     google.maps.event.addListener(marker, 'click', infoBubbleHandler);
+}
+
+
+/*
+ * Eine SelectionSort Implementierung
+ */
+function selectionSort () {
+    var i, j, tmp, tmp2;
+    for (var i = 0; i < this.markersArray.length - 1; i++) {
+        tmp = i;
+        for (var j = i + 1; j < this.markersArray.length; j++)
+            if (this.markersArray[j].distance < this.markersArray[tmp].distance)
+                tmp = j;
+ 
+        tmp2 = this.markersArray[tmp];
+        this.markersArray[tmp] = this.markersArray[i];
+        this.markersArray[i] = tmp2;
+    }
+}
+
+
+/*
+ * Befüllt die Navbar mit den Adressen der Märkte
+ */
+function fillNavbar() {                                             
+    selectionSort();    
+    
+    for (var i = 0; i < this.markersArray.length; i++) {
+        var marker = this.markersArray[i];
+        
+        if(marker.type == "Wochenmarkt") {
+            var link = document.createElement("a");        
+        
+            link.onclick=function() {
+                centerMap();       
+            };       
+        
+            link.id = marker.position;        
+            var adresse = marker.address;
+            link.innerHTML = adresse;
+            document.getElementById("wochenmarkt").appendChild(link);
+        }
+        
+        if(marker.type == "Supermarkt") {
+            var link = document.createElement("a");        
+        
+            link.onclick=function() {
+                centerMap();       
+            };       
+        
+            link.id = marker.position;        
+            var adresse = marker.address;
+            link.innerHTML = adresse;
+            document.getElementById("biomarkt").appendChild(link);
+        }
+    }
 }
 
 
@@ -354,7 +381,9 @@ function getAllMarkets() {
                 var market = JSON.parse(response.market[i]);                
                 markets[i] = market;
                 showMarket(market);
-            }                       
+            }
+            
+            fillNavbar();
         }
     };
     
@@ -423,8 +452,10 @@ function clearOverlays() {
 function centerMap() {
     eventSrcID = (event.srcElement)?event.srcElement.id:'undefined';
     eventtype = event.type;        
+
+    console.log(eventSrcID);    
     
-    var temp01 = eventSrcID.split("(",2);
+    var temp01 = eventSrcID.split("(",2);    
     var temp02 = temp01[1].split(")",1);
         
     var latitude = temp02[0].split(",",1)
@@ -451,6 +482,36 @@ function centerMap() {
  */
 function centerUser() {
     map.setCenter(this.userLatLng);
+}
+
+
+/*
+ * Die Luftlinien-Entfernung zwischen User und Markt in Kilometer
+ */
+function getAirDistance(marketPosition) {
+    var lat1 = this.userLatLng.lat();
+    var lat2 = marketPosition.lat();
+    var lon1 = this.userLatLng.lng();
+    var lon2 = marketPosition.lng();
+    
+    var radiant = 0.01745;
+    var latAbs = 111.3;
+    
+    var lat = (lat1 + lat2) / 2 * radiant;
+    
+    var dy = latAbs * (lat1 - lat2);
+    var dx = latAbs * Math.cos(lat) * (lon1 - lon2);
+    
+    var distance = Math.sqrt(dx * dx + dy * dy);
+    
+    distance = distance * 100;
+    distance = Math.round(distance);
+    distance = distance / 100;    
+    
+    var temp = "" + distance;
+    var formattedDistance = temp.replace(".", ",");
+
+    return formattedDistance;
 }
 
 
