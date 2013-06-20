@@ -209,7 +209,7 @@ function showMarket(market) {
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\' )">' + "Route" + '</a>' + '<p id="distance">' + marker.distance + ' km (Luftlinie)' + '</p></div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\', \'' + market.address + '\')">' + "Route" + '</a>' + '<p id="distance">' + marker.distance + ' km (Luftlinie)' + '</p></div>'
     });
 
     infoBubble.open(map, this.marker);
@@ -299,7 +299,8 @@ function fillNavbar() {
  * Initziert die Navigation
  */
 function routfinder(coords, address) {
-    this.marketCoords = coords;    
+    this.marketCoords = coords; 
+    this.marketAddress = address;
     $('#route_modal').modal('show');
     showRoute();    
 }
@@ -350,7 +351,7 @@ function showNavigation(directionResult) {
     }        
     
     var target = document.createElement("p");
-    target.innerHTML = "Sie sind am Ziel angekommen."
+    target.innerHTML = marketAddress;
     document.getElementById('nav_content').appendChild(target);    
 }
 
