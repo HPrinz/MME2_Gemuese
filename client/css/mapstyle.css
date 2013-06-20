@@ -67,3 +67,15 @@
     font-size: 9pt;
     margin-top: 1px;    
 }
+
+#modal-hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+}
+
+#modal-distance {
+    float: right;
+    margin-top: -33px;
+    font-size: 9pt;
+}

@@ -204,10 +204,12 @@ function showMarket(market) {
 
     marker.setMap(map);        
     
+    var address = market.address.split(",",1);
+    
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\')">' + "Route" + '</a>' + '<p id="distance">' + marker.distance + ' km (Luftlinie)' + '</p></div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\' )">' + "Route" + '</a>' + '<p id="distance">' + marker.distance + ' km (Luftlinie)' + '</p></div>'
     });
 
     infoBubble.open(map, this.marker);
@@ -296,8 +298,8 @@ function fillNavbar() {
 /*
  * Initziert die Navigation
  */
-function routfinder(coords) {
-    this.marketCoords = coords;
+function routfinder(coords, address) {
+    this.marketCoords = coords;    
     $('#route_modal').modal('show');
     showRoute();    
 }
@@ -332,13 +334,24 @@ function showRoute() {
  */
 function showNavigation(directionResult) {
     var myRoute = directionResult.routes[0].legs[0];
+    document.getElementById('nav_content').appendChild(document.createElement("hr"));
     
     for (var i = 0; i < myRoute.steps.length; i++) {                
         var instruction = document.createElement("p");
         instruction.innerHTML = myRoute.steps[i].instructions;
-        document.getElementById('nav_content').appendChild(document.createElement("hr"));
-        document.getElementById('nav_content').appendChild(instruction);              
+        var distance = document.createElement("p");
+        distance.setAttribute("id","modal-distance");
+        distance.innerHTML = myRoute.steps[i].distance.text;        
+        var myHR = document.createElement("hr");
+        myHR.setAttribute("id", "modal-hr");
+        document.getElementById('nav_content').appendChild(instruction);
+        document.getElementById('nav_content').appendChild(myHR);
+        document.getElementById('nav_content').appendChild(distance);
     }        
+    
+    var target = document.createElement("p");
+    target.innerHTML = "Sie sind am Ziel angekommen."
+    document.getElementById('nav_content').appendChild(target);    
 }
 
 
