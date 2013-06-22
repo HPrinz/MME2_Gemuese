@@ -549,7 +549,7 @@
 @media (max-width: 1199px) {
     
    #hero .slides {          
-      width: 430px;
+      width: 460px;
     }
 }
 @media (max-width: 979px) {
@@ -559,6 +559,10 @@
     
     #hero nav ul li a {
         padding: 10px 0 10px 15px;
+    }
+
+    #hero .slides {
+        width: 440px;
     }
 
 }
@@ -587,3 +591,25 @@
         height: 0px;
         display: inline-block;
     }
+
+    #gemuesePic {
+        width: 80px;
+        margin-left: 80px;
+        margin-top: -90px;
+    }
+
+    #hero .slides .slide {
+        position: static;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    
+    #hero .slides {
+        width: auto;
+        margin-top: 120px;
+        height: 275px;
+        overflow: auto;
+        margin-left: 40px;
+        padding-right: 10px;
+}
+}
