@@ -203,7 +203,24 @@
       
       /* RESPONSIVE CSS
       -------------------------------------------------- */
-      
+       @media (max-width: 1200px) {
+
+        #recDiv {
+            float: left;
+            width: 137px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #recipeUebersicht {
+        font-size: 13px;
+        }
+
+        .smallPic {
+            width: auto;
+            height: 60px;
+        }
+       }
       @media (max-width: 979px) {
 
         #up {
@@ -253,12 +270,9 @@
           padding-top:5px;
         }
 
-        .carousel img {
-          width: 170px;
-        }
         #gemuesePic {
-          margin-left: -30px;
-          
+            width: 160px;
+            margin-right: -20px;          
         }
       
         .featurette {
@@ -275,7 +289,14 @@
         }
       }
       
-      
+      @media (max-width: 830px) {
+        #gemuesePic {
+        width: 130px;
+        margin-right: -20px;
+        margin-left: 30px;
+        }
+       }
+
       @media (max-width: 767px) {
         
 
@@ -283,6 +304,10 @@
             position: relative;
             top: 0px;
             right: 0px;
+        }
+
+        #hero nav {
+            visibility: hidden;
         }
 
         .carousel {
@@ -327,7 +352,6 @@
 
         
         .carousel .item {
-          height: auto;
           margin-bottom: 20px;
         }
 
