@@ -79,3 +79,14 @@
     margin-top: -33px;
     font-size: 9pt;
 }
+
+@media (min-width: 768px) and (max-width: 979px) {
+    
+    .span9 {
+        width: 476px !important;
+    }
+
+    .span3 {
+        width: 228px !important;
+    }
+}

@@ -55,7 +55,7 @@
     <div class="container">
         <div class="row">
             <div class="span3">
-                <div class="well sidebar-nav">
+                <div class="well sidebar-nav hidden-phone">
                     <ul class="nav nav-list">                        
                         <li class="nav-header" id="nav-headlines">Märkte in der Umgebung</li>                        
                         <select class="" id="auswahl" onchange="filter()" data-toggle="popover" title data-content="Wähle hier das was du sehen möchtest." data-original-title="">
@@ -77,8 +77,8 @@
                         </div>    
                 </div><!--/.well -->
             </div><!--/span-->
-        <div class="span9">          
-            
+
+        <div class="span9">                              
             <!-- Navigations Popup -->  
             <div class="modal fade" id="route_modal">
                 <div id="panel">
@@ -98,7 +98,7 @@
                     </div>                    
                     <div class="modal-footer">
                         <a href="#" class="btn" data-dismiss="modal">Zur Karte</a>                        
-                        <a href="print.html" class="btn btn-success" target="Printview" onclick="popUp('about:blank','Printview','pri');printNavi();">Druckansicht</a>
+                        <a href="print.html" class="btn btn-success hidden-phone" target="Printview" onclick="popUp('about:blank','Printview','pri');printNavi();">Druckansicht</a>
                     </div>
                 </div>
             </div>        
