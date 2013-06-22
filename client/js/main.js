@@ -1,20 +1,27 @@
-function $(id) {
+function $(id) {    
     return document.getElementById(id);
 }
 
-window.onload = function() {
+
+window.onload = function() {    
     pickDate();
-    makeHttpRequest();  
+    makeHttpRequest();
     
-    window.onresize = function(event) {
-        document.getElementById("gemueseFirstDiv").innerHTML="";
-        document.getElementById("gemueseSecondDiv").innerHTML = "";
-        proceedFruits(currentFruits);
-        }
-   
+    // Tutorial
+    if(firstTime()) {
+        startTutorial();  
+    }
 };
 
-function pickDate(){
+
+window.onresize = function(event) {    
+    document.getElementById("gemueseFirstDiv").innerHTML="";
+    document.getElementById("gemueseSecondDiv").innerHTML = "";
+    proceedFruits(currentFruits);
+};
+
+
+function pickDate() {    
     var s = "-";
     this.date = new Date();
     if(date.getMonth()<10){
@@ -27,23 +34,45 @@ function pickDate(){
         format: 'dd-mm-yyyy',
         todayBtn: 'linked',
     });
-    $('#mydatepicker').datepicker().on('changeDate', function(ev){
-      
+    $('#mydatepicker').datepicker().on('changeDate', function(ev){      
         date = ev.date;
         
         document.getElementById("gemueseFirstDiv").innerHTML = "";
         document.getElementById("gemueseSecondDiv").innerHTML = "";
         
-        $( '#upLink' ).click (); 
+        $('#upLink').click (); 
         
-        getCurrentFruitList();
-                              
+        getCurrentFruitList();                              
     });
-
-
 }
 
-function makeHttpRequest() {
+
+// Tutorial-Stuff
+function showDatepickerPopover() {
+    $('#mydatepicker').popover('show');
+}
+
+function hideDatepickerPopover() {
+    $('#mydatepicker').popover('destroy');
+}
+
+function showFruitPopover() {
+    $('#fruitTooltip').popover('show');
+}
+
+function hideFruitPopover() {
+    $('#fruitTooltip').popover('destroy');
+}
+
+function startTutorial() {
+    var openDatepickerPopoverTimeout = setTimeout(showDatepickerPopover, 1000);
+    var closeDatepickerPopoverTimeout = setTimeout(hideDatepickerPopover, 5000);
+    var openFruitPopoverTimeout = setTimeout(showFruitPopover, 5500);
+    var closeFruitPopoverTimeout = setTimeout(hideFruitPopover, 9500);
+}
+
+
+function makeHttpRequest() {    
     var xmlhttp = null;
     this.fruits = new Array();
 
@@ -79,53 +108,46 @@ function makeHttpRequest() {
 }
 
 
-function getCurrentFruitList(){
-     
+function getCurrentFruitList() {        
     this.currentFruits = new Array();
-        for ( var i = 0; i < fruits.length; i++) {
-            if (getCurrentFruit(fruits[i])==true){
-                currentFruits.push(fruits[i]);
-            }
+    for ( var i = 0; i < fruits.length; i++) {
+        if (getCurrentFruit(fruits[i])==true){
+            currentFruits.push(fruits[i]);
         }
-        proceedFruits(currentFruits);
+    }
+    
+    proceedFruits(currentFruits);        
 }
 
 
-function getCurrentFruit(fruit) {
-        
-            var begin = new Date(Date.parse(fruit.seasonbegin));
-            var end = new Date(Date.parse(fruit.seasonend));
-            begin.setFullYear(date.getFullYear());
-            end.setFullYear(date.getFullYear());
+function getCurrentFruit(fruit) {       
+    var begin = new Date(Date.parse(fruit.seasonbegin));
+    var end = new Date(Date.parse(fruit.seasonend));
+    begin.setFullYear(date.getFullYear());
+    end.setFullYear(date.getFullYear());
             
-            if (begin<end){
-     
-                if(date <= end && date >= begin) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }             
-            else {
-               
-               if (date>begin||date<end){
-                   return true;
-               }
-               else return false;            
-            }        
-        
+    if (begin < end) {
+        if(date <= end && date >= begin) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        if (date > begin || date < end) {
+            return true;
+        } else {
+            return false;            
+        }
+    }                
 }
 
 
-function proceedFruits(e) {
-    for(var i = 0; i < e.length; i++) {
-        
+function proceedFruits(e) {  
+    for(var i = 0; i < e.length; i++) {    
         this.singleGemueseDiv = document.createElement('a');
         this.img = document.createElement("img");
         this.beschreibung = "";
-        this.text = document.createElement("h1");
-        
+        this.text = document.createElement("h1");        
         
         if(e[i].name=="Apfel") {
             img.src="img/vegies/apple.png"; 
@@ -208,11 +230,10 @@ function proceedFruits(e) {
             img.id="Zwiebeln";
         }
         
-        img.onclick=function(){
+        img.onclick=function() {
               writeDescription();       
         }; 
-      
-        
+              
         singleGemueseDiv.href = "#myCarousel";                
         singleGemueseDiv.setAttribute('data-slide', 'next');
         
@@ -222,39 +243,37 @@ function proceedFruits(e) {
         var breite = window.outerWidth;
         var gesamtZahl = 9;
         
-        if (breite>1200){
-            gesamtZahl=12;
+        if (breite > 1200) {
+            gesamtZahl = 12;
         }
-        else if (breite>796){
-            gesamtZahl=10;
+        else if (breite > 796) {
+            gesamtZahl = 10;
         }
-        else if (breite>789){
-            gesamtZahl=21;
+        else if (breite > 789) {
+            gesamtZahl = 21;
         }
-        else if (breite>683){
-            gesamtZahl=18;
+        else if (breite > 683) {
+            gesamtZahl = 18;
         }
-        else if (breite>576){
-            gesamtZahl=15;
+        else if (breite > 576) {
+            gesamtZahl = 15;
         }   
-        else if (breite>470){
-            gesamtZahl=9;
+        else if (breite > 470) {
+            gesamtZahl = 9;
         }
             
-        if (i<gesamtZahl){
+        if (i < gesamtZahl){
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
-        }
-            else {
-                document.getElementById("down").style.visibility='visible';
-                document.getElementById("gemueseSecondDiv").appendChild(singleGemueseDiv);
-            }
-         
-    }
+        } else {
+            document.getElementById("down").style.visibility='visible';
+            document.getElementById("gemueseSecondDiv").appendChild(singleGemueseDiv);
+        }         
+    }      
 }
 
 
-function writeDescription() {
+function writeDescription() {    
     eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
     eventtype=event.type;    
     
@@ -271,22 +290,20 @@ function writeDescription() {
             document.getElementById("gemuesePic").appendChild(pic);
             document.getElementById("beschreibung").innerHTML = currentFruits[i].description;  
             
-            makeRecipeRequest(currentFruits[i].name);
-            
-    }
- }
-    
+            makeRecipeRequest(currentFruits[i].name);            
+        }
+    }    
 }
 
 
-function makeRecipeRequest(veg) {
+function makeRecipeRequest(veg) {    
     var xmlhttp = null;
     this.recipes = new Array();
+    
     // Mozilla
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
-    
     // IE
     else if (window.ActiveXObject) {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -304,16 +321,14 @@ function makeRecipeRequest(veg) {
             
         var string = "";
 
-        for ( var i = 0; i < response.recipes.length; i++) {
-                
+        for ( var i = 0; i < response.recipes.length; i++) {                
             var temp = JSON.parse(response.recipes[i]);
             recipes.push(temp);
         }  
-            document.getElementById("recipeUebersicht").innerHTML = "";
-            
         
-        if (recipes.length>0) {
-            
+        document.getElementById("recipeUebersicht").innerHTML = "";            
+        
+        if (recipes.length > 0) {            
             for(var a = 0; a < recipes.length; a++) {
                 var recDiv = document.createElement('div');
                 recDiv.innerHTML="";
@@ -332,11 +347,10 @@ function makeRecipeRequest(veg) {
                 recDiv.appendChild(link);  
                 document.getElementById("recipeUebersicht").appendChild(recDiv);
                 
-                link.onclick=function(){
+                link.onclick=function() {
                    eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
                    //console.log(event.srcElement)
-                   setModuleText(eventSrcID);
-                   
+                   setModuleText(eventSrcID);                   
                 }
             }     
         }
@@ -346,57 +360,100 @@ function makeRecipeRequest(veg) {
     xmlhttp.send(null);   
 }
 
-function setModuleText(id){
-     var br = document.createElement("br");
+
+function setModuleText(id) {   
+    var br = document.createElement("br");
                     
-                   document.getElementById("myModalLabel").innerHTML = recipes[id].name;
+    document.getElementById("myModalLabel").innerHTML = recipes[id].name;
                                       
-                   var recImage = document.createElement('img');
-                   recImage.id="recImage";
-                   recImage.src=recipes[id].pictures[0]; 
+    var recImage = document.createElement('img');
+    recImage.id="recImage";
+    recImage.src=recipes[id].pictures[0]; 
                     
-                   document.getElementById("recipe").innerHTML="";
-                    
-                   document.getElementById("recipe").appendChild(recImage);
+    document.getElementById("recipe").innerHTML="";                    
+    document.getElementById("recipe").appendChild(recImage);
                    
-                   var element = document.createElement('h3');
-                   element.appendChild(document.createTextNode("Zutaten"));
-                   document.getElementById("recipe").appendChild(element);
-                   document.getElementById("recipe").appendChild(br);
+    var element = document.createElement('h3');
+    element.appendChild(document.createTextNode("Zutaten"));
+    document.getElementById("recipe").appendChild(element);
+    document.getElementById("recipe").appendChild(br);
                     
-                   var blub = new Array;
+    var blub = new Array;
                    
-                
-                   for (var i=0; i<recipes[id].ingridients.length; i++){
+    for (var i = 0; i < recipes[id].ingridients.length; i++) {
+        var br = document.createElement("br");
+        document.getElementById("recipe").appendChild(document.createTextNode(recipes[id].ingridients[i]));
+        document.getElementById("recipe").appendChild(br);
+    } 
+
+    var zubereitung = document.createElement('h3');
+    zubereitung.appendChild(document.createTextNode("Zubereitung"));
+    document.getElementById("recipe").appendChild(zubereitung); 
+    document.getElementById("recipe").appendChild(br);
                     
-                   var br = document.createElement("br");
-                   document.getElementById("recipe").appendChild(document.createTextNode(recipes[id].ingridients[i]));
-                   document.getElementById("recipe").appendChild(br);
-
-                   } 
-
-
-                   var zubereitung = document.createElement('h3');
-                   zubereitung.appendChild(document.createTextNode("Zubereitung"));
-                   document.getElementById("recipe").appendChild(zubereitung); 
-                   document.getElementById("recipe").appendChild(br);
-                    
-                   blub = recipes[id].description.split("~");
-                   for (var j=0; j<blub.length; j++){
-                    
-                   var br = document.createElement("br");
-                   document.getElementById("recipe").appendChild(document.createTextNode(blub[j]));
-                   document.getElementById("recipe").appendChild(br);
-                       
-                  
-
-                   } 
+    blub = recipes[id].description.split("~");
     
-                   
-    
+    for (var j = 0; j < blub.length; j++) {
+        var br = document.createElement("br");
+        document.getElementById("recipe").appendChild(document.createTextNode(blub[j]));
+        document.getElementById("recipe").appendChild(br);                                         
+    }                            
 }
 
-function printRecipe() {
+
+function printRecipe() {   
     localStorage.setItem('print-header', document.getElementById("myModalLabel").innerHTML);
     localStorage.setItem('print-body', document.getElementById("recipe").innerHTML);
+}
+
+
+// ============= COOKIE ZONE - NOM NOM NOM ============= //
+
+// Erzeuge und Speichere einen Cookie
+function setCookie(c_name,value,exdays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+    document.cookie = c_name + "=" + c_value;
+}
+
+// Holt den Wert aus einem Cookie
+function getCookie(c_name) {
+    var c_value = document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    
+    if (c_start == -1) {
+        c_start = c_value.indexOf(c_name + "=");
+    }
+    
+    if (c_start == -1) {
+        c_value = null;
+        
+    } else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        
+        var c_end = c_value.indexOf(";", c_start);
+        
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        
+        c_value = unescape(c_value.substring(c_start, c_end));
+    }
+
+    return c_value;
+}
+
+// Kontrolliert ob es bereits einen gesetzten Cookie gibt
+function firstTime() {   
+    var cookie = getCookie("watchedIndexTutorial");
+  
+    if (cookie != null && cookie != "") {        
+        return false;
+        
+    } else {        
+        value="true";
+        setCookie("watchedIndexTutorial", value, 365);          
+        return true;
+    }
 }

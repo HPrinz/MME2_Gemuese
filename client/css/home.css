@@ -198,9 +198,18 @@
         line-height: 1;
         letter-spacing: -1px;
       }
+        
+      /* Ghostdiv für das Obst-Tutorial */
+      #fruitTooltip {
+        top: 45%;
+        left: 45%;
+        width: 5px;
+        height: 5px;
+        z-index: 1000;
+        position: absolute;
+      }
       
-      
-      
+            
       /* RESPONSIVE CSS
       -------------------------------------------------- */
        @media (max-width: 1200px) {

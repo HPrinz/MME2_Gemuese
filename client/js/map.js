@@ -575,7 +575,7 @@ function getCookie(c_name) {
 
 // Kontrolliert ob es bereits einen gesetzten Cookie gibt
 function firstTime() {    
-    var cookie = getCookie("wasHereBevore");
+    var cookie = getCookie("watchedMapTutorial");
   
     if (cookie != null && cookie != "") {        
         
@@ -583,7 +583,7 @@ function firstTime() {
         
     } else {        
         value="true";
-        setCookie("wasHereBevore", value, 365);
+        setCookie("watchedMapTutorial", value, 365);
 
         return true;
     }

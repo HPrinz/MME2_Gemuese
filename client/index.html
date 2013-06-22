@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-  
+<html lang="de">
   <head>
     <meta charset="utf-8">
     <title>Grüne Bete</title>
@@ -13,15 +12,16 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
     <link href="css/slide.css" rel="stylesheet">
-    <link href="css/datepicker.css" rel="stylesheet">
-      
+    <link href="css/datepicker.css" rel="stylesheet">      
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+      
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
       </script>
     <![endif]-->
     <!-- Le fav and touch icons -->
+      
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
@@ -33,8 +33,9 @@
   <body>
       
      <div class="container fluid">
+        <div id="fruitTooltip" data-toggle="popover" titel data-content="Klicke auf eine Frucht um mehr über sie zu erfahren." data-placement="bottom" data-original-titel=""></div>
         <img src="img/logo.png">
-        <input type="text" class="span2" id="mydatepicker" >
+        <input type="text" class="span2" id="mydatepicker" data-toggle="popover" data-placement="bottom" title data-content="Wähle hier den Zeitraum zu dem du die Früchte sehen möchtest." data-original-titel="">
          
         <div class="navbar">
           <div class="navbar-inner">
@@ -56,23 +57,18 @@
         </div>
       </div>
       
-      
-             
-      
-      
     <div id="myCarousel" class="carousel slide" data-pause="remove">
-      <div class="carousel-inner">
-          
+      <div class="carousel-inner">                            
         <div class="item active">
           <div class="container jetstrap-selected">                      
             <div class="carousel-caption">
                 
               <div id="myhero">
                 <div class="mysite">
-                  <div class="myslides">
+                  <div class="myslides">                      
                     <div id="gemueseFirstDiv" class="slide selected" href="#myCarousel"></div>
                     <div id="gemueseSecondDiv" href="#myCarousel" data-slide="next" class="slide after"></div> 
-                  </div>
+                  </div>                    
                     <nav>
                       <ul>
                         <li class="selected"><a href="#gemueseFirstDiv" id="upLink"><img id="up" src="img/up.png"></a></li>
@@ -81,7 +77,6 @@
                     </nav>
                 </div>
               </div>
-                
             </div>
           </div>
         </div>
@@ -144,14 +139,14 @@
         </footer>    
        </div>
       
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>    
     <script src="js/app.js"></script>
     <script src="js/app2.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/main.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/bootstrap.js"></script>  
         
   </body>
 </html>
