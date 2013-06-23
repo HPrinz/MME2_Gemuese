@@ -18,15 +18,6 @@ window.onload = function() {
         document.getElementById("gemueseSecondDiv").innerHTML = "";
         proceedFruits(currentFruits);
     };
-    
-    
-    $('#recipe').
-    bind('mousewheel DOMMouseScroll', function (e) {
-        console.log("scroll");
-        var delta = e.wheelDelta || -e.detail;             
-        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
-        e.preventDefault();
-    });
 };
 
 

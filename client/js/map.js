@@ -43,7 +43,7 @@ $('#bioNav').
     bind('mousewheel DOMMouseScroll', function (e) {
         // console.log("scroll");
         var delta = e.wheelDelta || -e.detail;             
-        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
         e.preventDefault();
     });
 
@@ -53,7 +53,7 @@ $('#nav-popup').
     bind('mousewheel DOMMouseScroll', function (e) {
         // console.log("scroll");
         var delta = e.wheelDelta || -e.detail;             
-        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
         e.preventDefault();
     });
 
