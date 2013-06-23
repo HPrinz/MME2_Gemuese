@@ -206,10 +206,13 @@ function showMarket(market) {
     
     var address = market.address.split(",",1);
     
+    var temp = "" + marker.distance;
+    var formattedDistance = temp.replace(".", ",");
+    
     var infoBubble = new InfoBubble({
         map: map,        
         hideCloseButton: true,
-        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\', \'' + market.address + '\')">' + "Route" + '</a>' + '<p id="distance">' + marker.distance + ' km (Luftlinie)' + '</p></div>'
+        content: '<div class="infoBubbleContent">' + '<p class="infoBubbleHeadline">' + market.name + '</p>' + '<p class="infoBubbleAddress">' + market.address + '</p>' + '<p class="infoBubbleOpening">' + market.openingHours  + '</p>' + '<hr>' + '<a href="javascript:routfinder(\'' + latlng + '\', \'' + market.address + '\')">' + "Route" + '</a>' + '<p id="distance">' + formattedDistance + ' km (Luftlinie)' + '</p></div>'
     });
 
     infoBubble.open(map, this.marker);
@@ -242,7 +245,7 @@ function showMarket(market) {
 /*
  * Eine SelectionSort Implementierung
  */
-function selectionSort () {
+function selectionSort() {
     var i, j, tmp, tmp2;
     for (var i = 0; i < this.markersArray.length - 1; i++) {
         tmp = i;
@@ -340,6 +343,7 @@ function showNavigation(directionResult) {
     for (var i = 0; i < myRoute.steps.length; i++) {                
         var instruction = document.createElement("p");
         instruction.innerHTML = myRoute.steps[i].instructions;
+        instruction.setAttribute("id", "modal-instruction");
         var distance = document.createElement("p");
         distance.setAttribute("id","modal-distance");
         distance.innerHTML = myRoute.steps[i].distance.text;        
@@ -520,10 +524,7 @@ function getAirDistance(marketPosition) {
     distance = Math.round(distance);
     distance = distance / 100;    
     
-    var temp = "" + distance;
-    var formattedDistance = temp.replace(".", ",");
-
-    return formattedDistance;
+    return distance;
 }
 
 
