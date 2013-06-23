@@ -11,16 +11,19 @@ window.onload = function() {
     if(firstTime()) {
         startTutorial();  
     }
+};
 
-    
-    window.onresize = function(event) {    
+// Größenänderung des Fensters
+window.onresize = function(event) {    
         document.getElementById("gemueseFirstDiv").innerHTML="";
         document.getElementById("gemueseSecondDiv").innerHTML = "";
         proceedFruits(currentFruits);
-    };
 };
 
-
+/*
+ * Datepicker 
+ * bei Änderung des Datum, werden die entsprechenden Früchte angezeigt
+ */
 function pickDate() {    
     var s = "-";
     this.date = new Date();
@@ -47,7 +50,7 @@ function pickDate() {
 }
 
 
-// Tutorial-Stuff
+// Tutorial-Stuff - zeigt dem Nutzer die Funktionalitäten in Popover-FensternS
 function showDatepickerPopover() {
     $('#mydatepicker').popover('show');
 }
@@ -71,7 +74,7 @@ function startTutorial() {
     var closeFruitPopoverTimeout = setTimeout(hideFruitPopover, 9500);
 }
 
-
+// Request der Obst-/Gemüsesorten
 function makeHttpRequest() {    
     var xmlhttp = null;
     this.fruits = new Array();
@@ -93,7 +96,8 @@ function makeHttpRequest() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var response = JSON.parse(xmlhttp.responseText);
                 var string = "";
-    
+                
+                //Speicherung aller Früchte im Array fruits
                 for ( var i = 0; i < response.fruits.length; i++) {
                     
                     var temp = JSON.parse(response.fruits[i]);
@@ -107,7 +111,7 @@ function makeHttpRequest() {
     xmlhttp.send(null);
 }
 
-
+// iteriert über das fruits Array und zeigt nur nach Datum ausgewählte Sorten an
 function getCurrentFruitList() {        
     this.currentFruits = new Array();
     for ( var i = 0; i < fruits.length; i++) {
@@ -119,7 +123,7 @@ function getCurrentFruitList() {
     proceedFruits(currentFruits);        
 }
 
-
+// gibt true zurück, wenn die Erntezeit der Frucht mit dem Datum übereinstimmt
 function getCurrentFruit(fruit) {       
     var begin = new Date(Date.parse(fruit.seasonbegin));
     var end = new Date(Date.parse(fruit.seasonend));
@@ -141,7 +145,7 @@ function getCurrentFruit(fruit) {
     }                
 }
 
-
+// holt sich zu jeder Frucht des jeweilige Bild
 function proceedFruits(e) {  
     for(var i = 0; i < e.length; i++) {    
         this.singleGemueseDiv = document.createElement('a');
@@ -226,7 +230,7 @@ function proceedFruits(e) {
             img.id="Zucchini";
         }
         else if(e[i].name=="Zwiebeln") {
-             img.src="img/vegies/onion.png"; 
+            img.src="img/vegies/onion.png"; 
             img.id="Zwiebeln";
         }
         
@@ -239,29 +243,10 @@ function proceedFruits(e) {
         
         singleGemueseDiv.id="singleGemueseDiv";
         singleGemueseDiv.appendChild(img);
-
-        var breite = window.outerWidth;
-        var gesamtZahl = 9;
+         
+        this.gesamtZahl = 9;
+        getNumberOfFruits();
         
-        if (breite > 1200) {
-            gesamtZahl = 12;
-        }
-        else if (breite > 796) {
-            gesamtZahl = 10;
-        }
-        else if (breite > 789) {
-            gesamtZahl = 21;
-        }
-        else if (breite > 683) {
-            gesamtZahl = 18;
-        }
-        else if (breite > 576) {
-            gesamtZahl = 15;
-        }   
-        else if (breite > 470) {
-            gesamtZahl = 9;
-        }
-            
         if (i < gesamtZahl){
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
@@ -272,7 +257,7 @@ function proceedFruits(e) {
     }      
 }
 
-
+// holt sich zu jeder Frucht die Beschreibung und Rezepte und befüllt damit die entsprechenden Divs 
 function writeDescription() {    
     eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
     eventtype=event.type;    
@@ -295,7 +280,7 @@ function writeDescription() {
     }    
 }
 
-
+// Rezepte-Request
 function makeRecipeRequest(veg) {    
     var xmlhttp = null;
     this.recipes = new Array();
@@ -320,7 +305,7 @@ function makeRecipeRequest(veg) {
         var response = JSON.parse(xmlhttp.responseText);
             
         var string = "";
-
+        
         for ( var i = 0; i < response.recipes.length; i++) {                
             var temp = JSON.parse(response.recipes[i]);
             recipes.push(temp);
@@ -328,6 +313,7 @@ function makeRecipeRequest(veg) {
         
         document.getElementById("recipeUebersicht").innerHTML = "";            
         
+        // für jedes Rezept wird der Name und ein Miniaturbild angezeigt
         if (recipes.length > 0) {            
             for(var a = 0; a < recipes.length; a++) {
                 var recDiv = document.createElement('div');
@@ -349,7 +335,6 @@ function makeRecipeRequest(veg) {
                 
                 link.onclick=function() {
                    eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
-                   //console.log(event.srcElement)
                    setModuleText(eventSrcID);                   
                 }
             }     
@@ -360,7 +345,7 @@ function makeRecipeRequest(veg) {
     xmlhttp.send(null);   
 }
 
-
+// zeigt ein Modul des ausgewählten Rezepts
 function setModuleText(id) {   
     var br = document.createElement("br");
                     
@@ -400,7 +385,7 @@ function setModuleText(id) {
     }    
 }
 
-
+// speichert des Rezept in den LocalStorage
 function printRecipe() {   
     localStorage.setItem('print-header', document.getElementById("myModalLabel").innerHTML);
     localStorage.setItem('print-body', document.getElementById("recipe").innerHTML);
@@ -456,4 +441,28 @@ function firstTime() {
         setCookie("watchedIndexTutorial", value, 365);          
         return true;
     }
+}
+
+// bestimmt die Anzeigezahl der Früchte
+function getNumberOfFruits(){
+        var breite = window.outerWidth;
+            
+        if (breite > 1200) {
+            gesamtZahl = 12;
+        }
+        else if (breite > 796) {
+            gesamtZahl = 10;
+        }
+        else if (breite > 789) {
+            gesamtZahl = 21;
+        }
+        else if (breite > 683) {
+            gesamtZahl = 18;
+        }
+        else if (breite > 576) {
+            gesamtZahl = 15;
+        }   
+        else if (breite > 470) {
+            gesamtZahl = 9;
+        }
 }
