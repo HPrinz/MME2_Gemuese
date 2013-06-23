@@ -19,7 +19,7 @@ window.onload = function() {
     karte.style.height = k_height + 'px';
     
     var maerkte = document.getElementById('bioNav');
-    var m_height = windowHeight - 471;
+    var m_height = windowHeight - 491;
     maerkte.style.height = m_height + 'px'; 
 };
 
@@ -33,7 +33,7 @@ window.onresize = function(event) {
     karte.style.height = k_height + 'px';
     
     var maerkte = document.getElementById('bioNav');
-    var m_height = windowHeight - 471;
+    var m_height = windowHeight - 491;
     maerkte.style.height = m_height + 'px';
 };
 
