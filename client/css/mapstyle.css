@@ -80,6 +80,10 @@
     font-size: 9pt;
 }
 
+#modal-instruction {
+    margin-right: 50px;
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
     
     .span9 {
