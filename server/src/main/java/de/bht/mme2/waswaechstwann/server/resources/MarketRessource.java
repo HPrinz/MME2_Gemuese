@@ -19,7 +19,9 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import de.bht.mme2.waswaechstwann.server.dao.MarketDAO;
+import de.bht.mme2.waswaechstwann.server.dao.VegetableDAO;
 import de.bht.mme2.waswaechstwann.server.pojos.Market;
+import de.bht.mme2.waswaechstwann.server.pojos.Markets;
 
 /**
  * @author togomade 14.04.2013
@@ -69,5 +71,30 @@ public class MarketRessource {
       }
 
       throw new WebApplicationException(Response.Status.NOT_FOUND);
+   }
+
+   @Path("/clean")
+   @GET
+   @Produces({ MediaType.APPLICATION_JSON })
+   public void clean() {
+
+      new MarketDAO().clean();
+   }
+
+   /**
+    * insert all Vegetables automatically
+    */
+   @Path("/addAll")
+   @POST
+   @Produces({ MediaType.APPLICATION_JSON })
+   public String addAll(final Markets markets) {
+
+      String returnValue = "";
+
+      for (final Market m : markets.getMarkets()) {
+         returnValue += create(m);
+      }
+
+      return returnValue;
    }
 }

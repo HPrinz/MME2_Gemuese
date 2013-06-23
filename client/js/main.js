@@ -11,13 +11,22 @@ window.onload = function() {
     if(firstTime()) {
         startTutorial();  
     }
-};
 
-
-window.onresize = function(event) {    
-    document.getElementById("gemueseFirstDiv").innerHTML="";
-    document.getElementById("gemueseSecondDiv").innerHTML = "";
-    proceedFruits(currentFruits);
+    
+    window.onresize = function(event) {    
+        document.getElementById("gemueseFirstDiv").innerHTML="";
+        document.getElementById("gemueseSecondDiv").innerHTML = "";
+        proceedFruits(currentFruits);
+    };
+    
+    
+    $('#recipe').
+    bind('mousewheel DOMMouseScroll', function (e) {
+        console.log("scroll");
+        var delta = e.wheelDelta || -e.detail;             
+        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 10;
+        e.preventDefault();
+    });
 };
 
 
@@ -397,7 +406,7 @@ function setModuleText(id) {
         var br = document.createElement("br");
         document.getElementById("recipe").appendChild(document.createTextNode(blub[j]));
         document.getElementById("recipe").appendChild(br);                                         
-    }                            
+    }    
 }
 
 

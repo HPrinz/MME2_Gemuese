@@ -52,4 +52,8 @@ package de.bht.mme2.waswaechstwann.server.pojos{
 	DTOentity Fruits{
 		fruits : List<Fruit>
 	}
+	
+	DTOentity Markets{
+		markets : List<Market>
+	}
 }

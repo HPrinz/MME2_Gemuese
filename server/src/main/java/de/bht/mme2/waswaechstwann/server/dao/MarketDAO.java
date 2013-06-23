@@ -81,4 +81,11 @@ public class MarketDAO {
 
       return array;
    }
+
+   /**
+    * clean the market-table
+    */
+   public void clean() {
+      table.drop();
+   }
 }
