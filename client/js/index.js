@@ -259,7 +259,8 @@ function proceedFruits(e) {
 
 // holt sich zu jeder Frucht die Beschreibung und Rezepte und befüllt damit die entsprechenden Divs 
 function writeDescription() {    
-    eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
+    //eventSrcID=(event.srcElement)?event.srcElement.id:'undefined';
+    eventSrcID=(event.target)?event.target.id:'undefined';
     eventtype=event.type;    
     
     for(var i = 0; i < currentFruits.length; i++) {
@@ -281,7 +282,12 @@ function writeDescription() {
 }
 
 // Rezepte-Request
-function makeRecipeRequest(veg) {    
+function makeRecipeRequest(veg) {  
+    
+    document.getElementById("moreButton").onclick=function(){
+        
+        window.open("http://www.chefkoch.de/rs/s0e1n1z1i1/" + veg + "/Rezepte.html");
+    };
     var xmlhttp = null;
     this.recipes = new Array();
     

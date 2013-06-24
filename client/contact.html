@@ -51,27 +51,40 @@
     
     
             <div class="control-group">
-                <label class="control-label">Text</label>
+                <label class="control-label">Absender</label>
                 <div class="controls">
-                    <input type="text">
+                    <input type="text" id="sender">
                 </div>
             </div>
              <div class="control-group">
-                <label class="control-label">Text</label>
+                <label class="control-label">Betreff</label>
                 <div class="controls">
-                    <input type="text">
+                    <input type="text" id="subject">
                 </div>
             </div>
             <div class="control-group">
-              <label class="control-label">Your response:</label>
+              <label class="control-label">Nachricht</label>
             <div class="controls">
-              <textarea class=""></textarea>
+              <textarea class="" id="myText" style="width:400px; height:200px"></textarea>
             </div>
+            <br/>
+            <button class="btn" onclick="sendMail();">senden</button>
         </div>
+        <hr>
       <footer>
         <p>© Grüne Bete 2013</p>
       </footer>
     </div>
+    <script>
+      function sendMail() {
+            var link = "mailto:gruenebete@outlook.com"
+                     + "&subject=" + escape(document.getElementById('subject').value)
+                     + "&body=" + escape(document.getElementById('myText').value)
+            ;
+        
+            window.location.href = link;
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>    
     <script src="js/bootstrap.js"></script>
   </body>

@@ -75,10 +75,32 @@
         text-align: center;
         
       }
-       #singleGemueseDiv:hover {
-        width: 160px;  
-        padding: 0px;
-      }
+
+#singleGemueseDiv:hover {
+    -webkit-animation: cssAnimation 0.5s 1 ease;
+    -moz-animation: cssAnimation 0.5s 1 ease;
+}
+
+@-webkit-keyframes cssAnimation {
+    0% { -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+    10% { -webkit-transform: rotate(-10deg) scale(1) skew(0deg) translate(0px); }
+    20% { -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+    30% { -webkit-transform: rotate(10deg) scale(1) skew(0deg) translate(0px); }
+    40% { -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+    50% { -webkit-transform: rotate(-10deg) scale(1) skew(0deg) translate(0px); }
+    60% { -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+}
+
+@-moz-keyframes cssAnimation {
+    0% { -moz-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+    10% { -moz-transform: rotate(-10deg) scale(1) skew(0deg) translate(0px); }
+    20% { -moz-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+    30% { -moz-transform: rotate(10deg) scale(1) skew(0deg) translate(0px); }
+    40% { -moz-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+    50% { -moz-transform: rotate(-10deg) scale(1) skew(0deg) translate(0px); }
+    60% { -moz-transform: rotate(0deg) scale(1) skew(0deg) translate(0px); }
+}
+
 
       #up {
         width: 48px;
@@ -125,10 +147,19 @@
       }
 
       .smallPic {
-        height: 100px;
+        height: 85px;
         display: -webkit-box;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      #moreButton {
+        float: right;
+        color: rgb(30, 163, 12);
+      }
+
+      #moreButton:hover{
+        color: rgb(18, 131, 2);
       }
 
        #recDiv {
