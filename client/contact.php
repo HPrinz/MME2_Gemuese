@@ -51,11 +51,11 @@
         
 <?php 
 if (isset($_POST["email"])) { 
-    require("PHPMailer/class.phpmailer.php");
+    require("../../PHPMailer/class.phpmailer.php");
 
         $mail = new phpmailer();
 
-        $mail->SMTPSecure       = "ssl";  
+        $mail->SMTPSecure       = 'ssl';  
         $mail->Host             = 'smtp.gmail.com';  
         $mail->Port             = '465';   
         $mail->Username         = 'mail.gruenebete@gmail.com';
@@ -67,8 +67,8 @@ if (isset($_POST["email"])) {
         $mail->CharSet          = 'utf-8';  
         $mail->SMTPDebug        = 0;
 
-        $mail->From             = "mail.gruenebete@gmail.com";
-        $mail->FromName         = "Grüne Bete";
+        $mail->From             = 'mail.gruenebete@gmail.com';
+        $mail->FromName         = 'Grüne Bete';
         
         $mail->AddAddress('mail.gruenebete@gmail.com','Grüne Bete');        
 
