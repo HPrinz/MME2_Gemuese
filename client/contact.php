@@ -50,7 +50,7 @@
       </div><!--/.navbar -->
         
 <?php 
-if ($_POST["email"]<>'') { 
+if (isset($_POST["email"])) { 
     require("PHPMailer/class.phpmailer.php");
 
         $mail = new phpmailer();
@@ -93,7 +93,7 @@ if ($_POST["email"]<>'') {
 
         echo "Die Nachricht wurde erfolgreich versandt";
 ?> 
-Your message was sent
+
 <?php 
     } else { 
 ?> 
