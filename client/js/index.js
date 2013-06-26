@@ -452,23 +452,24 @@ function firstTime() {
 // bestimmt die Anzeigezahl der Früchte
 function getNumberOfFruits(){
         var breite = window.outerWidth;
+        console.log(breite);
             
-        if (breite > 1200) {
+        if (breite > 1226) {
             gesamtZahl = 12;
         }
-        else if (breite > 796) {
+        else if (breite > 794) {
             gesamtZahl = 10;
         }
         else if (breite > 789) {
             gesamtZahl = 21;
         }
-        else if (breite > 683) {
+        else if (breite > 657) {
             gesamtZahl = 18;
         }
         else if (breite > 576) {
             gesamtZahl = 15;
         }   
         else if (breite > 470) {
-            gesamtZahl = 9;
+            gesamtZahl = 12;
         }
 }

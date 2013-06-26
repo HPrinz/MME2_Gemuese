@@ -156,6 +156,7 @@
       #moreButton {
         float: right;
         color: rgb(30, 163, 12);
+        font-size: 12px;
       }
 
       #moreButton:hover{
@@ -247,13 +248,13 @@
 
         #recDiv {
             float: left;
-            width: 137px;
+            width: 140px;
             text-align: center;
             line-height: 30px;
         }
 
         #recipeUebersicht {
-        font-size: 13px;
+        font-size: 12px;
         }
 
         .smallPic {
