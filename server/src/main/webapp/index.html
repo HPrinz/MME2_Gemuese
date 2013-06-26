@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>Grüne Bete</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Hanna Prinz, Nadine Pusch, Michael Hasenkrug">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/slide.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">      
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+      
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.js"></script>
+                   
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+      
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <style>
+    </style>
+  </head>
+  <body>
+      
+     <div class="container fluid">
+        <div id="fruitTooltip" data-toggle="popover" titel data-content="Klicke auf eine Frucht um mehr über sie zu erfahren." data-placement="bottom" data-original-titel=""></div>
+        <img src="img/logo.png">
+        <input type="text" class="span2" id="mydatepicker" data-toggle="popover" data-placement="bottom" title data-content="Wähle hier den Zeitraum zu dem du die Früchte sehen möchtest." data-original-titel="">
+         
+        <div class="navbar">
+          <div class="navbar-inner">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#"></a>
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="calendar.html">Kalendar</a></li>
+                <li><a href="map.html">Karte</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    <div id="myCarousel" class="carousel slide" data-pause="remove">
+      <div class="carousel-inner">                            
+        <div class="item active">
+          <div class="container jetstrap-selected">                      
+            <div class="carousel-caption">
+                
+              <div id="myhero">
+                <div class="mysite">
+                  <div class="myslides">                      
+                    <div id="gemueseFirstDiv" class="slide selected" href="#myCarousel"></div>
+                    <div id="gemueseSecondDiv" href="#myCarousel" data-slide="next" class="slide after"></div> 
+                  </div>                    
+                    <nav>
+                      <ul>
+                        <li class="selected"><a href="#gemueseFirstDiv" id="upLink"><img id="up" src="img/up.png"></a></li>
+                        <li><a href="#gemueseSecondDiv"><img id="down" src="img/down.png"></a></li>
+                      </ul>
+                    </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item">
+          <div class="left carousel-control" href="#myCarousel" data-slide="prev" id="arrow">‹</div>
+            <div class="container">
+              <div class="carousel-caption">
+                <h1 id="gemueseName"></h1>
+                <div id="gemuesePic"></div>        
+                   <div id="panel">           
+                     <div id="hero">
+                       <div class="site">
+                         <div class="slides">
+                           <div id="beschreibung" class="slide selected"></div>
+                           <div id="rezepte" class="slide after">
+                             <div id="recipeUebersicht"></div>
+                             <button class="btn btn-link" id="moreButton">Mehr Rezepte auf Chefkoch.de</button>
+                           </div>
+                         </div>
+                           <nav>
+                             <ul>
+                               <li class="selected"><a href="#beschreibung">Beschreibung</a></li>
+                               <li><a href="#rezepte">Rezepte</a></li>
+                             </ul>
+                           </nav>
+                       </div>
+                     </div>
+                   </div>
+              </div>
+            </div>
+        </div>
+             
+      </div>
+    </div>
+            
+    <!-- Rezepte Popup -->
+    <div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="myModalLabel"></h3>
+        </div>
+        <div class="modal-body" id="recipe"></div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal">Close</button>
+            <a href="print.html" class="btn btn-success hidden-phone" target="Printview" onclick="popUp('about:blank','Printview','pri');printRecipe();">Druckansicht</a>
+        </div>
+    </div>     
+      
+    <div class="container marketing">
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div>
+      
+     <br/><br/><br/><br/><br/>
+      
+      <div class="container">
+        <footer>
+          <p class="pull-right"><a href="#">Back to top</a></p>
+          <p>© 2013 Grüne Bete · <a href="imprint.html">Impressum</a></p>
+        </footer>    
+       </div>
+      
+    
+    <script>    
+        $('#recipe').bind('mousewheel DOMMouseScroll', function (e) {
+            console.log("scroll");
+            var delta = e.wheelDelta || -e.detail;             
+            this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+            e.preventDefault();
+        });
+    </script>  
+      
+    <script src="js/app.js"></script>
+    <script src="js/popup.js"></script>            
+    <script src="js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>        
+    <script src="js/bootstrap-datepicker.js"></script>      
+    <script src="js/bootstrap.js"></script>
+    
+  </body>
+</html>

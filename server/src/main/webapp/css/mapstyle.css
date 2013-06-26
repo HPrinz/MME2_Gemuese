@@ -1,0 +1,96 @@
+#map-header {    
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.well a {
+    font-size: 9pt;
+    cursor: pointer;
+}
+
+.infoBubbleContent a {
+    font-size: 9pt;
+}
+
+#pos {    
+    height:680px;
+}
+
+#pos img {
+    max-width:none;
+}
+
+.well sidebar-nav {
+    height:600px;
+}
+
+.infoBubbleContent {
+    line-height:10px;
+}
+
+.userInfoBubbleContent {
+    line-height:10px;
+}
+
+.infoBubbleHeadline {
+    font-weight:bold;
+}
+
+.infoBubbleOpening {
+    font-size:9pt;
+}
+
+#nav-headlines {
+    font-size:10pt;
+}
+
+#bioNav {
+    overflow-x:hidden; 
+    overflow-y:scroll;
+}
+
+#nav-hr {
+    margin: 13px 0;
+}
+
+#auswahl {
+    margin-top: 8px;
+}
+
+#distance {
+    float: right;
+    font-size: 9pt;
+    margin-top: 1px;    
+}
+
+#modal-hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+}
+
+#modal-distance {
+    float: right;
+    margin-top: -33px;
+    font-size: 9pt;
+}
+
+#modal-instruction {
+    margin-right: 50px;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    
+    .span9 {
+        width: 476px !important;
+    }
+
+    .span3 {
+        width: 228px !important;
+    }
+}
