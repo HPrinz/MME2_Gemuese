@@ -161,9 +161,9 @@ function proceedFruits(e) {
             img.src="img/vegies/eggplant.png"; 
             img.id="Aubergine";
         }
-        else if(e[i].name=="Bohnen") {
+        else if(e[i].name=="Bohne") {
             img.src="img/vegies/sugar_snap.png"; 
-            img.id="Bohnen";
+            img.id="Bohne";
         }
         else if(e[i].name=="Broccoli") {
             img.src="img/vegies/broccoli.png"; 
@@ -185,9 +185,9 @@ function proceedFruits(e) {
             img.src="img/vegies/carrot.png"; 
             img.id="Karotte";
         }
-        else if(e[i].name=="Kartoffeln") {
+        else if(e[i].name=="Kartoffel") {
             img.src="img/vegies/potato.png"; 
-            img.id="Kartoffeln";
+            img.id="Kartoffel";
         }
         else if(e[i].name=="Kohlrabi") {
             img.src="img/vegies/kohlrabi.png"; 
@@ -205,9 +205,9 @@ function proceedFruits(e) {
             img.src="img/vegies/bell_pepper.png"; 
             img.id="Paprika";
         }
-        else if(e[i].name=="Pilze") {
+        else if(e[i].name=="Pilz") {
             img.src="img/vegies/mushroom.png"; 
-            img.id="Pilze";
+            img.id="Pilz";
         }
         else if(e[i].name=="Radieschen") {
             img.src="img/vegies/radish.png"; 
@@ -229,9 +229,9 @@ function proceedFruits(e) {
             img.src="img/vegies/zucchini.png"; 
             img.id="Zucchini";
         }
-        else if(e[i].name=="Zwiebeln") {
+        else if(e[i].name=="Zwiebel") {
             img.src="img/vegies/onion.png"; 
-            img.id="Zwiebeln";
+            img.id="Zwiebel";
         }
         
         img.onclick=function() {
