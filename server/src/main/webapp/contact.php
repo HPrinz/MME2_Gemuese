@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Grüne Bete</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact">
+    <meta name="description" content="This class is just for the video!">
     <meta name="author" content="Hanna Prinz, Nadine Pusch, Michael Hasenkrug">
 
     <!-- Le styles -->
@@ -27,31 +27,31 @@
 
   <body>
     <div class="container" id="ghost">  
-    <img src="img/logo.png">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#"></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="calendar.html">Kalender</a></li>
-              <li><a href="map.html">Karte</a></li>
-              <li class="active"><a href="#">Kontakt</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-          </div><!--/.container -->
-        </div><!--/.navbar-inner -->
-      </div><!--/.navbar -->
+        <img src="img/logo.png">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="#"></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="calendar.html">Kalender</a></li>
+                            <li><a href="map.html">Karte</a></li>
+                            <li class="active"><a href="#">Kontakt</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container -->
+            </div><!--/.navbar-inner -->
+        </div><!--/.navbar -->   
         
 <?php 
 if (isset($_POST["email"])) { 
-    require("../../PHPMailer/class.phpmailer.php");
+    require("../PHPMailer/class.phpmailer.php");
 
         $mail = new phpmailer();
 
@@ -96,40 +96,40 @@ if (isset($_POST["email"])) {
 
 <?php 
     } else { 
-?> 
-        <form action="contact.php" method="post">
-            <table width="400" border="0" cellspacing="2" cellpadding="0">
-                <tr>
-                    <td width="29%" class="bodytext">Your name:</td>
-                    <td width="71%"><input name="name" type="text" id="name" size="32"></td>
-                </tr>
-                <tr>
-                    <td class="bodytext">Email address:</td>
-                    <td><input name="email" type="text" id="email" size="32"></td>
-                </tr>
-                <tr>
-                    <td class="bodytext">Comment:</td>
-                    <td><textarea name="comment" cols="45" rows="6" id="comment" class="bodytext"></textarea></td>
-                </tr>
-                <tr>
-                    <td class="bodytext"> </td>
-                    <td align="left" valign="top"><input type="submit" name="Submit" value="Send"></td>
-                </tr>
-            </table>
-        </form>  
+?> 		        
+		<div class="control-group">
+        	<form action="contact.php" method="post">
+				<label class="control-label">Dein Name:</label>
+				<input name="name" type="text" id="name">
+                
+				<label class="control-label">Email Adresse:</label>
+				<input name="email" type="text" id="email">
+
+				<label class="control-label">Nachricht</label>
+				<textarea name="comment" cols="45" rows="6" id="comment" class="bodytext"></textarea>
+				<br>
+				<input type="submit" name="Submit" value="Send"></td>             
+        	</form>  
 <?php 
     }; 
 ?>
                 
     <hr>
         
-    <div>
-      <footer>
-        <p>© Grüne Bete 2013</p>
-      </footer>
-    </div>
-    </div><!--/.container -->
-      
+        <div class="container">
+            <footer>
+				<p class="pull-right">
+					<a href="#">Back to top</a>
+				</p>
+				<p>
+					© 2013 Grüne Bete · <a href="imprint.html">Impressum</a>
+				</p>
+			</footer>
+		</div>
+    
+    </div><!--/.container -->      
+          
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>              
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>    
     <script src="js/bootstrap.js"></script>
   </body>
