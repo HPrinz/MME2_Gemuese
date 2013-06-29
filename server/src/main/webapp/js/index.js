@@ -240,14 +240,18 @@ function proceedFruits(e) {
               
         singleGemueseDiv.href = "#myCarousel";                
         singleGemueseDiv.setAttribute('data-slide', 'next');
-        
         singleGemueseDiv.id="singleGemueseDiv";
         singleGemueseDiv.appendChild(img);
          
-        this.gesamtZahl = 9;
-        getNumberOfFruits();
-        
-        if (i < gesamtZahl){
+        this.gesamtZahl;
+
+        if (i < 1){
+            document.getElementById("down").style.visibility='hidden';
+            document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
+            getNumberOfFruits();
+            console.log(gesamtZahl);
+        }
+        else if (i < gesamtZahl){
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
         } else {
@@ -451,25 +455,17 @@ function firstTime() {
 
 // bestimmt die Anzeigezahl der Früchte
 function getNumberOfFruits(){
-        var breite = window.outerWidth;
-        console.log(breite);
-            
-        if (breite > 1226) {
-            gesamtZahl = 12;
-        }
-        else if (breite > 794) {
-            gesamtZahl = 10;
-        }
-        else if (breite > 789) {
-            gesamtZahl = 21;
-        }
-        else if (breite > 657) {
-            gesamtZahl = 18;
-        }
-        else if (breite > 576) {
-            gesamtZahl = 15;
-        }   
-        else if (breite > 470) {
-            gesamtZahl = 12;
-        }
+    
+        var i = document.getElementById("mynavbar").offsetWidth;
+        var j = document.getElementById("mynavbar").offsetHeight;
+        var k = document.getElementById("singleGemueseDiv").offsetWidth;
+    
+        console.log("i: " + i);
+        console.log("j: " + j);
+        console.log("k: " + k);
+        
+        var l = parseInt(i/k);
+        var m = parseInt(j/k);
+        
+        gesamtZahl = m*l;
 }
