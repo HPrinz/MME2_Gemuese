@@ -55,14 +55,14 @@
 			<div class="controls">
 				<fieldset id="type">
 					<input type="radio" id="type_all" name="type" value="all" checked="checked"/>
-					<label for="type_all" class="sel"><span class="all">Alle Früchte</span></label>
+					<label id="all_btn" for="type_all" class="sel"><span class="all">Alle Früchte</span></label>
 					<input type="radio" id="type_pc" name="type" value="obst"/>
-					<label for="type_pc"><span class="pc">Obst</span></label>
+					<label id="obst_btn" for="type_pc"><span class="pc">Obst</span></label>
 					<input type="radio" id="type_mob" name="type" value="gemuese"/>
-					<label for="type_mob"><span class="mob">Gemüse</span></label>
+					<label id="gemuese_btn" data-toggle="popover" title data-content="Hier kannst du Obst und Gemüse filtern" data-placement="right" for="type_mob"><span class="mob">Gemüse</span></label>
 				</fieldset>
 			</div>
-			<div id="legend" class="rbow2">
+			<div id="legend" class="rbow2" data-toggle="popover" title data-content="Hier siehst du die Saison wenn du mit der Maus über den Kalender gehst" data-placement="left"  >
 				Legende:
 				<ul>
 					<li id="leg_fresh" class="fresh"></li>
