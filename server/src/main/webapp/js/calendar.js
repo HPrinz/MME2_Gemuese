@@ -47,7 +47,7 @@ function initVariables(f) {
 	d3.select('#vis').classed(colorScheme, true);
 
 	createTiles("all", fruitsArray);
-	reColorTiles('obst', fruitsArray);
+	reColorTiles(fruitsArray);
 
 	/* ************************** */
 
@@ -55,13 +55,24 @@ function initVariables(f) {
 	$('input[name="type"]').change(function() {
 
 		var type = $(this).val();
+		if (type === "all"){
+			$("#all_btn").addClass("sel");
+			$("#gemuese_btn").removeClass("sel");
+			$("#obst_btn").removeClass("sel");
+		}else if (type === "gemuese"){
+			$("#gemuese_btn").addClass("sel");
+			$("#all_btn").removeClass("sel");
+			$("#obst_btn").removeClass("sel");
+		}else if (type === "obst"){
+			$("#obst_btn").addClass("sel");
+			$("#all_btn").removeClass("sel");
+			$("#gemuese_btn").removeClass("sel");
+		}
 
 		console.log("type = " + type);
 
-		state = "obst";
-
 		createTiles(type, fruitsArray);
-		reColorTiles(state, fruitsArray, buckets);
+		reColorTiles(fruitsArray);
 	});
 
 	/* ************************** */
@@ -110,7 +121,7 @@ function initVariables(f) {
 
 /* ************************** */
 
-function reColorTiles(state, fruitsArray) {
+function reColorTiles(fruitsArray) {
 
 	var side = d3.select('#tiles').attr('class');
 
@@ -186,7 +197,7 @@ function createTiles(type, fruitsArray) {
 		if ((fruitsArray[d].vegetable == false && type == "obst")
 				|| (fruitsArray[d].vegetable == true && type == "gemuese") || type == "all") {
 			html += '<tr class="d' + d + '">';
-			html += '<th class="fruitname"><a href="index.html">' + fruitsArray[d].name + '</a></th>';
+			html += '<th class="fruitname">' + fruitsArray[d].name + '</a></th>';
 			for ( var h = 0; h < months.length; h++) {
 
 				var mm = new Date().getMonth();
@@ -222,11 +233,11 @@ function createTiles(type, fruitsArray) {
 }
 
 function showAuswahlPopover() {
-	$('#leg_gemuese_button').popover('show');
+	$('#gemuese_btn').popover('show');
 }
 
 function hideAuswahlPopover() {
-	$('#leg_gemuese_button').popover('destroy');
+	$('#gemuese_btn').popover('destroy');
 }
 
 function showLegendPopover() {
