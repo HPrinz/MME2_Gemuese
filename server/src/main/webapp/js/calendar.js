@@ -16,13 +16,20 @@ function makeHttpRequest() {
 				f.push(temp);
 			}
 			initVariables(f);
+
 		}
 	};
 	xmlhttp.send("");
 
 }
 
-makeHttpRequest();
+window.onload = function() {
+
+	makeHttpRequest();
+	if(firstTime()){
+		startTutorial();
+	}
+};
 
 function initVariables(f) {
 
@@ -62,7 +69,7 @@ function initVariables(f) {
 	// tiles mouseover events
 	$('#tiles td').hover(function() {
 		$(this).addClass('sel');
-		
+
 		var classlist = $("#" + $(this).attr('id') + " .tile .back").attr("class").split(/\s+/);
 		$.each(classlist, function(index, item) {
 			if (item == "fresh") {
@@ -79,7 +86,6 @@ function initVariables(f) {
 				$("#leg_none").text("Keine Saison");
 			}
 		});
-		
 
 	}, function() {
 		$(this).removeClass('sel');
@@ -213,4 +219,81 @@ function createTiles(type, fruitsArray) {
 
 	html += '</table>';
 	d3.select('#vis').html(html);
+}
+
+function showAuswahlPopover() {
+	$('#leg_gemuese_button').popover('show');
+}
+
+function hideAuswahlPopover() {
+	$('#leg_gemuese_button').popover('destroy');
+}
+
+function showLegendPopover() {
+	$('#legend').popover('show');
+}
+
+function hideLegendPopover() {
+	$('#legend').popover('destroy');
+}
+
+// Tutorial Animation
+function startTutorial() {
+	var openAuswahlTimeout = setTimeout(showAuswahlPopover, 1000);
+	var closeAuswahlTimeout = setTimeout(hideAuswahlPopover, 5000);
+	var openAuswahlPopoverTimeout = setTimeout(showLegendPopover, 5500);
+	var closeAuswahlPopoverTimeout = setTimeout(hideLegendPopover, 9500);
+}
+
+//============= COOKIE ZONE - NOM NOM NOM ============= //
+
+//Erzeuge und Speichere einen Cookie
+function setCookie(c_name,value,exdays) {
+ var exdate = new Date();
+ exdate.setDate(exdate.getDate() + exdays);
+ var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+ document.cookie = c_name + "=" + c_value;
+}
+
+//Holt den Wert aus einem Cookie
+function getCookie(c_name) {
+ var c_value = document.cookie;
+ var c_start = c_value.indexOf(" " + c_name + "=");
+ 
+ if (c_start == -1) {
+     c_start = c_value.indexOf(c_name + "=");
+ }
+ 
+ if (c_start == -1) {
+     c_value = null;
+     
+ } else {
+     c_start = c_value.indexOf("=", c_start) + 1;
+     
+     var c_end = c_value.indexOf(";", c_start);
+     
+     if (c_end == -1) {
+         c_end = c_value.length;
+     }
+     
+     c_value = unescape(c_value.substring(c_start, c_end));
+ }
+
+ return c_value;
+}
+
+//Kontrolliert ob es bereits einen gesetzten Cookie gibt
+function firstTime() {    
+ var cookie = getCookie("watchedCalendarTutorial");
+
+ if (cookie != null && cookie != "") {        
+     
+     return false;
+     
+ } else {        
+     value="true";
+     setCookie("watchedCalendarTutorial", value, 365);
+
+     return true;
+ }
 }
