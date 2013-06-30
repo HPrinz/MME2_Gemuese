@@ -1,39 +1,42 @@
-function makeHttpRequest() {
-	var xmlhttp = new XMLHttpRequest();
-	var f = [];
-
-	xmlhttp.open("GET", 'rest/gemueseREST/list', true);
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState != 4) {
-
-		}
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			var response = JSON.parse(xmlhttp.responseText);
-
-			for ( var i = 0; i < response.fruits.length; i++) {
-
-				var temp = JSON.parse(response.fruits[i]);
-				f.push(temp);
-			}
-			initVariables(f);
-
-		}
-	};
-	xmlhttp.send("");
-
-}
-
+/**
+ * initial method
+ */
 window.onload = function() {
-
+	
 	makeHttpRequest();
 	if(firstTime()){
 		startTutorial();
 	}
 };
 
-function initVariables(f) {
+/**
+ * sends the Request to the server to get all gemueses
+ */
+function makeHttpRequest() {
+	var xmlhttp = new XMLHttpRequest();
+	var fruitsArray = [];
 
-	var fruitsArray = f;
+	xmlhttp.open("GET", 'rest/gemueseREST/list', true);
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var response = JSON.parse(xmlhttp.responseText);
+
+			for ( var i = 0; i < response.fruits.length; i++) {
+
+				var temp = JSON.parse(response.fruits[i]);
+				fruitsArray.push(temp);
+			}
+			initVariables(fruitsArray);
+		}
+	};
+	xmlhttp.send("");
+}
+
+/**
+ * initializes the UI
+ * @param fruitsArray the array containing the fruits to show
+ */
+function initVariables(fruitsArray) {
 
 	// four colors
 	var buckets = 4;
@@ -53,7 +56,9 @@ function initVariables(f) {
 
 	// All, Obst, Gemüse button event listener
 	$('input[name="type"]').change(function() {
-
+		
+		console.log("input changed");
+		
 		var type = $(this).val();
 		if (type === "all"){
 			$("#all_btn").addClass("sel");
@@ -69,15 +74,48 @@ function initVariables(f) {
 			$("#gemuese_btn").removeClass("sel");
 		}
 
-		console.log("type = " + type);
-
+		d3.select('#vis').classed(colorScheme, true);
 		createTiles(type, fruitsArray);
 		reColorTiles(fruitsArray);
+		addHovers();
 	});
 
-	/* ************************** */
+	addHovers();
+	
+}
 
-	// tiles mouseover events
+/**
+ * 
+ * @param fruitsArray
+ */
+function reColorTiles(fruitsArray) {
+
+	var side = d3.select('#tiles').attr('class');
+
+	if (side === 'front') {
+		side = 'back';
+	} else {
+		side = 'front';
+	}
+
+	for ( var d = 0; d < fruitsArray.length; d++) {
+		for ( var h = 0; h <= monthsEng.length; h++) {
+
+			var sel = '#d' + d + 'h' + h + ' .tile .' + side;
+			var mon = monthsEng[h];
+			var val = fruitsArray[d].season[mon];
+
+			$(sel).addClass(val);
+		}
+	}
+	flipTiles(fruitsArray);
+}
+
+function addHovers(){
+	
+	console.log("addHovers");
+	
+	// table tiles mouseover events
 	$('#tiles td').hover(function() {
 		$(this).addClass('sel');
 
@@ -117,33 +155,6 @@ function initVariables(f) {
 			}
 		});
 	});
-}
-
-/* ************************** */
-
-function reColorTiles(fruitsArray) {
-
-	var side = d3.select('#tiles').attr('class');
-
-	if (side === 'front') {
-		side = 'back';
-	} else {
-		side = 'front';
-	}
-
-	for ( var d = 0; d < fruitsArray.length; d++) {
-		for ( var h = 0; h <= monthsEng.length; h++) {
-
-			var sel = '#d' + d + 'h' + h + ' .tile .' + side;
-
-			var mon = monthsEng[h];
-
-			var val = fruitsArray[d].season[mon];
-
-			$(sel).addClass(val);
-		}
-	}
-	flipTiles(fruitsArray);
 }
 
 /* ************************** */
