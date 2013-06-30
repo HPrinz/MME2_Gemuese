@@ -131,7 +131,6 @@ th.fruitname{
 }
 
 #legend .lihover {
-	-webkit-animation: small 1s;
 	-webkit-animation-direction: alternate;
 	-webkit-animation-iteration-count: 2;
 }
@@ -222,7 +221,7 @@ to {
 	cursor: default;
 }
 
-/* 11 buckets purple to red */
+/* 4 buckets grey to green */
 
 .rbow2 .fresh {
 	background: #669933;

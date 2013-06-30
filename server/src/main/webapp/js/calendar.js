@@ -42,17 +42,14 @@ function initVariables(fruitsArray) {
 	var buckets = 4;
 
 	var colorScheme = 'rbow2';
-
 	months = [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ];
-
 	monthsEng = [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ];
 
 	d3.select('#vis').classed(colorScheme, true);
-
+	
 	createTiles("all", fruitsArray);
 	reColorTiles(fruitsArray);
-
-	/* ************************** */
+	addHovers();
 
 	// All, Obst, Gemüse button event listener
 	$('input[name="type"]').change(function() {
@@ -74,18 +71,14 @@ function initVariables(fruitsArray) {
 			$("#gemuese_btn").removeClass("sel");
 		}
 
-		d3.select('#vis').classed(colorScheme, true);
 		createTiles(type, fruitsArray);
 		reColorTiles(fruitsArray);
 		addHovers();
 	});
-
-	addHovers();
-	
 }
 
 /**
- * 
+ * setting the colors for the tiles dependiing to the season
  * @param fruitsArray
  */
 function reColorTiles(fruitsArray) {
@@ -98,19 +91,27 @@ function reColorTiles(fruitsArray) {
 		side = 'front';
 	}
 
+	//through all vegetables
 	for ( var d = 0; d < fruitsArray.length; d++) {
+		//through  all months
 		for ( var h = 0; h <= monthsEng.length; h++) {
 
+			// select the correct tile
 			var sel = '#d' + d + 'h' + h + ' .tile .' + side;
+			// from "mar" to "M�r"
 			var mon = monthsEng[h];
+			// get the correct season (none, storage, greenhouse, fresh)
 			var val = fruitsArray[d].season[mon];
-
 			$(sel).addClass(val);
 		}
 	}
+	// nice animation
 	flipTiles(fruitsArray);
 }
 
+/**
+ * adding hover animation to the tiles
+ */
 function addHovers(){
 	
 	console.log("addHovers");
@@ -157,8 +158,10 @@ function addHovers(){
 	});
 }
 
-/* ************************** */
-
+/**
+ * nice animation
+ * @param fruitsArray
+ */
 function flipTiles(fruitsArray) {
 
 	var oldSide = d3.select('#tiles').attr('class'), newSide = '';
@@ -190,47 +193,52 @@ function flipTiles(fruitsArray) {
 	d3.select('#tiles').attr('class', newSide);
 }
 
-/* ************************** */
-
+/**
+ * create the table
+ * @param type the type of fruit to show (all, gemuese or obst)
+ * @param fruitsArray the fruits
+ */
 function createTiles(type, fruitsArray) {
 
 	var html = '<table id="tiles" class="front">';
 
 	html += '<tr><th><div>&nbsp;</div></th>';
 
+	// zeilen
 	for ( var h = 0; h < months.length; h++) {
 		html += '<th class="h' + h + '">' + months[h] + '</th>';
 	}
 
 	html += '</tr>';
 
+	// spalten
 	for ( var d = 0; d < fruitsArray.length; d++) {
 		if ((fruitsArray[d].vegetable == false && type == "obst")
 				|| (fruitsArray[d].vegetable == true && type == "gemuese") || type == "all") {
 			html += '<tr class="d' + d + '">';
 			html += '<th class="fruitname">' + fruitsArray[d].name + '</a></th>';
-			for ( var h = 0; h < months.length; h++) {
+			for ( var month = 0; month < months.length; month++) {
 
-				var mm = new Date().getMonth();
-				if (h === mm) {
+				var currentMonth = new Date().getMonth();
+				if (month === currentMonth) {
 					html += '<td class="tdcurr" id="d'
 							+ d
 							+ 'h'
-							+ h
+							+ month
 							+ '" class="d'
 							+ d
 							+ ' h'
-							+ h
+							+ month
 							+ '"><div class="tile tilecurr"><div class="face facecurr front"></div><div class="face facecurr back"></div></div></td>';
 				} else {
 					html += '<td id="d'
 							+ d
 							+ 'h'
-							+ h
+							+ month
 							+ '" class="d'
 							+ d
 							+ ' h'
-							+ h
+							+ month
 							+ '"><div class="tile"><div class="face front"></div><div class="face back"></div></div></td>';
 				}
 			}
@@ -240,6 +248,7 @@ function createTiles(type, fruitsArray) {
 	}
 
 	html += '</table>';
+	// add the table to the vis-Element
 	d3.select('#vis').html(html);
 }
 
