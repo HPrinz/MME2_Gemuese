@@ -91,9 +91,10 @@ public class GemueseRessource {
 	@Path("/clean")
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public void clean() {
+	public boolean clean() {
 
 		new VegetableDAO().clean();
+		return true;
 	}
 
 	/**
@@ -113,12 +114,4 @@ public class GemueseRessource {
 		return returnValue;
 	}
 
-	@Path("addPicture")
-	@POST
-	@Produces({ MediaType.TEXT_PLAIN })
-	public String addPicture() {
-//		RecipeDAO.addPicture()
-
-		return "success";
-	}
 }

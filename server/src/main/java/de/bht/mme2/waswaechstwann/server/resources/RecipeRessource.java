@@ -101,13 +101,15 @@ public class RecipeRessource {
 	
 	  /**
 	    * cleans the Recipe-Table (deletes all entries! be careful!)
+	 * @return 
 	    */
 	   @Path("/clean")
 	   @GET
 	   @Produces({ MediaType.APPLICATION_JSON })
-	   public void clean() {
+	   public boolean clean() {
 
 	      new RecipeDAO().clean();
+	      return true;
 	   }
 
 }
