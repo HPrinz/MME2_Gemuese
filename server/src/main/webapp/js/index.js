@@ -6,18 +6,25 @@ function $(id) {
 window.onload = function() {    
     pickDate();
     makeHttpRequest();
+    this.cond = true;
     
     // Tutorial
     if(firstTime()) {
         startTutorial();  
     }
+    
+    document.getElementById("arrow").onclick=function(){
+       cond = true;
+    }
 };
 
+
 // Größenänderung des Fensters
-window.onresize = function(event) {    
+window.onresize = function(event) {   
         document.getElementById("gemueseFirstDiv").innerHTML="";
         document.getElementById("gemueseSecondDiv").innerHTML = "";
         proceedFruits(currentFruits);
+ 
 };
 
 /*
@@ -235,7 +242,8 @@ function proceedFruits(e) {
         }
         
         img.onclick=function() {
-              writeDescription();       
+              writeDescription();  
+              cond = false;
         }; 
               
         singleGemueseDiv.href = "#myCarousel";                
@@ -249,7 +257,6 @@ function proceedFruits(e) {
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
             getNumberOfFruits();
-            console.log(gesamtZahl);
         }
         else if (i < gesamtZahl){
             document.getElementById("down").style.visibility='hidden';
@@ -455,17 +462,30 @@ function firstTime() {
 
 // bestimmt die Anzeigezahl der Früchte
 function getNumberOfFruits(){
-    
+    if (cond) {
         var i = document.getElementById("mynavbar").offsetWidth;
         var j = document.getElementById("mynavbar").offsetHeight;
         var k = document.getElementById("singleGemueseDiv").offsetWidth;
-    
-        console.log("i: " + i);
-        console.log("j: " + j);
-        console.log("k: " + k);
         
         var l = parseInt(i/k);
         var m = parseInt(j/k);
         
         gesamtZahl = m*l;
+    } else {
+        var breite = window.outerWidth;        
+            
+        if (breite > 1226) {
+            gesamtZahl = 12;
+        } else if (breite > 794) {
+            gesamtZahl = 10;
+        } else if (breite > 789) {
+            gesamtZahl = 21;
+        } else if (breite > 657) {
+            gesamtZahl = 18;
+        } else if (breite > 576) {
+            gesamtZahl = 15;
+        } else if (breite > 470) {
+            gesamtZahl = 12;
+        }
+    }
 }
