@@ -10,21 +10,21 @@ window.onload = function() {
     
     // Tutorial
     if(firstTime()) {
-        startTutorial();  
+        $('#welcome-modal').modal('show');     
     }
     
-    document.getElementById("arrow").onclick=function(){
-       cond = true;
+    
+    document.getElementById("arrow").onclick=function() {
+        cond = true;
     }
 };
 
 
 // Größenänderung des Fensters
 window.onresize = function(event) {   
-        document.getElementById("gemueseFirstDiv").innerHTML="";
-        document.getElementById("gemueseSecondDiv").innerHTML = "";
-        proceedFruits(currentFruits);
- 
+    document.getElementById("gemueseFirstDiv").innerHTML="";
+    document.getElementById("gemueseSecondDiv").innerHTML = "";
+    proceedFruits(currentFruits); 
 };
 
 /*
@@ -58,6 +58,14 @@ function pickDate() {
 
 
 // Tutorial-Stuff - zeigt dem Nutzer die Funktionalitäten in Popover-FensternS
+function showMapLinkPopover() {
+    $('#map-link').popover('show');    
+}
+
+function hideMapLinkPopover() {
+    $('#map-link').popover('destroy');
+}
+
 function showDatepickerPopover() {
     $('#mydatepicker').popover('show');
 }
@@ -79,6 +87,8 @@ function startTutorial() {
     var closeDatepickerPopoverTimeout = setTimeout(hideDatepickerPopover, 5000);
     var openFruitPopoverTimeout = setTimeout(showFruitPopover, 5500);
     var closeFruitPopoverTimeout = setTimeout(hideFruitPopover, 9500);
+    var openMapLinkPopoverTimeout = setTimeout(showMapLinkPopover, 10000);
+    var openMapLinkPopoverTimeout = setTimeout(hideMapLinkPopover, 14000);
 }
 
 // Request der Obst-/Gemüsesorten
@@ -97,9 +107,8 @@ function makeHttpRequest() {
 
     xmlhttp.open("GET", 'rest/gemueseREST/list', true);
         xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState != 4) {
-                    
-                }
+            if (xmlhttp.readyState != 4) {}
+            
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var response = JSON.parse(xmlhttp.responseText);
                 var string = "";
@@ -253,12 +262,12 @@ function proceedFruits(e) {
          
         this.gesamtZahl;
 
-        if (i < 1){
+        if (i < 1) {
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
             getNumberOfFruits();
         }
-        else if (i < gesamtZahl){
+        else if (i < gesamtZahl) {
             document.getElementById("down").style.visibility='hidden';
             document.getElementById("gemueseFirstDiv").appendChild(singleGemueseDiv);
         } else {
@@ -295,10 +304,11 @@ function writeDescription() {
 // Rezepte-Request
 function makeRecipeRequest(veg) {  
     
-    document.getElementById("moreButton").onclick=function(){
+    document.getElementById("moreButton").onclick=function() {
         
         window.open("http://www.chefkoch.de/rs/s0e1n1z1i1/" + veg + "/Rezepte.html");
     };
+    
     var xmlhttp = null;
     this.recipes = new Array();
     
@@ -306,6 +316,7 @@ function makeRecipeRequest(veg) {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
+    
     // IE
     else if (window.ActiveXObject) {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -408,6 +419,35 @@ function printRecipe() {
     localStorage.setItem('print-body', document.getElementById("recipe").innerHTML);
 }
 
+// bestimmt die Anzeigezahl der Früchte
+function getNumberOfFruits(){
+    if (cond) {
+        var i = document.getElementById("mynavbar").offsetWidth;
+        var j = document.getElementById("mynavbar").offsetHeight;
+        var k = document.getElementById("singleGemueseDiv").offsetWidth;
+        
+        var l = parseInt(i/k);
+        var m = parseInt(j/k);
+        
+        gesamtZahl = m*l;
+    } else {
+        var breite = window.outerWidth;        
+            
+        if (breite > 1226) {
+            gesamtZahl = 12;
+        } else if (breite > 794) {
+            gesamtZahl = 10;
+        } else if (breite > 789) {
+            gesamtZahl = 21;
+        } else if (breite > 657) {
+            gesamtZahl = 18;
+        } else if (breite > 576) {
+            gesamtZahl = 15;
+        } else if (breite > 470) {
+            gesamtZahl = 12;
+        }
+    }
+}
 
 // ============= COOKIE ZONE - NOM NOM NOM ============= //
 
@@ -460,32 +500,8 @@ function firstTime() {
     }
 }
 
-// bestimmt die Anzeigezahl der Früchte
-function getNumberOfFruits(){
-    if (cond) {
-        var i = document.getElementById("mynavbar").offsetWidth;
-        var j = document.getElementById("mynavbar").offsetHeight;
-        var k = document.getElementById("singleGemueseDiv").offsetWidth;
-        
-        var l = parseInt(i/k);
-        var m = parseInt(j/k);
-        
-        gesamtZahl = m*l;
-    } else {
-        var breite = window.outerWidth;        
-            
-        if (breite > 1226) {
-            gesamtZahl = 12;
-        } else if (breite > 794) {
-            gesamtZahl = 10;
-        } else if (breite > 789) {
-            gesamtZahl = 21;
-        } else if (breite > 657) {
-            gesamtZahl = 18;
-        } else if (breite > 576) {
-            gesamtZahl = 15;
-        } else if (breite > 470) {
-            gesamtZahl = 12;
-        }
-    }
+function hideTutorial() {
+    value="true";
+    setCookie("watchedCalendarTutorial", value, 365);
+    setCookie("watchedMapTutorial", value, 365);
 }
