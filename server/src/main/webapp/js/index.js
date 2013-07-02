@@ -31,15 +31,19 @@ window.onresize = function(event) {
  * Datepicker 
  * bei Änderung des Datum, werden die entsprechenden Früchte angezeigt
  */
-function pickDate() {    
+function pickDate() { 
+    var r = "";
     var s = "-";
     this.date = new Date();
     if(date.getMonth()<10){
         s += "0";
     }
+    if(date.getDate()<10){
+        r += "0";
+    }
     var x =date.getMonth()+1;
     
-    $('#mydatepicker').attr('value',  date.getDate()+ s + x +"-"+date.getFullYear());
+    $('#mydatepicker').attr('value', r + date.getDate()+ s + x +"-"+date.getFullYear());
     $('#mydatepicker').datepicker({
         format: 'dd-mm-yyyy',
         todayBtn: 'linked',
