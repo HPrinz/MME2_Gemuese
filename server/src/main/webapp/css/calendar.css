@@ -131,6 +131,7 @@ th.fruitname{
 }
 
 #legend .lihover {
+	-webkit-animation: small 1s;
 	-webkit-animation-direction: alternate;
 	-webkit-animation-iteration-count: 2;
 }

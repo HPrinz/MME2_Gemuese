@@ -76,9 +76,10 @@ public class MarketRessource {
    @Path("/clean")
    @GET
    @Produces({ MediaType.APPLICATION_JSON })
-   public void clean() {
+   public boolean clean() {
 
       new MarketDAO().clean();
+      return true;
    }
 
    /**

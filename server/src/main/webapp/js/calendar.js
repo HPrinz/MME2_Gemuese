@@ -49,7 +49,6 @@ function initVariables(fruitsArray) {
 	
 	createTiles("all", fruitsArray);
 	reColorTiles(fruitsArray);
-	addHovers();
 
 	// All, Obst, Gemüse button event listener
 	$('input[name="type"]').change(function() {
@@ -71,10 +70,14 @@ function initVariables(fruitsArray) {
 			$("#gemuese_btn").removeClass("sel");
 		}
 
+		d3.select('#vis').classed(colorScheme, true);
+
 		createTiles(type, fruitsArray);
 		reColorTiles(fruitsArray);
 		addHovers();
 	});
+	
+	addHovers();
 }
 
 /**
@@ -114,11 +117,12 @@ function reColorTiles(fruitsArray) {
  */
 function addHovers(){
 	
-	console.log("addHovers");
+	
 	
 	// table tiles mouseover events
 	$('#tiles td').hover(function() {
 		$(this).addClass('sel');
+		console.log("addHovers");
 
 		var classlist = $("#" + $(this).attr('id') + " .tile .back").attr("class").split(/\s+/);
 		$.each(classlist, function(index, item) {
@@ -211,7 +215,7 @@ function createTiles(type, fruitsArray) {
 
 	html += '</tr>';
 
-	// spalten
+	// zellen
 	for ( var d = 0; d < fruitsArray.length; d++) {
 		if ((fruitsArray[d].vegetable == false && type == "obst")
 				|| (fruitsArray[d].vegetable == true && type == "gemuese") || type == "all") {
